@@ -1,0 +1,84 @@
+
+> lavexpress@0.1.0 lint
+> eslint
+
+
+E:\Projeto Lavexpress\lavexpress\app\not-found.tsx
+  5:10  warning  'ArrowLeft' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\app\pacotes\page.tsx
+  64:11  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\Projeto Lavexpress\lavexpress\app\page.tsx
+  15:10  warning  'LegalNotice' is defined but never used  @typescript-eslint/no-unused-vars
+  16:10  warning  'CtaFinal' is defined but never used     @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\app\servicos\[slug]\page.tsx
+  61:24  warning  'serviceTitle' is defined but never used  @typescript-eslint/no-unused-vars
+  70:26  warning  'serviceDesc' is defined but never used   @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\app\servicos\lavagem-de-cortinas\page.tsx
+  13:3  warning  'Clock' is defined but never used          @typescript-eslint/no-unused-vars
+  14:3  warning  'MessageCircle' is defined but never used  @typescript-eslint/no-unused-vars
+  17:3  warning  'Truck' is defined but never used          @typescript-eslint/no-unused-vars
+  19:3  warning  'Zap' is defined but never used            @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\app\sobre\page.tsx
+   16:5    warning  'ShieldCheck' is defined but never used                          @typescript-eslint/no-unused-vars
+  196:41   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  196:161  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+E:\Projeto Lavexpress\lavexpress\components\sections\faq-packages.tsx
+  9:10  warning  'Badge' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\components\sections\google-rating-badge-client.tsx
+  18:12  warning  'isLoading' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  34:22  warning  'error' is defined but never used               @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\components\sections\life-quality.tsx
+  67:63  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  67:72  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+E:\Projeto Lavexpress\lavexpress\components\sections\packages-value-v2.tsx
+  34:10  warning  'scrollToPlans' is defined but never used  @typescript-eslint/no-unused-vars
+  92:30  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+
+E:\Projeto Lavexpress\lavexpress\components\sections\packages-value.tsx
+  16:8  warning  'Image' is defined but never used                @typescript-eslint/no-unused-vars
+  38:5  warning  'showImage' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  39:5  warning  'slaWashDry' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  40:5  warning  'slaIron' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\components\sections\plans.tsx
+  7:10  warning  'Check' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\components\sections\quick-calculator.tsx
+  10:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+  28:23  warning  '_' is defined but never used       @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\components\sections\services-grid.tsx
+  4:41  warning  'CardHeader' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\components\sections\social-proof-google.tsx
+  182:93  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\Projeto Lavexpress\lavexpress\components\sections\social-proof.tsx
+    7:8   warning  'Image' is defined but never used                                @typescript-eslint/no-unused-vars
+  129:45  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  129:59  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+E:\Projeto Lavexpress\lavexpress\components\ui\3d-carousel.tsx
+  61:7   warning  'keywords' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  88:19  error    Unexpected any. Specify a different type       @typescript-eslint/no-explicit-any
+
+E:\Projeto Lavexpress\lavexpress\lib\use-plan-highlight.ts
+  21:19  warning  't' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+E:\Projeto Lavexpress\lavexpress\lib\validarArea.ts
+   2:5   warning  'STORE_LOCATION' is defined but never used          @typescript-eslint/no-unused-vars
+   3:5   warning  'CITIES_FULLY_SUPPORTED' is defined but never used  @typescript-eslint/no-unused-vars
+   4:5   warning  'SERRA_RADIUS_KM' is defined but never used         @typescript-eslint/no-unused-vars
+  22:10  warning  'distanceKm' is defined but never used              @typescript-eslint/no-unused-vars
+
+✖ 39 problems (10 errors, 29 warnings)
+

@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
+@theme {
+  --font-heading: var(--font-poppins);
+  --font-sans: var(--font-inter);
+}
+
+/* =========================
+   Lavexpress Premium Tokens
+   ========================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand - HSL */
+  --lavexpress-blue: 220 100% 52%;
+  /* #0b5cff */
+  --lavexpress-blue-2: 217 100% 59%;
+  /* #2e7dff */
+  --lavexpress-gray: 0 0% 96.5%;
+  /* #f6f6f6 */
+
+  /* UI neutrals - HSL */
+  --bg: 0 0% 100%;
+  --fg: 0 0% 3.9%;
+
+  --muted: 0 0% 96.5%;
+  --muted-2: 0 0% 93.3%;
+
+  --border: 220 13% 91%;
+  /* #e5e7eb */
+
+  /* Premium depth */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 18px 60px rgba(0, 0, 0, 0.12);
+
+  --radius: 16px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: hsl(var(--border));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: hsl(var(--fg));
+  background:
+    radial-gradient(1200px 500px at 20% 0%, hsla(220, 100%, 52%, 0.08), transparent 55%),
+    radial-gradient(900px 450px at 90% 10%, hsla(217, 100%, 59%, 0.06), transparent 55%),
+    linear-gradient(to bottom, #ffffff, #ffffff);
+}
+
+/* Premium container rhythm */
+.section {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 72rem;
+  /* max-w-6xl */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.section-pad {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* Subtle “premium” card depth */
+.premium-card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+.premium-card-hover:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  transition: all 180ms ease;
+  border-color: hsl(var(--lavexpress-blue) / 0.3);
+}
+
+/* Premium heading style */
+.h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+.p-muted {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: hsl(var(--muted-foreground));
+}
+
+@media (min-width: 768px) {
+  .p-muted {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* CTA emphasis helper */
+.cta-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px hsla(220, 100%, 52%, 0.18);
+}
+/* Highlight do plano recomendado (azul + verde, premium) */
+.lav-plan-highlight {
+  position: relative;
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25),
+              0 0 0 6px rgba(16, 185, 129, 0.18),
+              0 24px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 1rem;
+  transition: box-shadow 250ms ease, transform 250ms ease;
 }
