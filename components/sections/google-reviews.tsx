@@ -4,23 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, ExternalLink } from "lucide-react";
 import { LAVEXPRESS } from "@/lib/lavexpress";
-
-type Review = {
-    author_name: string;
-    rating: number;
-    relative_time_description: string;
-    text: string;
-    profile_photo_url: string;
-};
-
-type Payload =
-    | {
-        ok: true;
-        rating: number;
-        total: number;
-        reviews: Review[];
-    }
-    | { ok: false; error: string };
+import { fetchPlaceDetails } from "@/lib/google-places";
 
 function StarsRow() {
     return (
@@ -33,30 +17,27 @@ function StarsRow() {
 }
 
 export async function GoogleReviews() {
-    let payload: Payload | null = null;
+    let rating = 4.7;
+    let total = 37;
+    let reviews: any[] = [];
+    let error = false;
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/api/google/reviews`, {
-            // Em prod (Vercel), NEXT_PUBLIC_BASE_URL ajuda SSR.
-            // Em dev, pode ficar vazio e ainda funcionar (fetch relativo) se você preferir:
-            // troque por fetch("http://localhost:3000/api/google/reviews") se necessário.
-            cache: "no-store",
-        });
+        const data = await fetchPlaceDetails();
+        rating = data.rating ?? 4.7;
+        total = data.user_ratings_total ?? 37;
 
-        // fallback se SSR não tiver NEXT_PUBLIC_BASE_URL:
-        if (!res.ok) {
-            const res2 = await fetch("http://localhost:3000/api/google/reviews", { cache: "no-store" });
-            payload = (await res2.json()) as Payload;
-        } else {
-            payload = (await res.json()) as Payload;
-        }
-    } catch {
-        payload = { ok: false, error: "Fetch failed" };
+        const allReviews = data.reviews ?? [];
+        // Apenas 5 estrelas, com texto (evita card vazio)
+        reviews = allReviews
+            .filter((r) => Number(r.rating) === 5)
+            .filter((r) => (r.text ?? "").trim().length > 0)
+            .slice(0, 12);
+
+    } catch (err) {
+        console.error("Failed to fetch Google Reviews:", err);
+        error = true;
     }
-
-    const rating = payload?.ok ? payload.rating : 4.7;
-    const total = payload?.ok ? payload.total : 37;
-    const reviews = payload?.ok ? payload.reviews : [];
 
     return (
         <section className="py-16 bg-white border-t border-slate-100">
@@ -98,7 +79,9 @@ export async function GoogleReviews() {
                     {reviews.length === 0 ? (
                         <Card className="p-8 rounded-2xl border-slate-100 bg-slate-50/60">
                             <div className="text-slate-700 font-semibold">
-                                Não foi possível carregar as avaliações agora. Você ainda pode ver todas diretamente no Google.
+                                {error
+                                    ? "Não foi possível carregar as avaliações agora. Você ainda pode ver todas diretamente no Google."
+                                    : "Nenhuma avaliação 5★ com texto encontrada recentemente."}
                             </div>
                             <div className="mt-4">
                                 <Button

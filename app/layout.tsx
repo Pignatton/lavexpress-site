@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { FloatingBubbles } from "@/components/ui/floating-bubbles";
@@ -62,6 +63,28 @@ export default function RootLayout({
           {children}
           <WhatsAppFloatingButton />
         </div>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WJH5E451M7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-WJH5E451M7');
+          `}
+        </Script>
+        <Script id="clarity-script" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "uw5zbkhj8h");
+          `}
+        </Script>
       </body>
     </html>
   );
