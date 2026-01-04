@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import { QuickCalculator } from "@/components/sections/quick-calculator";
+
+export const metadata: Metadata = {
+    title: "Agendar Coleta | Lavexpress",
+    description: "Agende sua coleta de lavanderia online. Buscamos e entregamos em Vitória, Vila Velha e Serra. Praticidade e qualidade profissional.",
+};
 
 export default function AgendamentoPage() {
     return (
