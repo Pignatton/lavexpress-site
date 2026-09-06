@@ -4,6 +4,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { FloatingBubbles } from "@/components/ui/floating-bubbles";
 import { WhatsAppFloatingButton } from "@/components/layout/whatsapp-floating-button";
+import { AttributionBoot } from "@/components/attribution-boot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -83,6 +84,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <AttributionBoot />
         <FloatingBubbles />
         <div className="relative z-10">
           {children}
