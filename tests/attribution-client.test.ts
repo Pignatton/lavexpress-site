@@ -4,14 +4,10 @@ import { REF_REGEX, desserializarCookie } from "@/lib/attribution";
 import {
     COOKIE_MAX_AGE,
     COOKIE_NOME,
-    TIMEOUT_INGEST_MS,
     capturarAtribuicao,
-    enviarIngest,
     linkWhatsAppComAtribuicao,
 } from "@/lib/attribution-client";
 
-const ENV_INGEST = "NEXT_PUBLIC_LEAD_INGEST_URL";
-const ENDPOINT = "https://ingest.lavcore.test/leads";
 
 type Browser = {
     /** Cookies como o browser os guardaria: nome -> valor. */
@@ -57,6 +53,11 @@ function montarBrowser(opts: {
     vi.stubGlobal("location", loc);
 
     return { jar, escritas };
+}
+
+/** Extrai a mensagem de dentro do wa.me para conferir a copy e o `Ref:`. */
+function textoDoLink(link: string): string {
+    return decodeURIComponent(new URL(link).searchParams.get("text") ?? "");
 }
 
 afterEach(() => {
@@ -183,193 +184,13 @@ describe("capturarAtribuicao", () => {
 
 /* ========================================================================== */
 
-function atribuicaoDeTeste() {
-    montarBrowser({ url: "https://lavexpress.com/?gclid=abc&utm_source=google" });
-    const a = capturarAtribuicao();
-    vi.unstubAllGlobals();
-    return a;
-}
-
-describe("enviarIngest", () => {
-    it("NÃO faz chamada de rede quando a env está vazia", () => {
-        const a = atribuicaoDeTeste();
-        const beacon = vi.fn(() => true);
-        const fetchSpy = vi.fn();
-        vi.stubGlobal("navigator", { sendBeacon: beacon });
-        vi.stubGlobal("fetch", fetchSpy);
-        vi.stubEnv(ENV_INGEST, "");
-
-        enviarIngest(a, {});
-
-        expect(beacon).not.toHaveBeenCalled();
-        expect(fetchSpy).not.toHaveBeenCalled();
-    });
-
-    it("NÃO faz chamada de rede quando a env está ausente", () => {
-        const a = atribuicaoDeTeste();
-        const beacon = vi.fn(() => true);
-        const fetchSpy = vi.fn();
-        vi.stubGlobal("navigator", { sendBeacon: beacon });
-        vi.stubGlobal("fetch", fetchSpy);
-        vi.stubEnv(ENV_INGEST, undefined);
-
-        enviarIngest(a, { bairro: "Jardim Camburi" });
-
-        expect(beacon).not.toHaveBeenCalled();
-        expect(fetchSpy).not.toHaveBeenCalled();
-    });
-
-    it("NÃO faz chamada de rede quando a env é só espaço em branco", () => {
-        const a = atribuicaoDeTeste();
-        const beacon = vi.fn(() => true);
-        vi.stubGlobal("navigator", { sendBeacon: beacon });
-        vi.stubGlobal("fetch", vi.fn());
-        vi.stubEnv(ENV_INGEST, "   ");
-
-        enviarIngest(a, {});
-
-        expect(beacon).not.toHaveBeenCalled();
-    });
-
-    it("usa sendBeacon com o corpo do contrato quando a env existe", async () => {
-        const a = atribuicaoDeTeste();
-        const beacon = vi.fn(() => true);
-        const fetchSpy = vi.fn();
-        vi.stubGlobal("navigator", { sendBeacon: beacon });
-        vi.stubGlobal("fetch", fetchSpy);
-        vi.stubGlobal("location", { hostname: "lavexpress.com", protocol: "https:" });
-        vi.stubEnv(ENV_INGEST, ENDPOINT);
-
-        enviarIngest(a, { bairro: "Jardim Camburi", cep: "29090-130", serviceInterest: "Passadoria" });
-
-        expect(beacon).toHaveBeenCalledTimes(1);
-        expect(fetchSpy).not.toHaveBeenCalled();
-
-        const [url, blob] = beacon.mock.calls[0] as unknown as [string, Blob];
-        expect(url).toBe(ENDPOINT);
-        expect(blob.type).toBe("application/json");
-
-        const corpo = JSON.parse(await blob.text());
-        expect(corpo).toMatchObject({
-            lead_ref: a.ref,
-            tenant_slug: "lavexpress",
-            gclid: "abc",
-            utm_source: "google",
-            bairro: "Jardim Camburi",
-            cep: "29090-130",
-            service_interest: "Passadoria",
-            first_touch_at: a.first_seen_at,
-            last_touch_at: a.last_seen_at,
-            is_test: false,
-        });
-    });
-
-    it("sanitiza os extras antes de enviar", async () => {
-        const a = atribuicaoDeTeste();
-        const beacon = vi.fn(() => true);
-        vi.stubGlobal("navigator", { sendBeacon: beacon });
-        vi.stubEnv(ENV_INGEST, ENDPOINT);
-
-        enviarIngest(a, { bairro: '<b>Praia do Canto</b>', cep: "X".repeat(500), serviceInterest: "" });
-
-        const [, blob] = beacon.mock.calls[0] as unknown as [string, Blob];
-        const corpo = JSON.parse(await blob.text());
-        expect(corpo.bairro).toBe("bPraia do Canto/b");
-        expect(corpo.cep).toHaveLength(16);
-        expect(corpo.service_interest).toBeNull();
-    });
-
-    it("marca is_test em ambiente local", async () => {
-        const a = atribuicaoDeTeste();
-        const beacon = vi.fn(() => true);
-        vi.stubGlobal("navigator", { sendBeacon: beacon });
-        vi.stubGlobal("location", { hostname: "localhost", protocol: "http:" });
-        vi.stubEnv(ENV_INGEST, ENDPOINT);
-
-        enviarIngest(a, {});
-
-        const [, blob] = beacon.mock.calls[0] as unknown as [string, Blob];
-        expect(JSON.parse(await blob.text()).is_test).toBe(true);
-    });
-
-    it("cai para fetch com keepalive quando sendBeacon recusa", () => {
-        vi.useFakeTimers();
-        const a = atribuicaoDeTeste();
-        const fetchSpy = vi.fn(() => Promise.resolve(new Response(null)));
-        vi.stubGlobal("navigator", { sendBeacon: vi.fn(() => false) });
-        vi.stubGlobal("fetch", fetchSpy);
-        vi.stubEnv(ENV_INGEST, ENDPOINT);
-
-        enviarIngest(a, {});
-
-        expect(fetchSpy).toHaveBeenCalledTimes(1);
-        const [url, init] = fetchSpy.mock.calls[0] as unknown as [string, RequestInit];
-        expect(url).toBe(ENDPOINT);
-        expect(init.method).toBe("POST");
-        expect(init.keepalive).toBe(true);
-        expect(init.credentials).toBe("omit");
-
-        // Timeout duro de 600 ms: passado o prazo, a requisição é abortada e o
-        // clique nunca fica pendurado esperando a rede.
-        expect(init.signal?.aborted).toBe(false);
-        vi.advanceTimersByTime(TIMEOUT_INGEST_MS);
-        expect(init.signal?.aborted).toBe(true);
-    });
-
-    it("usa fetch quando o browser não tem sendBeacon", () => {
-        vi.useFakeTimers();
-        const a = atribuicaoDeTeste();
-        const fetchSpy = vi.fn(() => Promise.resolve(new Response(null)));
-        vi.stubGlobal("navigator", {});
-        vi.stubGlobal("fetch", fetchSpy);
-        vi.stubEnv(ENV_INGEST, ENDPOINT);
-
-        enviarIngest(a, {});
-
-        expect(fetchSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it("nunca lança, mesmo com transporte quebrado", () => {
-        vi.useFakeTimers();
-        const a = atribuicaoDeTeste();
-        vi.stubEnv(ENV_INGEST, ENDPOINT);
-
-        vi.stubGlobal("navigator", {
-            sendBeacon: () => {
-                throw new Error("beacon explodiu");
-            },
-        });
-        vi.stubGlobal("fetch", () => {
-            throw new Error("fetch explodiu");
-        });
-
-        expect(() => enviarIngest(a, {})).not.toThrow();
-    });
-
-    it("rejeição de rede não vira unhandled rejection", () => {
-        vi.useFakeTimers();
-        const a = atribuicaoDeTeste();
-        vi.stubEnv(ENV_INGEST, ENDPOINT);
-        vi.stubGlobal("navigator", { sendBeacon: vi.fn(() => false) });
-        vi.stubGlobal("fetch", vi.fn(() => Promise.reject(new Error("offline"))));
-
-        expect(() => enviarIngest(a, {})).not.toThrow();
-    });
-});
-
-/* ========================================================================== */
-
-/** O `text` sai como form-encoding (espaço vira `+`), então decodifica-se assim. */
-function textoDoLink(link: string): string {
-    return new URLSearchParams(link.slice(link.indexOf("?") + 1)).get("text") ?? "";
-}
-
 describe("linkWhatsAppComAtribuicao", () => {
-    it("carimba o Ref: e não faz rede sem endpoint configurado", () => {
+    it("carimba o Ref: sem fazer nenhuma chamada de rede", () => {
         montarBrowser({ url: "https://lavexpress.com/?gclid=abc" });
         const fetchSpy = vi.fn();
+        const beaconSpy = vi.fn(() => true);
         vi.stubGlobal("fetch", fetchSpy);
-        vi.stubEnv(ENV_INGEST, "");
+        vi.stubGlobal("navigator", { sendBeacon: beaconSpy });
 
         const link = linkWhatsAppComAtribuicao({ text: "Olá! Quero agendar." });
         const texto = textoDoLink(link);
@@ -377,7 +198,9 @@ describe("linkWhatsAppComAtribuicao", () => {
         expect(link.startsWith("https://wa.me/5527996172403?text=")).toBe(true);
         expect(texto.startsWith("Olá! Quero agendar.")).toBe(true);
         expect(texto).toMatch(/\n\nRef: LX-[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{6}$/);
+        // A atribuicao vive inteira no cookie: nada sai do browser.
         expect(fetchSpy).not.toHaveBeenCalled();
+        expect(beaconSpy).not.toHaveBeenCalled();
 
         // Nada de identificador do Google escapando para a URL pública.
         for (const proibido of ["gclid", "gbraid", "wbraid"]) {
@@ -387,7 +210,6 @@ describe("linkWhatsAppComAtribuicao", () => {
 
     it("reusa o mesmo lead_ref em dois cliques da mesma sessão", () => {
         montarBrowser({ url: "https://lavexpress.com/?gclid=abc" });
-        vi.stubEnv(ENV_INGEST, "");
 
         const um = linkWhatsAppComAtribuicao({ text: "Primeiro clique." });
         const dois = linkWhatsAppComAtribuicao({ text: "Segundo clique." });

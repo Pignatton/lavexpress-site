@@ -255,7 +255,6 @@ export function Hero() {
                                             href={waLink}
                                             text={waMensagem}
                                             phoneE164={BRAND.WHATSAPP_E164}
-                                            bairro={area}
                                         >
                                             Agendar minha coleta
                                         </WhatsAppLink>

@@ -22,8 +22,8 @@
 export const ALFABETO_REF = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 
 /**
- * Regex canônica do `lead_ref`. FONTE ÚNICA DA VERDADE: site e LavCore validam
- * com esta mesma expressão. Sem flag `g`, portanto `test()` é stateless.
+ * Regex canônica do `lead_ref`. FONTE ÚNICA DA VERDADE do formato que vai na
+ * mensagem do WhatsApp. Sem flag `g`, portanto `test()` é stateless.
  */
 export const REF_REGEX = /^LX-[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{6}$/;
 

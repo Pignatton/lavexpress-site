@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
-import { linkWhatsAppComAtribuicao, type ExtrasIngest } from "@/lib/attribution-client";
+import { linkWhatsAppComAtribuicao } from "@/lib/attribution-client";
 
 const MENSAGEM_PADRAO = "Olá! Gostaria de falar com a Lavexpress.";
 
@@ -37,7 +37,6 @@ function textoDoHref(href: string | undefined): string | null {
 export function criarHandlerWhatsApp(params: {
     text: string;
     phoneE164?: string;
-    extras?: ExtrasIngest;
 }) {
     return function aoClicar(evento: React.MouseEvent<HTMLAnchorElement>) {
         try {
@@ -59,10 +58,6 @@ export type WhatsAppLinkProps = Omit<React.ComponentPropsWithRef<"a">, "href"> &
     /** Copy da mensagem. Vence sobre o `text` embutido no `href`. */
     text?: string;
     phoneE164?: string;
-    /** Contexto opcional do lead, enviado só à ingestão — nunca à mensagem. */
-    bairro?: string | null;
-    cep?: string | null;
-    serviceInterest?: string | null;
 };
 
 /**
@@ -78,15 +73,12 @@ export type WhatsAppLinkProps = Omit<React.ComponentPropsWithRef<"a">, "href"> &
  * estava lá — a copy original, sem `Ref:`. O WhatsApp abre SEMPRE.
  *
  * Nada de `await` no caminho do clique: `linkWhatsAppComAtribuicao` é síncrona
- * e a ingestão é fire-and-forget.
+ * e não faz rede. A atribuição vive inteira no cookie first-party do site.
  */
 export function WhatsAppLink({
     href,
     text,
     phoneE164 = LAVEXPRESS.whatsappE164,
-    bairro,
-    cep,
-    serviceInterest,
     onClick,
     target = "_blank",
     rel = "noreferrer",
@@ -105,11 +97,6 @@ export function WhatsAppLink({
         [href, phoneE164, textoBase],
     );
 
-    const extras = React.useMemo<ExtrasIngest>(
-        () => ({ bairro, cep, serviceInterest }),
-        [bairro, cep, serviceInterest],
-    );
-
     function handleClick(evento: React.MouseEvent<HTMLAnchorElement>) {
         // O handler do chamador vem primeiro e é isolado: um erro dele não pode
         // impedir a atribuição nem a navegação.
@@ -119,7 +106,7 @@ export function WhatsAppLink({
             /* handler externo com defeito não derruba o CTA */
         }
 
-        criarHandlerWhatsApp({ text: textoBase, phoneE164, extras })(evento);
+        criarHandlerWhatsApp({ text: textoBase, phoneE164 })(evento);
     }
 
     return (

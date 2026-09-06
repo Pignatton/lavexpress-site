@@ -21,7 +21,6 @@ import {
     desserializarCookie,
     gerarLeadRef,
     lerParametrosDaUrl,
-    limparTexto,
     limparUrl,
     mesclarAtribuicao,
     serializarCookie,
@@ -32,11 +31,6 @@ export const COOKIE_NOME = "lx_attr";
 
 /** 90 dias — alinhado à janela de clique do `gclid` no Google Ads. */
 export const COOKIE_MAX_AGE = 7776000;
-
-/** Teto duro do fallback de rede. Depois disso a requisição é abortada. */
-export const TIMEOUT_INGEST_MS = 600;
-
-const TENANT_SLUG = "lavexpress";
 
 /* -------------------------------------------------------------------------- */
 /* Cookie                                                                      */
@@ -110,131 +104,24 @@ export function capturarAtribuicao(): Atribuicao {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Ingestão                                                                    */
-/* -------------------------------------------------------------------------- */
-
-export type ExtrasIngest = {
-    bairro?: string | null;
-    cep?: string | null;
-    serviceInterest?: string | null;
-};
-
-/** Ambiente de desenvolvimento não deve contaminar o funil de produção. */
-function ehTeste(): boolean {
-    try {
-        if (typeof location === "undefined") return false;
-        const h = location.hostname;
-        return (
-            h === "localhost" ||
-            h === "127.0.0.1" ||
-            h === "[::1]" ||
-            h === "::1" ||
-            h.endsWith(".local")
-        );
-    } catch {
-        return false;
-    }
-}
-
-/**
- * Dispara o evento de clique para o endpoint de ingestão. FIRE-AND-FORGET.
- *
- * Devolve `void` de propósito: se devolvesse promise, alguém acabaria colocando
- * um `await` no caminho do clique e quebraria a regra de ouro.
- *
- * Sem `NEXT_PUBLIC_LEAD_INGEST_URL` configurada, NÃO faz chamada nenhuma — nem
- * um preflight. Cookie e `Ref:` na mensagem seguem funcionando; o site apenas
- * não sabe para onde reportar ainda.
- */
-export function enviarIngest(a: Atribuicao, extras: ExtrasIngest = {}): void {
-    try {
-        // Escrito literalmente para o Next conseguir substituir em build time.
-        const bruta = process.env.NEXT_PUBLIC_LEAD_INGEST_URL;
-        if (typeof bruta !== "string") return;
-        const url = bruta.trim();
-        if (url.length === 0) return;
-
-        const corpo = JSON.stringify({
-            lead_ref: a.ref,
-            tenant_slug: TENANT_SLUG,
-            gclid: a.gclid,
-            gbraid: a.gbraid,
-            wbraid: a.wbraid,
-            utm_source: a.utm_source,
-            utm_medium: a.utm_medium,
-            utm_campaign: a.utm_campaign,
-            utm_content: a.utm_content,
-            utm_term: a.utm_term,
-            landing_url: a.landing_url,
-            referrer: a.referrer,
-            bairro: limparTexto(extras.bairro, LIMITES.bairro),
-            cep: limparTexto(extras.cep, LIMITES.cep),
-            service_interest: limparTexto(extras.serviceInterest, LIMITES.servico),
-            first_touch_at: a.first_seen_at,
-            last_touch_at: a.last_seen_at,
-            is_test: ehTeste(),
-        });
-
-        // Preferência: `sendBeacon`. É o único transporte que o browser promete
-        // entregar mesmo com a aba saindo de cena — que é exatamente o que
-        // acontece um instante depois, quando o wa.me abre.
-        const nav = typeof navigator !== "undefined" ? navigator : undefined;
-        if (nav && typeof nav.sendBeacon === "function") {
-            const blob = new Blob([corpo], { type: "application/json" });
-            if (nav.sendBeacon(url, blob)) return;
-            // `false` = fila cheia ou payload recusado; cai no fetch abaixo.
-        }
-
-        if (typeof fetch !== "function") return;
-
-        const controle = typeof AbortController === "function" ? new AbortController() : null;
-        if (controle) {
-            setTimeout(() => {
-                try {
-                    controle.abort();
-                } catch {
-                    /* já finalizada */
-                }
-            }, TIMEOUT_INGEST_MS);
-        }
-
-        // `void` + `.catch` vazio: a resposta é ignorada por contrato, e uma
-        // promise rejeitada sem handler viraria "unhandled rejection" no console.
-        void fetch(url, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: corpo,
-            keepalive: true,
-            credentials: "omit",
-            signal: controle ? controle.signal : undefined,
-        }).catch(() => {
-            /* rede é opcional aqui */
-        });
-    } catch {
-        // NUNCA lança. Telemetria não derruba conversão.
-    }
-}
-
-/* -------------------------------------------------------------------------- */
 /* Ponte com o WhatsApp                                                        */
 /* -------------------------------------------------------------------------- */
 
 /**
- * Monta o link do wa.me já com o `Ref:` e dispara a ingestão de passagem.
+ * Monta o link do wa.me já com o `Ref:`.
  *
  * Caminho único usado tanto pelo `<WhatsAppLink>` quanto pelos handlers
- * imperativos. Síncrona de ponta a ponta. Se qualquer etapa falhar, devolve o
- * link com a mensagem ORIGINAL — perde-se o rastreio, nunca o lead.
+ * imperativos. Síncrona, local e sem rede: nada aqui sai do browser. Se
+ * qualquer etapa falhar, devolve o link com a mensagem ORIGINAL — perde-se o
+ * rastreio, nunca o lead.
  */
 export function linkWhatsAppComAtribuicao(params: {
     text: string;
     phoneE164?: string;
-    extras?: ExtrasIngest;
 }): string {
     const phoneE164 = params.phoneE164 ?? LAVEXPRESS.whatsappE164;
     try {
         const atribuicao = capturarAtribuicao();
-        enviarIngest(atribuicao, params.extras ?? {});
         return buildWhatsAppLink({
             phoneE164,
             text: appendLeadRef(params.text, atribuicao.ref),
