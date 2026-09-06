@@ -45,9 +45,23 @@ export const LAVEXPRESS = {
         expressInStoreHoursMin: 3,
         expressInStoreHoursMax: 4,
     },
-    exclusions: [
+    /**
+     * Peças que NÃO entram nos pacotes mensais e são cobradas à parte, pela
+     * tabela de peças avulsas.
+     *
+     * ⚠️ Isto NÃO é uma lista de serviços recusados. Terno, blazer e couro são
+     * atendidos e têm preço próprio em `catalogo.ts` (Terno Completo R$ 45,00,
+     * Blazer R$ 35,00, Jaqueta de Couro R$ 75,00). O nome anterior do campo era
+     * `exclusions`, o que fazia a lista ser lida como "não fazemos" — inclusive
+     * por quem auditou o site. O nome atual diz o que a lista é.
+     *
+     * O único serviço realmente não oferecido é **lavagem a seco**, e por isso
+     * ele não aparece aqui: não é peça fora do pacote, é processo que a
+     * operação não executa.
+     */
+    foraDosPacotes: [
         "Edredons especiais (avaliar caso a caso)",
-        "Ternos",
+        "Ternos e blazers",
         "Vestidos de festa",
         "Peças delicadas que não podem ir à máquina",
     ],

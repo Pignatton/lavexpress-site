@@ -7,10 +7,11 @@ export function LegalNotice() {
             <Card className="p-6">
                 <div className="text-base font-medium">Importante</div>
                 <div className="mt-2 text-sm text-muted-foreground">
-                    Alguns itens não entram nos pacotes e são avaliados à parte:
+                    Estas peças não entram nos pacotes mensais, mas são atendidas
+                    normalmente e cobradas à parte, pela tabela de peças avulsas:
                 </div>
                 <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
-                    {LAVEXPRESS.exclusions.map((e) => (
+                    {LAVEXPRESS.foraDosPacotes.map((e) => (
                         <li key={e}>• {e}</li>
                     ))}
                 </ul>
