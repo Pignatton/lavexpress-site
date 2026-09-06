@@ -1,4 +1,29 @@
 import { LAVEXPRESS } from "@/lib/lavexpress";
+import { REF_REGEX } from "@/lib/attribution";
+
+/**
+ * Carimba o `lead_ref` no fim da mensagem, separado por linha em branco.
+ *
+ * PRESERVA a copy existente: só acrescenta. É o ÚNICO dado de atribuição que
+ * pode aparecer na mensagem — `gclid`, `gbraid`, `wbraid` e telefone estão
+ * proibidos na URL pública e no texto pelo contrato.
+ *
+ * `leadRef` fora do formato canônico devolve o texto intacto: sem `Ref:` o lead
+ * apenas não é rastreável, enquanto uma referência inválida sujaria o funil e
+ * confundiria o atendente.
+ */
+export function appendLeadRef(text: string, leadRef: string): string {
+    const base = typeof text === "string" ? text : "";
+    if (typeof leadRef !== "string" || !REF_REGEX.test(leadRef)) return base;
+
+    const sufixo = `Ref: ${leadRef}`;
+    // Reentrância: o mesmo texto pode passar por aqui de novo (re-render,
+    // segundo clique) e não deve acumular duas linhas de referência.
+    if (base.trimEnd().endsWith(sufixo)) return base;
+    if (base.length === 0) return sufixo;
+
+    return `${base}\n\n${sufixo}`;
+}
 
 export function buildWhatsAppLink(params: {
     phoneE164: string; // Ex: "5527999999999"
