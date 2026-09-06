@@ -36,7 +36,7 @@ export default function TermosPage() {
                                 O serviço inclui coleta e entrega (delivery) nas áreas de cobertura especificadas (Vitória, Vila Velha e Serra).
                             </p>
                             <ul className="list-disc pl-6 mt-4 space-y-2">
-                                <li><strong>Prazos:</strong> Os prazos de entrega variam de 24h a 5 dias úteis, dependendo do tipo de serviço e volume.</li>
+                                <li><strong>Prazos:</strong> Os prazos de entrega variam de 24–48h a 5 dias úteis, dependendo do tipo de serviço e volume.</li>
                                 <li><strong>Triagem:</strong> Todas as peças passam por triagem. Reservamo-nos o direito de recusar itens que apresentem riscos de danos durante o processo de lavagem.</li>
                             </ul>
 

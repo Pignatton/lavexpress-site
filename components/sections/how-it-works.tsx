@@ -1,6 +1,7 @@
 "use client";
 
 import { CalendarCheck, Truck, Sparkles, Shirt } from "lucide-react";
+import { LAVEXPRESS } from "@/lib/lavexpress";
 
 const STEPS = [
     {
@@ -27,7 +28,9 @@ const STEPS = [
     {
         icon: Shirt,
         title: "4. Entrega Expressa",
-        description: "Receba tudo limpo, cheiroso e dobrado/pendurado em até 24h (consulte disponibilidade).",
+        // Prazo vindo da fonte de verdade (`lib/lavexpress.ts`): a promessa
+        // anterior de "até 24h" era mais curta que o SLA real de lavagem.
+        description: `Receba tudo limpo, cheiroso e dobrado/pendurado em ${LAVEXPRESS.sla.washDryHoursMin}–${LAVEXPRESS.sla.washDryHoursMax}h (consulte disponibilidade).`,
         color: "text-indigo-600",
         bg: "bg-indigo-50",
     },
