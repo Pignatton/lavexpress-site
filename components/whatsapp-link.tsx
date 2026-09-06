@@ -26,6 +26,33 @@ function textoDoHref(href: string | undefined): string | null {
     }
 }
 
+/**
+ * Handler de clique que carimba o `Ref:` reescrevendo o `href` do próprio nó.
+ *
+ * Exportado para as âncoras que NÃO podem virar um `<WhatsAppLink>` sem mudar
+ * comportamento — hoje o `motion.a` do botão flutuante, que precisa continuar
+ * sendo o elemento animado pelo framer-motion. Uma implementação só, dois
+ * pontos de uso.
+ */
+export function criarHandlerWhatsApp(params: {
+    text: string;
+    phoneE164?: string;
+    extras?: ExtrasIngest;
+}) {
+    return function aoClicar(evento: React.MouseEvent<HTMLAnchorElement>) {
+        try {
+            const alvo = evento.currentTarget;
+            const destino = linkWhatsAppComAtribuicao(params);
+            if (typeof destino === "string" && destino.length > 0) {
+                alvo.href = destino;
+            }
+        } catch {
+            // `href` original permanece no nó: abre o WhatsApp com a copy de
+            // sempre, apenas sem rastreio. Nunca chamamos `preventDefault()`.
+        }
+    };
+}
+
 export type WhatsAppLinkProps = Omit<React.ComponentPropsWithRef<"a">, "href"> & {
     /** Link wa.me já montado (server-side). Serve de fallback sem JavaScript. */
     href?: string;
@@ -92,16 +119,7 @@ export function WhatsAppLink({
             /* handler externo com defeito não derruba o CTA */
         }
 
-        try {
-            const alvo = evento.currentTarget;
-            const destino = linkWhatsAppComAtribuicao({ text: textoBase, phoneE164, extras });
-            if (typeof destino === "string" && destino.length > 0) {
-                alvo.href = destino;
-            }
-        } catch {
-            // `href` original permanece no nó: abre o WhatsApp com a copy de
-            // sempre, apenas sem rastreio.
-        }
+        criarHandlerWhatsApp({ text: textoBase, phoneE164, extras })(evento);
     }
 
     return (

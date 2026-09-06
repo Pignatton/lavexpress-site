@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { GoogleRatingBadgeClient } from "@/components/sections/google-rating-badge-client";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 import { LAVEXPRESS } from "@/lib/lavexpress";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { MapPin } from "lucide-react";
 
 /**
@@ -92,13 +94,6 @@ function checkArea(input: string): { ok: boolean; label: string } | null {
     return { ok: true, label: "Atendimento sob consulta para sua região. Confirmamos no WhatsApp." };
 }
 
-function buildWhatsAppLink(phoneE164: string, text: string) {
-    const clean = phoneE164.replace(/[^\d+]/g, "");
-    const base = "https://wa.me/";
-    const phone = clean.startsWith("+") ? clean.substring(1) : clean;
-    return `${base}${phone}?text=${encodeURIComponent(text)}`;
-}
-
 function buildWhatsAppMessage(params: {
     name?: string;
     bairroOuCep?: string;
@@ -121,10 +116,16 @@ export function Hero() {
 
     const areaStatus = React.useMemo(() => checkArea(area), [area]);
 
-    const waLink = React.useMemo(() => {
-        const msg = buildWhatsAppMessage({ name, bairroOuCep: area });
-        return buildWhatsAppLink(BRAND.WHATSAPP_E164, msg);
-    }, [name, area]);
+    const waMensagem = React.useMemo(
+        () => buildWhatsAppMessage({ name, bairroOuCep: area }),
+        [name, area],
+    );
+
+    // Fallback sem JavaScript: o <WhatsAppLink> recarimba este href no clique.
+    const waLink = React.useMemo(
+        () => buildWhatsAppLink({ phoneE164: BRAND.WHATSAPP_E164, text: waMensagem }),
+        [waMensagem],
+    );
 
     return (
         <section className="relative overflow-hidden">
@@ -250,9 +251,14 @@ export function Hero() {
                                         asChild
                                         className="h-12 rounded-xl bg-gradient-to-r from-blue-600 to-green-600 text-base font-semibold shadow-[0_14px_40px_rgba(11,92,255,0.22)] hover:brightness-[0.98]"
                                     >
-                                        <a href={waLink} target="_blank" rel="noreferrer">
+                                        <WhatsAppLink
+                                            href={waLink}
+                                            text={waMensagem}
+                                            phoneE164={BRAND.WHATSAPP_E164}
+                                            bairro={area}
+                                        >
                                             Agendar minha coleta
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
 
                                     <div className="flex flex-wrap items-center justify-center gap-4 pt-1 text-xs text-slate-600">

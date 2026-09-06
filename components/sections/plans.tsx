@@ -8,6 +8,7 @@ import { Check, MessageCircle } from "lucide-react";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { usePlanHighlight } from "@/lib/use-plan-highlight";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 
 export function Plans() {
     usePlanHighlight();
@@ -39,7 +40,7 @@ export function Plans() {
                                 </div>
                             ))}
                             <Button variant="outline" className="w-full mt-4 border-green-200 text-green-700 hover:bg-green-50" asChild>
-                                <a href={waLink} target="_blank" rel="noreferrer">Ver todos os tamanhos</a>
+                                <WhatsAppLink href={waLink} target="_blank" rel="noreferrer">Ver todos os tamanhos</WhatsAppLink>
                             </Button>
                         </CardContent>
                     </Card>
@@ -65,10 +66,10 @@ export function Plans() {
                                 </div>
                             ))}
                             <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white" asChild>
-                                <a href={waLink} target="_blank" rel="noreferrer">
+                                <WhatsAppLink href={waLink} target="_blank" rel="noreferrer">
                                     <MessageCircle className="mr-2 h-4 w-4" />
                                     Contratar Pacote
-                                </a>
+                                </WhatsAppLink>
                             </Button>
                         </CardContent>
                     </Card>
@@ -91,7 +92,7 @@ export function Plans() {
                                 </div>
                             ))}
                             <Button variant="outline" className="w-full mt-4" asChild>
-                                <a href={waLink} target="_blank" rel="noreferrer">Falar com atendente</a>
+                                <WhatsAppLink href={waLink} target="_blank" rel="noreferrer">Falar com atendente</WhatsAppLink>
                             </Button>
                         </CardContent>
                     </Card>

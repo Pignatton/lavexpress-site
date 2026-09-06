@@ -4,6 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
+import { WhatsAppLink } from "@/components/whatsapp-link";
+
+/**
+ * Copy preservada dos dois CTAs que antes tinham o wa.me escrito à mão (com o
+ * telefone dentro do JSX). Agora o número sai de `LAVEXPRESS` e o link passa
+ * pelo caminho central, que carimba o `Ref:` do lead.
+ */
+const MSG_AGENDAR = "Olá! Gostaria de agendar um serviço de lavanderia. Pode me ajudar?";
 
 const NAV = [
     { href: "/#servicos", label: "Serviços" },
@@ -43,7 +51,7 @@ export function SiteHeader() {
                         <Link href="/pacotes">Ver Pacotes</Link>
                     </Button>
                     <Button asChild>
-                        <a href="https://wa.me/5527996172403?text=Olá!%20Gostaria%20de%20agendar%20um%20serviço%20de%20lavanderia.%20Pode%20me%20ajudar?" target="_blank" rel="noreferrer">Agendar</a>
+                        <WhatsAppLink text={MSG_AGENDAR}>Agendar</WhatsAppLink>
                     </Button>
                 </div>
 
@@ -82,9 +90,9 @@ export function SiteHeader() {
                                         <Link href="/pacotes">Ver Pacotes</Link>
                                     </Button>
                                     <Button asChild className="w-full justify-start h-12 text-base bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-bold shadow-md">
-                                        <a href="https://wa.me/5527996172403?text=Olá!%20Gostaria%20de%20agendar%20um%20serviço%20de%20lavanderia.%20Pode%20me%20ajudar?" target="_blank" rel="noreferrer">
+                                        <WhatsAppLink text={MSG_AGENDAR}>
                                             Agendar Agora
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
                                 </div>
                             </div>

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildAgendamentoMessage, buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 
 export function CtaFinal() {
     const text = buildAgendamentoMessage({
@@ -32,9 +33,9 @@ export function CtaFinal() {
 
                     <div className="flex flex-col gap-2 md:items-end">
                         <Button asChild className="cta-ring w-full md:w-auto">
-                            <a href={link} target="_blank" rel="noreferrer">
+                            <WhatsAppLink href={link} target="_blank" rel="noreferrer">
                                 Agendar no WhatsApp
-                            </a>
+                            </WhatsAppLink>
                         </Button>
 
                         <div className="text-xs text-muted-foreground">

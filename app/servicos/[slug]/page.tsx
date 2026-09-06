@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { SERVICES_DETAILS } from "@/lib/catalogo";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 import {
     ArrowRight,
     CheckCircle2,
@@ -217,10 +218,10 @@ export default async function ServicePage({ params }: Props) {
                                         className="h-14 px-8 w-full sm:w-auto rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all font-extrabold text-lg"
                                         asChild
                                     >
-                                        <a href={whatsappLink} target="_blank" rel="noreferrer">
+                                        <WhatsAppLink href={whatsappLink} target="_blank" rel="noreferrer">
                                             Agendar pelo WhatsApp
                                             <ArrowRight className="ml-2 h-5 w-5" />
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
 
                                     <Button
@@ -555,10 +556,10 @@ export default async function ServicePage({ params }: Props) {
                                 className="h-16 px-12 w-full sm:w-auto rounded-full bg-white text-emerald-800 hover:bg-emerald-50 hover:scale-[1.02] transition-all font-extrabold text-lg shadow-xl shadow-emerald-900/20"
                                 asChild
                             >
-                                <a href={whatsappLink} target="_blank" rel="noreferrer">
+                                <WhatsAppLink href={whatsappLink} target="_blank" rel="noreferrer">
                                     <MessageCircle className="mr-2 h-5 w-5 text-emerald-600" />
                                     Agendar pelo WhatsApp
-                                </a>
+                                </WhatsAppLink>
                             </Button>
 
                             <Button

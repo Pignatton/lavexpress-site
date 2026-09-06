@@ -2,13 +2,23 @@
 
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { criarHandlerWhatsApp } from "@/components/whatsapp-link";
 import NextImage from "next/image";
 import { motion } from "framer-motion";
+
+const MENSAGEM = "Olá! Gostaria de falar com a Lavexpress.";
 
 export function WhatsAppFloatingButton() {
     const whatsappLink = buildWhatsAppLink({
         phoneE164: LAVEXPRESS.whatsappE164,
-        text: "Olá! Gostaria de falar com a Lavexpress.",
+        text: MENSAGEM,
+    });
+
+    // `motion.a` continua sendo o elemento animado; só o clique passa pelo
+    // caminho central da atribuição.
+    const aoClicar = criarHandlerWhatsApp({
+        text: MENSAGEM,
+        phoneE164: LAVEXPRESS.whatsappE164,
     });
 
     return (
@@ -18,6 +28,7 @@ export function WhatsAppFloatingButton() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noreferrer"
+                onClick={aoClicar}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1, duration: 0.5 }}
@@ -31,6 +42,7 @@ export function WhatsAppFloatingButton() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noreferrer"
+                onClick={aoClicar}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="relative w-16 h-16 flex items-center justify-center drop-shadow-2xl"
