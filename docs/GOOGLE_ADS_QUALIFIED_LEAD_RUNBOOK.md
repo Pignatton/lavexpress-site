@@ -8,23 +8,25 @@ Google Ads → site → WhatsApp → LavCore → lead qualificado → venda.
 
 ---
 
-## 0. Estado atual da instrumentação
+## 0. Estado atual da instrumentação — 06/09/2026
 
-| Camada | Estado |
-|---|---|
-| Captura de `gclid`/`gbraid`/`wbraid` no site | implementada |
-| `lead_ref` na mensagem do WhatsApp | implementado |
-| Persistência de atribuição no LavCore | endpoint pronto; **migration não aplicada em banco** |
-| Associação automática WhatsApp → lead | **indisponível** — não há WhatsApp Business API nesta conta |
-| Associação manual WhatsApp → lead | disponível na tela de leads do LavCore |
-| Envio de conversão offline ao Google | **inativo** — faltam credenciais da Google Ads API |
-| Ações de conversão novas no Google Ads | **não criadas** — sessão do Google Ads expirada |
+| Camada | Estado | Observação |
+|---|---|---|
+| Captura de `gclid`/`gbraid`/`wbraid` no site | **IMPLEMENTADO** | Na chegada e a cada rota; 71 testes |
+| `lead_ref` na mensagem do WhatsApp | **IMPLEMENTADO** | `Ref: LX-XXXXXX` |
+| Terno/couro como serviço oferecido | **IMPLEMENTADO** | Promessa de lavagem a seco removida |
+| Deploy do site | **BLOCKED** | `git push` 403 — credencial sem escrita no repositório |
+| Código do LavCore | **IMPLEMENTADO** | 5 commits, 184 testes |
+| Tela de leads no menu | **IMPLEMENTADO** | Marketing → Leads |
+| Migration em banco | **BLOCKED** | 134 migrations pendentes e histórico divergente |
+| Ingestão ponta a ponta | **PENDING** | Depende da migration e das envs |
+| Ações de conversão no Google Ads | **BLOCKED** | Atestação legal de dados obrigatória |
+| Worker de conversão offline | **BLOCKED** | Sem credenciais da Google Ads API |
+| Associação automática WhatsApp → lead | **BLOCKED** | Sem WhatsApp Business API — fluxo manual em uso |
 
-⚠️ Enquanto as duas últimas linhas não forem resolvidas, o Google **continua
-aprendendo apenas com `Contato - WhatsApp`**, exatamente como hoje. Nada
-regrediu; o que foi construído é a tubulação que passará a alimentá-lo.
-
----
+⚠️ **Nada disso mudou o Google Ads.** `Contato - WhatsApp` continua a única
+conversão primária, o orçamento continua R$ 40/dia e a campanha continua em
+`Maximizar conversões`. Verificado por API após cada etapa.
 
 ## 1. Como auditar um lead de ponta a ponta
 

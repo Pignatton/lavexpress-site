@@ -337,35 +337,48 @@ cinco obrigatórias não existirem.
 
 ---
 
-## 14. Bloqueios conhecidos
+## 14. Bloqueios conhecidos — 06/09/2026
 
-| # | Bloqueio | Impacto | O que destrava |
+Todos foram investigados até a causa. Nenhum é contornável por código.
+
+| # | Bloqueio | Evidência | O que destrava |
 |---|---|---|---|
-| 1 | Sem credenciais da Google Ads API | Worker de conversão offline não envia | `developer token`, `client_id`, `client_secret`, `refresh_token`, `customer_id` |
-| 2 | Sem WhatsApp Business API | Associação conversa→lead é manual | Conta WhatsApp Business API + webhook |
-| 3 | Sessão do Google Ads expirada | Ações de conversão não criadas | Login do proprietário na interface |
-| 4 | Migration não aplicada | Tabelas não existem em banco | Rodar a migration no ambiente correto |
-| 5 | Sem credencial de escrita no GitHub do site | `git push` recusado (403); sem push não há deploy | Credencial com acesso de escrita em `Pignatton/lavexpress-site` |
+| 1 | **Deploy do site** | `git push` → `403: Permission to Pignatton/lavexpress-site.git denied to impulsionavix-create`. O `gh` está autenticado nessa conta, com escopo `repo`, mas ela não tem escrita neste repositório. | Conceder escrita a `impulsionavix-create`, ou autenticar com a conta dona |
+| 2 | **Migration em banco** | `supabase db push` recusa: 134 migrations locais fora do ledger remoto e ~125 versões remotas ausentes do diretório local. O CLI exige `migration repair` + `db pull`, que reescreveriam meses de histórico do proprietário. O schema remoto está adiantado (`attendances` responde 200; `marketing_leads` responde 404). | Decisão do proprietário sobre reparar o histórico, ou aplicar as duas tabelas por fora e registrar no ledger |
+| 3 | **Ações de conversão no Google Ads** | O assistente é o único caminho disponível na conta. Na etapa de fonte off-line ele exige marcar: *"Esses dados foram coletados e estão sendo compartilhados com o Google em conformidade com a Política de consentimento de usuários da União Europeia…"*. `Concluído` fica desabilitado sem isso. É declaração legal sobre coleta e compartilhamento de dados de clientes. | O proprietário marcar a atestação. Nada foi salvo — a conta segue com as mesmas 4 ações de antes |
+| 4 | **Worker de conversão offline** | Nenhuma das cinco envs obrigatórias existe. O portão `credenciaisPresentes()` impede até a leitura da fila. | `GOOGLE_ADS_DEVELOPER_TOKEN`, `CLIENT_ID`, `CLIENT_SECRET`, `REFRESH_TOKEN`, `CUSTOMER_ID` |
+| 5 | **WhatsApp Business API** | Não existe na conta. | Conta WhatsApp Business API + webhook. Enquanto isso o Cenário B (busca por `Ref:`) está em produção de processo |
 
-Nenhum deles impede o restante de funcionar. O site captura, gera `lead_ref` e
-entrega no WhatsApp independentemente dos quatro.
+### O que funciona hoje, sem destravar nada
 
----
+O site captura a origem, preserva o first touch entre páginas e entrega
+`Ref: LX-XXXXXX` na mensagem do WhatsApp. Isso já permite ao atendimento
+rastrear manualmente qual conversa veio de qual campanha — assim que o build
+for publicado. O restante da corrente depende dos cinco itens acima.
 
-## 15. Divergência de escopo comercial registrada
+## 15. Escopo comercial de terno e couro — RESOLVIDO
 
-`lib/lavexpress.ts` do site declara, em `exclusions`:
+A auditoria de 01/09 apontou `"Ternos"` em `lib/lavexpress.ts` como contradição
+com a informação de que a Lavexpress atende terno.
 
-```
-"Ternos"
-```
+**A leitura estava parcialmente errada e ficou registrado.** O campo alimentava
+um bloco cujo título já dizia "não entram nos pacotes e são avaliados à parte" —
+ou seja, terno sempre foi atendido, só que fora do pacote mensal. O catálogo
+confirma: Terno Completo R$ 45,00, Blazer R$ 35,00, Jaqueta de Couro R$ 75,00.
 
-Isso contradiz a orientação dada na revisão de 14 dias, de que a Lavexpress
-**oferece** lavagem de terno e couro — orientação que motivou reclassificar o
-termo `lavanderia terno` (R$ 11,06 no período) de desperdício para intenção
-comercial boa.
+O que estava de fato errado era outra coisa, e foi corrigido:
 
-**Nada foi alterado.** Definir se terno é ou não serviço oferecido é decisão
-comercial, não técnica. Mas as duas afirmações não podem ser verdadeiras ao
-mesmo tempo, e enquanto o site disser que é exclusão, o clique pago por esse
-termo tende a não converter.
+| Item | Antes | Agora |
+|---|---|---|
+| Nome do campo | `exclusions` — lia-se como "não fazemos" | `foraDosPacotes` |
+| Copy do bloco | "Alguns itens não entram nos pacotes" | "…são atendidas normalmente e cobradas à parte" |
+| Página de ternos | "Nossa **limpeza a seco** (ou Wet Cleaning)" | "Nosso **Wet Cleaning** — sem solvente de lavagem a seco" |
+| Keywords de SEO | incluía `"lavagem a seco"` | trocado por `lavanderia de ternos` e `lavagem de couro` |
+
+A Lavexpress **não** faz lavagem a seco. Wet Cleaning é justamente o processo
+aquoso controlado que substitui o dry cleaning — chamá-lo de "limpeza a seco"
+prometia um serviço que a operação não executa, e a campanha do Google inclusive
+bloqueia essas buscas como negativas.
+
+`plans.tsx` e `faq-packages.tsx` não foram tocados: ambos dizem que ternos são
+cobrados à parte, o que está correto. Nenhum preço foi alterado.
