@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 import {
     ArrowRight,
     CheckCircle2,
@@ -177,11 +178,11 @@ export default function EdredonsPage() {
                                         className="h-12 md:h-14 px-6 md:px-10 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all font-extrabold text-base md:text-lg"
                                         asChild
                                     >
-                                        <a href={waAgendar} target="_blank" rel="noreferrer">
+                                        <WhatsAppLink href={waAgendar} target="_blank" rel="noreferrer">
                                             <span className="hidden sm:inline">Agendar coleta</span>
                                             <span className="sm:hidden">Agendar</span>
                                             <ArrowRight className="ml-2 h-5 w-5" />
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
 
                                     <Button
@@ -190,11 +191,11 @@ export default function EdredonsPage() {
                                         className="h-12 md:h-14 px-6 md:px-10 rounded-xl border-slate-200 bg-white text-slate-900 hover:bg-slate-50 font-extrabold text-base md:text-lg"
                                         asChild
                                     >
-                                        <a href={waDuvidas} target="_blank" rel="noreferrer">
+                                        <WhatsAppLink href={waDuvidas} target="_blank" rel="noreferrer">
                                             <span className="hidden sm:inline">Tirar dúvidas</span>
                                             <span className="sm:hidden">Dúvidas</span>
                                             <MessageCircle className="ml-2 h-5 w-5" />
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
                                 </div>
 
@@ -372,10 +373,10 @@ export default function EdredonsPage() {
                                         className="h-12 px-8 rounded-xl bg-slate-900 text-white hover:bg-slate-800 font-extrabold"
                                         asChild
                                     >
-                                        <a href={waAgendar} target="_blank" rel="noreferrer">
+                                        <WhatsAppLink href={waAgendar} target="_blank" rel="noreferrer">
                                             Agendar coleta
                                             <ArrowRight className="ml-2 h-4 w-4" />
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
 
                                     <Button
@@ -384,10 +385,10 @@ export default function EdredonsPage() {
                                         className="h-12 px-8 rounded-xl border-slate-200 bg-white text-slate-900 hover:bg-slate-50 font-extrabold"
                                         asChild
                                     >
-                                        <a href={waDuvidas} target="_blank" rel="noreferrer">
+                                        <WhatsAppLink href={waDuvidas} target="_blank" rel="noreferrer">
                                             Tirar dúvidas
                                             <MessageCircle className="ml-2 h-4 w-4" />
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
                                 </div>
                             </div>
@@ -472,11 +473,11 @@ export default function EdredonsPage() {
                                 className="h-12 md:h-14 px-6 md:px-10 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all font-extrabold text-base md:text-lg"
                                 asChild
                             >
-                                <a href={waAgendar} target="_blank" rel="noreferrer">
+                                <WhatsAppLink href={waAgendar} target="_blank" rel="noreferrer">
                                     <span className="hidden sm:inline">Quero agendar agora</span>
                                     <span className="sm:hidden">Agendar agora</span>
                                     <ArrowRight className="ml-2 h-5 w-5" />
-                                </a>
+                                </WhatsAppLink>
                             </Button>
                         </div>
                     </div>

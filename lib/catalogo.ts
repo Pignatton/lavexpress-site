@@ -215,7 +215,11 @@ export const SERVICES_DETAILS: Record<string, {
         title: "Ternos e Roupas Sociais",
         subtitle: "Cuidado delicado para peças que exigem respeito.",
         heroImage: "/imagens/hero-suit.png",
-        description: "Ternos, blazers e vestidos de festa não podem ver água comum. Nossa limpeza a seco (ou Wet Cleaning) protege a estrutura, o forro e o caimento da peça, garantindo durabilidade e elegância.",
+        // A Lavexpress NÃO faz lavagem a seco. O processo usado é Wet Cleaning,
+        // que é justamente a alternativa AQUOSA e controlada ao dry cleaning —
+        // chamá-lo de "limpeza a seco" prometia um serviço que a operação não
+        // executa, e a campanha do Google inclusive bloqueia essas buscas.
+        description: "Ternos, blazers e vestidos de festa não podem ver água comum. Nosso Wet Cleaning — processo técnico controlado, sem solvente de lavagem a seco — protege a estrutura, o forro e o caimento da peça, garantindo durabilidade e elegância.",
         benefits: [
             { title: "Wet Cleaning", description: "Tecnologia moderna que limpa sem agredir as fibras delicadas.", icon: "Zap" },
             { title: "Caimento Perfeito", description: "Passadoria técnica que mantém a estrutura da alfaiataria.", icon: "Sparkles" },

@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { MessageCircle, Clock, Wallet, ShieldCheck, Sparkles } from "lucide-react";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 
 const FAQS = [
     {
@@ -97,7 +98,7 @@ export function Faq() {
                                 </p>
                             </div>
                             <div className="mt-4 md:mt-0">
-                                <a
+                                <WhatsAppLink
                                     href={buildWhatsAppLink({
                                         phoneE164: LAVEXPRESS.whatsappE164,
                                         text: "Olá, tenho uma dúvida sobre a Lavexpress."
@@ -107,7 +108,7 @@ export function Faq() {
                                     className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-700"
                                 >
                                     Falar com atendente &rarr;
-                                </a>
+                                </WhatsAppLink>
                             </div>
                         </div>
                     </div>

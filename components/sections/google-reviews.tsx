@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, ExternalLink } from "lucide-react";
 import { LAVEXPRESS } from "@/lib/lavexpress";
-import { fetchPlaceDetails } from "@/lib/google-places";
+import { fetchPlaceDetails, type GoogleReview } from "@/lib/google-places";
 
 function StarsRow() {
     return (
@@ -19,7 +19,7 @@ function StarsRow() {
 export async function GoogleReviews() {
     let rating = 4.7;
     let total = 37;
-    let reviews: any[] = [];
+    let reviews: GoogleReview[] = [];
     let error = false;
 
     try {

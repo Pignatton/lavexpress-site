@@ -4,6 +4,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { FloatingBubbles } from "@/components/ui/floating-bubbles";
 import { WhatsAppFloatingButton } from "@/components/layout/whatsapp-floating-button";
+import { AttributionBoot } from "@/components/attribution-boot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,7 +33,11 @@ export const metadata: Metadata = {
     "lavanderia vila velha",
     "lavar edredom",
     "passadoria",
-    "lavagem a seco",
+    // "lavagem a seco" saiu daqui de proposito: a operacao nao executa dry
+    // cleaning. Anunciar o termo atrai busca que o atendimento nao atende — e a
+    // campanha do Google Ads ja bloqueia essas consultas como negativas.
+    "lavanderia de ternos",
+    "lavagem de couro",
   ],
   openGraph: {
     type: "website",
@@ -83,6 +88,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <AttributionBoot />
         <FloatingBubbles />
         <div className="relative z-10">
           {children}

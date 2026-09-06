@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { PACOTES } from "@/lib/catalogo";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 import {
     ArrowRight,
     CheckCircle2,
@@ -211,11 +212,11 @@ function PackageCard({
                 {/* CTA */}
                 <div className="mt-8">
                     <Button className={`w-full h-12 rounded-xl text-base font-extrabold transition-transform hover:scale-[1.01] ${s.button}`} asChild>
-                        <a href={wa} target="_blank" rel="noreferrer">
+                        <WhatsAppLink href={wa} target="_blank" rel="noreferrer">
                             <MessageCircle className="mr-2 h-5 w-5" />
                             Quero este pacote
                             <ArrowRight className="ml-2 h-5 w-5" />
-                        </a>
+                        </WhatsAppLink>
                     </Button>
 
                     <p className="mt-3 text-center text-xs text-slate-500">
@@ -286,10 +287,10 @@ export default function PacotesPage() {
                                     className="h-14 px-10 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all font-extrabold text-lg"
                                     asChild
                                 >
-                                    <a href={waHelp} target="_blank" rel="noreferrer">
+                                    <WhatsAppLink href={waHelp} target="_blank" rel="noreferrer">
                                         Recomendar meu pacote
                                         <ArrowRight className="ml-2 h-5 w-5" />
-                                    </a>
+                                    </WhatsAppLink>
                                 </Button>
 
                                 <Button
@@ -471,10 +472,10 @@ export default function PacotesPage() {
                                 className="h-14 px-10 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all font-extrabold text-lg"
                                 asChild
                             >
-                                <a href={waHelp} target="_blank" rel="noreferrer">
+                                <WhatsAppLink href={waHelp} target="_blank" rel="noreferrer">
                                     Recomendar meu pacote
                                     <ArrowRight className="ml-2 h-5 w-5" />
-                                </a>
+                                </WhatsAppLink>
                             </Button>
 
                             <p className="mt-4 text-xs text-slate-500">

@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ITEMS, calcularTotal, formatarMoeda } from "@/lib/calcularEstimativa";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
 import { LAVEXPRESS } from "@/lib/lavexpress";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { linkWhatsAppComAtribuicao } from "@/lib/attribution-client";
 import { motion } from "framer-motion";
 
 export function QuickCalculator() {
@@ -34,11 +34,13 @@ export function QuickCalculator() {
 
         const message = `Olá! Fiz uma simulação no site:\n\n${itemsList}\n\n*Total Estimado: ${formatarMoeda(total)}*\n\nGostaria de agendar a coleta.`;
 
-        const link = buildWhatsAppLink({
+        // Síncrono: o `window.open` acontece dentro do gesto do usuário, senão
+        // o bloqueador de pop-up derruba o lead.
+        const link = linkWhatsAppComAtribuicao({
             phoneE164: LAVEXPRESS.whatsappE164,
-            text: message
+            text: message,
         });
-        window.open(link, "_blank");
+        window.open(link, "_blank", "noopener,noreferrer");
     };
 
     return (

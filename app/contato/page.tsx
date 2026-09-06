@@ -8,6 +8,7 @@ import { Faq } from "@/components/sections/faq";
 import { GoogleReviews } from "@/components/sections/google-reviews";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 import {
     MapPin,
     MessageCircle,
@@ -53,7 +54,7 @@ function WhatsAppComposer() {
                     className="h-12 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold"
                     asChild
                 >
-                    <a
+                    <WhatsAppLink
                         href={wa(
                             "Olá! Quero agendar coleta e entrega. Meu bairro/CEP é: _____. Serviço: ( ) Lavar+Secar ( ) Lavar+Secar+Passar ( ) Passadoria. Quantidade aproximada: _____."
                         )}
@@ -61,7 +62,7 @@ function WhatsAppComposer() {
                         rel="noreferrer"
                     >
                         Agendar coleta agora <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
+                    </WhatsAppLink>
                 </Button>
 
                 <Button
@@ -69,7 +70,7 @@ function WhatsAppComposer() {
                     className="h-12 rounded-2xl border-emerald-200 text-emerald-900 hover:bg-emerald-50 font-extrabold"
                     asChild
                 >
-                    <a
+                    <WhatsAppLink
                         href={wa(
                             "Olá! Quero saber qual pacote vale mais para mim. Minha rotina é: _____. Quantas pessoas em casa: _____. Bairro/CEP: _____."
                         )}
@@ -77,7 +78,7 @@ function WhatsAppComposer() {
                         rel="noreferrer"
                     >
                         Quero recomendação de pacote <MessageCircle className="ml-2 h-4 w-4" />
-                    </a>
+                    </WhatsAppLink>
                 </Button>
 
                 <Button
@@ -85,7 +86,7 @@ function WhatsAppComposer() {
                     className="h-12 rounded-2xl border-slate-200 text-slate-900 hover:bg-slate-50 font-extrabold"
                     asChild
                 >
-                    <a
+                    <WhatsAppLink
                         href={wa(
                             "Olá! Tenho dúvidas sobre prazo e área atendida. Meu bairro/CEP é: _____."
                         )}
@@ -93,7 +94,7 @@ function WhatsAppComposer() {
                         rel="noreferrer"
                     >
                         Dúvidas (prazo/área) <MessageCircle className="ml-2 h-4 w-4" />
-                    </a>
+                    </WhatsAppLink>
                 </Button>
 
                 <Button
@@ -101,7 +102,7 @@ function WhatsAppComposer() {
                     className="h-12 rounded-2xl border-slate-200 text-slate-900 hover:bg-slate-50 font-extrabold"
                     asChild
                 >
-                    <a
+                    <WhatsAppLink
                         href={wa(
                             "Olá! Quero orçamento para itens maiores (edredom/cortina/tapete). Itens: _____. Quantidade: _____. Bairro/CEP: _____."
                         )}
@@ -109,7 +110,7 @@ function WhatsAppComposer() {
                         rel="noreferrer"
                     >
                         Orçamento (itens grandes) <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
+                    </WhatsAppLink>
                 </Button>
             </div>
 
@@ -167,9 +168,9 @@ export default function ContatoPage() {
                                     className="h-12 md:h-14 rounded-2xl bg-white text-emerald-800 hover:bg-emerald-50 font-extrabold shadow-lg shadow-emerald-900/20"
                                     asChild
                                 >
-                                    <a href={waLink} target="_blank" rel="noreferrer">
+                                    <WhatsAppLink href={waLink} target="_blank" rel="noreferrer">
                                         Chamar no WhatsApp <ArrowRight className="ml-2 h-5 w-5" />
-                                    </a>
+                                    </WhatsAppLink>
                                 </Button>
 
                                 <Button

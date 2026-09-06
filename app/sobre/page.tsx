@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 import {
     ArrowRight,
     CheckCircle2,
@@ -125,10 +126,10 @@ export default function SobrePage() {
                                         className="h-14 px-8 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-extrabold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
                                         asChild
                                     >
-                                        <a href={waContato} target="_blank" rel="noreferrer">
+                                        <WhatsAppLink href={waContato} target="_blank" rel="noreferrer">
                                             Fale com a gente
                                             <MessageCircle className="ml-2 h-5 w-5" />
-                                        </a>
+                                        </WhatsAppLink>
                                     </Button>
                                 </div>
                             </div>
@@ -422,10 +423,10 @@ export default function SobrePage() {
                                 className="h-14 px-10 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-extrabold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
                                 asChild
                             >
-                                <a href={waContato} target="_blank" rel="noreferrer">
+                                <WhatsAppLink href={waContato} target="_blank" rel="noreferrer">
                                     Falar no WhatsApp
                                     <ArrowRight className="ml-2 h-5 w-5" />
-                                </a>
+                                </WhatsAppLink>
                             </Button>
                         </div>
                     </div>

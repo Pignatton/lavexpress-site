@@ -29,10 +29,10 @@ export async function GET() {
                 profile_photo_url: r.profile_photo_url ?? "",
             })),
         });
-    } catch (error: any) {
+    } catch (error) {
         console.error("API Google Reviews error:", error);
         return NextResponse.json(
-            { ok: false, error: error.message || "Unknown error" },
+            { ok: false, error: error instanceof Error ? error.message : "Unknown error" },
             { status: 500 }
         );
     }

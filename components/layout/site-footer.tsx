@@ -5,6 +5,7 @@ import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { Instagram, MapPin, Phone, Clock, Mail, ExternalLink } from "lucide-react";
 import { SeoKeywords } from "@/components/sections/seo-keywords";
+import { WhatsAppLink } from "@/components/whatsapp-link";
 
 export function SiteFooter() {
     const whatsappLink = buildWhatsAppLink({
@@ -85,7 +86,7 @@ export function SiteFooter() {
                         <h3 className="font-bold text-slate-900">Fale Conosco</h3>
                         <ul className="mt-4 space-y-4 text-sm text-slate-600">
                             <li>
-                                <a
+                                <WhatsAppLink
                                     href={whatsappLink}
                                     target="_blank"
                                     rel="noreferrer"
@@ -95,7 +96,7 @@ export function SiteFooter() {
                                         <Phone className="size-4" />
                                     </div>
                                     <span className="font-medium">{LAVEXPRESS.whatsappDisplay}</span>
-                                </a>
+                                </WhatsAppLink>
                             </li>
                             <li>
                                 <a
