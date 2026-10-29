@@ -129,11 +129,6 @@ export default function TermosPage() {
                                     Medem acessos, origem do tráfego e resultados de anúncios.
                                 </li>
                                 <li>
-                                    <strong>Microsoft Corporation</strong> — Microsoft Clarity. Grava sessões de
-                                    navegação: cliques, rolagem, movimento do cursor e o conteúdo das páginas que você
-                                    vê, incluindo os endereços dos links em que você clica.
-                                </li>
-                                <li>
                                     <strong>Vercel Inc.</strong> — hospedagem do site.
                                 </li>
                                 <li>
@@ -142,12 +137,25 @@ export default function TermosPage() {
                                 </li>
                             </ul>
                             <p className="mt-4">
-                                Esses fornecedores podem tratar dados fora do Brasil. A transferência internacional se
-                                apoia nas cláusulas e garantias previstas nos arts. 33 e 34 da LGPD. Fora isso,
-                                compartilhamos dados apenas quando a lei ou uma ordem judicial exigir.
+                                <strong>O que deixamos de usar:</strong> até 29 de outubro de 2026 este site usou o
+                                Microsoft Clarity, uma ferramenta de gravação de sessão. Ela foi desativada e não
+                                coleta mais nada. Enquanto esteve ativa, podia registrar cliques, rolagem e o conteúdo
+                                das páginas visitadas, incluindo os endereços dos links clicados.
+                            </p>
+                            <p className="mt-4">
+                                Esses fornecedores podem tratar dados fora do Brasil. A LGPD admite a transferência
+                                internacional nas hipóteses dos arts. 33 e 34 — e estamos verificando, contrato a
+                                contrato, qual delas cada fornecedor aplica. Assim que essa verificação terminar, a
+                                informação entra aqui, nomeada. Fora esses fornecedores, compartilhamos dados apenas
+                                quando a lei ou uma ordem judicial exigir.
                             </p>
 
                             <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">5.4 Por quanto tempo guardamos</h3>
+                            <p>
+                                Estes são os prazos que adotamos. O prazo do cookie é aplicado automaticamente pelo
+                                próprio site; os demais são cumpridos por rotina de revisão dos nossos registros, e
+                                estamos implantando a conferência periódica que garante o descarte na data certa.
+                            </p>
                             <ul className="list-disc pl-6 mt-4 space-y-2">
                                 <li>
                                     <strong>Cadastro de quem contratou</strong> — 5 anos contados do último serviço,
@@ -162,8 +170,9 @@ export default function TermosPage() {
                                     permanecem apenas em números totais, sem identificar ninguém.
                                 </li>
                                 <li>
-                                    <strong>Cookie de medição do site</strong> — até 90 dias, contados do clique que
-                                    trouxe você até aqui. Detalhes na seção 6.
+                                    <strong>Cookie de medição do site</strong> — até 90 dias, com a contagem
+                                    explicada na seção 6. Este prazo é <strong>aplicado automaticamente</strong> pelo
+                                    site: o cookie expira sozinho, sem depender de ninguém lembrar.
                                 </li>
                             </ul>
 
@@ -189,6 +198,15 @@ export default function TermosPage() {
                                 Basta pedir pelo WhatsApp ou e-mail de 5.1. Você também pode reclamar à Autoridade
                                 Nacional de Proteção de Dados (ANPD).
                             </p>
+                            <p className="mt-4">
+                                <strong>Sobre o pedido de oposição, com honestidade:</strong> hoje não temos um botão
+                                que desligue a medição para uma pessoa específica. Ao receber seu pedido, nós o
+                                registramos, paramos de usar seus dados nas nossas análises e apagamos os registros
+                                que já tivermos. Para <strong>interromper a coleta</strong> enquanto não oferecemos
+                                esse controle no site, o caminho efetivo é bloquear ou apagar os cookies nas
+                                configurações do seu navegador — instruções na seção 6. Estamos trabalhando para
+                                oferecer o controle aqui mesmo.
+                            </p>
 
                             <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">5.6 Segurança</h3>
                             <p>
@@ -208,12 +226,22 @@ export default function TermosPage() {
                             </p>
                             <ul className="list-disc pl-6 mt-4 space-y-2">
                                 <li>
-                                    <strong>lx_attr</strong> (nosso) — guarda um código interno de referência no
-                                    formato LX-XXXXXX e a origem da sua visita (identificador de clique de anúncio do
-                                    Google e parâmetros de campanha). Serve para sabermos de qual divulgação veio um
-                                    contato. Não guarda nome, telefone nem endereço. Dura até 90 dias contados do
-                                    clique. Quando você nos chama pelo WhatsApp a partir do site, esse código vai
-                                    junto na mensagem — é ele que aparece como <em>Ref:</em> no fim do texto.
+                                    <strong>lx_attr</strong> (nosso) — guarda um código de referência no formato
+                                    LX-XXXXXX e, quando existe, a origem da sua visita (identificador de clique de
+                                    anúncio do Google e parâmetros de campanha). Não guarda nome, telefone nem
+                                    endereço.
+                                    <br /><br />
+                                    <strong>Validade:</strong> até 90 dias contados do clique no anúncio que trouxe
+                                    você até aqui. Se você chegou sem passar por um anúncio, contam-se 90 dias da sua
+                                    primeira visita. O prazo <strong>não se renova</strong> a cada nova visita: ele
+                                    termina na data em que vence, e depois disso um novo período começa do zero.
+                                    <br /><br />
+                                    <strong>O que vai para o WhatsApp:</strong> quando você nos chama a partir do
+                                    site, apenas o código LX-XXXXXX acompanha a mensagem — é ele que aparece como{" "}
+                                    <em>Ref:</em> no fim do texto. <strong>A origem da visita não vai junto</strong>,
+                                    e o código, sozinho, não nos diz de qual anúncio ou campanha você veio: essa
+                                    informação fica apenas no seu navegador, neste cookie, e não é transmitida a
+                                    nós pela conversa.
                                 </li>
                                 <li>
                                     <strong>_ga, _ga_*</strong> (Google Analytics 4) — medem visitas e páginas vistas.
@@ -221,17 +249,20 @@ export default function TermosPage() {
                                 <li>
                                     <strong>_gcl_*</strong> (Google Ads) — ligam uma visita ao anúncio que a originou.
                                 </li>
-                                <li>
-                                    <strong>_clck, _clsk</strong> (Microsoft Clarity) — identificam a sessão gravada.
-                                </li>
                             </ul>
                             <p className="mt-4">
                                 <strong>Transparência sobre o momento em que eles carregam:</strong> hoje essas
                                 ferramentas são ativadas quando a página abre, antes de qualquer escolha sua, com base
                                 no legítimo interesse (art. 7, IX). Estamos trabalhando para oferecer um controle de
-                                preferências no próprio site. Enquanto ele não existe, você tem dois caminhos: bloquear
-                                ou apagar cookies nas configurações do seu navegador, ou pedir a oposição pelos canais
-                                de 5.1 — e nós deixamos de usar seus dados para medição.
+                                preferências no próprio site.
+                            </p>
+                            <p className="mt-4">
+                                Enquanto esse controle não existe, o caminho que <strong>efetivamente interrompe a
+                                coleta</strong> é bloquear ou apagar cookies nas configurações do seu navegador —
+                                todos os navegadores permitem fazer isso por site. Você também pode se opor pelos
+                                canais de 5.1: nesse caso registramos o pedido, paramos de usar seus dados nas nossas
+                                análises e apagamos o que já tivermos, mas o bloqueio no navegador continua sendo o
+                                que impede a coleta de acontecer.
                             </p>
                             <p className="mt-4">
                                 Recusar esses cookies não impede você de usar o site, pedir orçamento ou contratar o
