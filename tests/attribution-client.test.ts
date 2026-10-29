@@ -360,6 +360,70 @@ describe("janela de atribuição do lx_attr", () => {
         }
     });
 
+    it("cookie antigo, sem click_id_at, continua valendo e ancora no first_seen_at", () => {
+        // Compatibilidade: cookie gravado ANTES desta versão não tem o campo.
+        // Não pode invalidar, não pode migrar — tem que degradar sozinho.
+        const dezDias = haDias(10);
+        const antigo = {
+            v: 1,
+            ref: "LX-ABC123",
+            gclid: "clique-antigo",
+            gbraid: null,
+            wbraid: null,
+            utm_source: null,
+            utm_medium: null,
+            utm_campaign: null,
+            utm_content: null,
+            utm_term: null,
+            landing_url: null,
+            referrer: null,
+            first_seen_at: dezDias,
+            last_seen_at: dezDias,
+            // repare: NENHUM click_id_at aqui
+        };
+        const b = montarBrowser({
+            cookieInicial: `${COOKIE_NOME}=${encodeURIComponent(JSON.stringify(antigo))}`,
+        });
+
+        const a = capturarAtribuicao();
+
+        expect(a.ref).toBe("LX-ABC123");
+        expect(a.gclid).toBe("clique-antigo");
+        expect(a.click_id_at).toBeNull();
+
+        // Sem âncora de clique, a janela conta do first_seen_at: ~80 dias.
+        const maxAge = maxAgeEscrito(b.escritas);
+        expect(maxAge).toBeGreaterThan(79 * DIA);
+        expect(maxAge).toBeLessThanOrEqual(80 * DIA);
+    });
+
+    it("segundo clique pago NÃO sobrescreve o primeiro nem estende a janela", () => {
+        // Regra normativa de first touch: o click id que vale é o PRIMEIRO.
+        // Como click_id_at não se move, a janela também não recomeça — senão
+        // bastaria o visitante reencontrar um anúncio para a janela nunca fechar.
+        const trintaDias = haDias(30);
+        const b = montarBrowser({
+            url: "https://lavexpress.com/?gclid=segundo-clique",
+            cookieInicial: cookieCom({
+                ref: "LX-ABC123",
+                gclid: "primeiro-clique",
+                click_id_at: trintaDias,
+                first_seen_at: trintaDias,
+            }),
+        });
+
+        const a = capturarAtribuicao();
+
+        expect(a.ref).toBe("LX-ABC123");
+        expect(a.gclid).toBe("primeiro-clique");
+        expect(a.click_id_at).toBe(trintaDias);
+
+        const maxAge = maxAgeEscrito(b.escritas);
+        expect(maxAge).toBeLessThan(COOKIE_MAX_AGE);
+        expect(maxAge).toBeGreaterThan(59 * DIA);
+        expect(maxAge).toBeLessThanOrEqual(60 * DIA);
+    });
+
     it("relógio ilegível devolve a janela cheia (fail-open)", () => {
         const a = JSON.parse(
             decodeURIComponent(cookieCom({}).slice(COOKIE_NOME.length + 1)),
