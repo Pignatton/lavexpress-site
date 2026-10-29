@@ -111,15 +111,37 @@ export default function RootLayout({
             gtag('config', 'G-WJH5E451M7');
           `}
         </Script>
-        <Script id="clarity-script" strategy="afterInteractive">
-          {`
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "uw5zbkhj8h");
-          `}
-        </Script>
+        {/*
+          * Microsoft Clarity (uw5zbkhj8h) — DESABILITADO em 29/10/2026.
+          *
+          * POR QUE: o Clarity estava transmitindo o identificador interno
+          * LX-XXXXXX para a Microsoft. Medido em producao, interceptando o
+          * upload e descomprimindo o payload:
+          *
+          *   {"e":[...,"uw5zbkhj8h",...],
+          *    "a":[[...,"Agendar minha coleta",
+          *          "https://wa.me/55...?text=...%0A%0ARef%3A+LX-M1VX21"...
+          *
+          * O caminho e o handler de clique de components/whatsapp-link.tsx,
+          * que reescreve o href do no vivo do DOM. O Clarity grava mutacoes de
+          * DOM, e o href entra no fluxo de ATRIBUTOS da ancora — que o masking
+          * de texto do Clarity nao alcanca. Nao ha nenhum data-clarity-mask na
+          * base de codigo.
+          *
+          * O LX- e exatamente a chave que liga uma conversa de WhatsApp a uma
+          * visita ao site. Ele estava saindo para fornecedor estrangeiro, num
+          * gravador de sessao que roda sem consentimento.
+          *
+          * PARA REATIVAR, tres coisas precisam ser verdade ao mesmo tempo:
+          *   1. mascarar o href das ancoras de WhatsApp (data-clarity-mask)
+          *      ou parar de escrever o Ref: dentro do href;
+          *   2. REFAZER o teste do payload DESCOMPRIMIDO e comprovar que o
+          *      LX- nao aparece — masking Strict no painel NAO basta, e nao
+          *      vale confiar na configuracao sem medir;
+          *   3. base legal e informacao ao titular resolvidas.
+          *
+          * GTM, GA4 e as conversoes do Google Ads continuam ligados.
+          */}
       </body>
     </html>
   );
