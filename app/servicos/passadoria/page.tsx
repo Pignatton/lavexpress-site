@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LAVEXPRESS } from "@/lib/lavexpress";
+import { PACOTES } from "@/lib/catalogo";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { WhatsAppLink } from "@/components/whatsapp-link";
 import {
@@ -27,10 +28,25 @@ export const metadata: Metadata = {
 };
 
 /**
- * ✅ Menor preço por peça dentro de PACOTES COM PASSADORIA (Lavar + Secar + Passar)
- * Pelo seu próprio critério: "Passadoria nunca abaixo de R$ 4,40/peça".
+ * Melhor custo por peça DENTRO do pacote com passadoria (Lavar + Secar + Passar).
+ *
+ * Derivado da tabela real em `PACOTES.lavarSecarPassar` — nunca escrito à mão.
+ * Antes havia aqui um `4.40` fixo, que é o melhor preço do pacote
+ * **lavar + secar** (215 peças). O pacote com passadoria não chega a esse
+ * valor: o melhor dele é R$ 4,41, em 320 peças. A página anunciava o número
+ * do pacote errado em cinco lugares.
  */
-const STARTING_PRICE = 4.40;
+const melhorDe = (tabela: { pecas: number; valor: number; porPeca: number }[]) =>
+    tabela.reduce((a, b) => (b.porPeca < a.porPeca ? b : a));
+
+/** Somente passar — é o serviço que dá nome a esta página. */
+const SO_PASSAR = melhorDe(PACOTES.passar);
+/** Lavar + secar + passar — pacote completo, serviço diferente. */
+const COMPLETO = melhorDe(PACOTES.lavarSecarPassar);
+
+// O selo principal lidera com SOMENTE PASSAR: a página é "Passadoria".
+const STARTING_PRICE = SO_PASSAR.porPeca;
+const STARTING_PIECES = SO_PASSAR.pecas;
 
 function Stars({ rating = 4.7, count = 37 }: { rating?: number; count?: number }) {
     return (
@@ -61,16 +77,26 @@ function formatBRL(value: number) {
 }
 
 export default function PassadoriaPage() {
-    const waAgendar = buildWhatsAppLink({
+    // Um link por intenção. A mensagem já diz QUAL serviço a pessoa quer, então
+    // o atendimento sabe de cara se é só passar ou lavagem completa — e dá para
+    // separar os dois no relatório. O `Ref: LX-XXXXXX` continua sendo carimbado
+    // pelo <WhatsAppLink>; nada de rastreio vai escrito no texto.
+    const waSoPassar = buildWhatsAppLink({
         phoneE164: LAVEXPRESS.whatsappE164,
         text:
-            "Olá! Quero passadoria (de preferência no pacote com passadoria). Pode me informar as opções e o valor por peça? (Quantidade: ___ / Bairro: ___)",
+            "Olá! Quero SOMENTE PASSAR (eu lavo em casa e vocês passam). Pode me informar as opções de pacote? (Quantidade aproximada: ___ / Bairro: ___)",
+    });
+
+    const waCompleto = buildWhatsAppLink({
+        phoneE164: LAVEXPRESS.whatsappE164,
+        text:
+            "Olá! Quero LAVAR + SECAR + PASSAR (pacote completo). Pode me informar as opções e o valor por peça? (Quantidade aproximada: ___ / Bairro: ___)",
     });
 
     const waDuvidas = buildWhatsAppLink({
         phoneE164: LAVEXPRESS.whatsappE164,
         text:
-            "Olá! Tenho dúvidas sobre passadoria (prazo, tipo de peça e pacote com passadoria). Pode me orientar?",
+            "Olá! Tenho dúvidas sobre passadoria (prazo, tipo de peça e a diferença entre somente passar e lavar + secar + passar). Pode me orientar?",
     });
 
     return (
@@ -129,10 +155,31 @@ export default function PassadoriaPage() {
 
                                 {/* VALUE STRIP (oferta clara) */}
                                 <div className="flex flex-wrap items-center gap-3 mb-6">
-                                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-900 shadow-sm">
-                                        <span className="text-slate-500 font-bold">A partir de</span>
-                                        <span className="text-blue-600">R$ {formatBRL(STARTING_PRICE)}/peça</span>
-                                        <span className="text-slate-500 font-bold hidden sm:inline">no pacote com passadoria</span>
+                                    {/* Duas ofertas distintas. A condição de quantidade fica SEMPRE
+                                        visível, inclusive no mobile — antes havia um
+                                        `hidden sm:inline` que escondia justamente a condição. */}
+                                    <div className="flex flex-col gap-0.5 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+                                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                                            Somente passar
+                                        </span>
+                                        <span className="text-sm font-extrabold text-blue-600">
+                                            R$ {formatBRL(SO_PASSAR.porPeca)}/peça
+                                        </span>
+                                        <span className="text-[11px] font-semibold text-slate-600">
+                                            pacote de {SO_PASSAR.pecas} peças · R$ {formatBRL(SO_PASSAR.valor)}
+                                        </span>
+                                    </div>
+
+                                    <div className="flex flex-col gap-0.5 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+                                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                                            Lavar + secar + passar
+                                        </span>
+                                        <span className="text-sm font-extrabold text-emerald-600">
+                                            R$ {formatBRL(COMPLETO.porPeca)}/peça
+                                        </span>
+                                        <span className="text-[11px] font-semibold text-slate-600">
+                                            pacote de {COMPLETO.pecas} peças · R$ {formatBRL(COMPLETO.valor)}
+                                        </span>
                                     </div>
 
                                     <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-700 shadow-sm">
@@ -180,15 +227,28 @@ export default function PassadoriaPage() {
                                 </div>
 
                                 {/* CTA */}
-                                <div className="flex flex-col sm:flex-row gap-4">
+                                <div className="flex flex-col sm:flex-row flex-wrap gap-4">
                                     <Button
                                         size="lg"
                                         className="h-12 md:h-14 px-6 md:px-10 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all font-extrabold text-base md:text-lg"
                                         asChild
                                     >
-                                        <WhatsAppLink href={waAgendar} target="_blank" rel="noreferrer">
-                                            <span className="hidden sm:inline">Quero o pacote com passadoria</span>
-                                            <span className="sm:hidden">Pacote + Passadoria</span>
+                                        <WhatsAppLink href={waSoPassar} target="_blank" rel="noreferrer">
+                                            <span className="hidden sm:inline">Quero somente passar</span>
+                                            <span className="sm:hidden">Somente passar</span>
+                                            <ArrowRight className="ml-2 h-5 w-5" />
+                                        </WhatsAppLink>
+                                    </Button>
+
+                                    <Button
+                                        size="lg"
+                                        variant="outline"
+                                        className="h-12 md:h-14 px-6 md:px-10 rounded-xl border-emerald-200 bg-white text-emerald-700 hover:bg-emerald-50 font-extrabold text-base md:text-lg"
+                                        asChild
+                                    >
+                                        <WhatsAppLink href={waCompleto} target="_blank" rel="noreferrer">
+                                            <span className="hidden sm:inline">Quero lavar + secar + passar</span>
+                                            <span className="sm:hidden">Lavar e passar</span>
                                             <ArrowRight className="ml-2 h-5 w-5" />
                                         </WhatsAppLink>
                                     </Button>
@@ -215,7 +275,7 @@ export default function PassadoriaPage() {
                                 </div>
 
                                 <p className="mt-4 text-xs text-slate-500">
-                                    Observação: &quot;a partir de&quot; refere-se ao melhor custo por peça nos pacotes com passadoria. Valor varia por tipo de peça e quantidade.
+                                    Observação: são dois serviços diferentes. &quot;Somente passar&quot; chega a R$ {formatBRL(SO_PASSAR.porPeca)}/peça no pacote de {SO_PASSAR.pecas} peças (R$ {formatBRL(SO_PASSAR.valor)}). &quot;Lavar + secar + passar&quot; chega a R$ {formatBRL(COMPLETO.porPeca)}/peça no pacote de {COMPLETO.pecas} peças (R$ {formatBRL(COMPLETO.valor)}). Pacotes menores têm custo por peça maior. Sem fidelidade · validade de 90 dias. Tabela completa em Pacotes.
                                 </p>
                             </div>
 
@@ -235,7 +295,7 @@ export default function PassadoriaPage() {
                                     {/* Price Tag Overlay */}
                                     <div className="absolute bottom-3 right-3 md:bottom-6 md:right-6 bg-white/95 backdrop-blur rounded-xl md:rounded-2xl p-3 md:p-4 shadow-xl border border-slate-100 max-w-[210px] md:max-w-[280px]">
                                         <div className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
-                                            Melhor custo no pacote
+                                            Somente passar · melhor custo
                                         </div>
                                         <div className="flex items-baseline gap-1">
                                             <span className="text-xs md:text-sm font-bold text-slate-400">R$</span>
@@ -245,7 +305,10 @@ export default function PassadoriaPage() {
                                             <span className="text-xs md:text-sm font-bold text-slate-400">/peça</span>
                                         </div>
                                         <div className="mt-1.5 md:mt-2 text-[10px] md:text-xs text-slate-600 font-semibold leading-tight">
-                                            No pacote com passadoria (quanto mais peças, melhor).
+                                            No pacote de {STARTING_PIECES} peças (R$ {formatBRL(SO_PASSAR.valor)}). Pacotes menores têm custo por peça maior.
+                                        </div>
+                                        <div className="mt-1 text-[10px] md:text-xs text-slate-500 font-semibold leading-tight">
+                                            Lavar + secar + passar: R$ {formatBRL(COMPLETO.porPeca)}/peça no pacote de {COMPLETO.pecas}.
                                         </div>
                                         <div className="mt-2 md:mt-3 text-[10px] md:text-xs text-emerald-700 font-extrabold flex items-center gap-1">
                                             <CheckCircle2 className="h-3 w-3" />
@@ -341,15 +404,19 @@ export default function PassadoriaPage() {
                             {[
                                 {
                                     q: "Esse valor é avulso?",
-                                    a: `Não. "A partir de R$ ${formatBRL(STARTING_PRICE)}/peça" é no pacote com passadoria (melhor custo por peça). No WhatsApp informamos a opção ideal para sua quantidade.`,
+                                    a: `Não. R$ ${formatBRL(SO_PASSAR.porPeca)}/peça é o melhor custo do pacote de somente passar, e vale no pacote de ${SO_PASSAR.pecas} peças (R$ ${formatBRL(SO_PASSAR.valor)}). Pacotes menores têm custo por peça maior, e o valor avulso é outro. No WhatsApp informamos a opção ideal para a sua quantidade.`,
+                                },
+                                {
+                                    q: "Qual a diferença entre somente passar e lavar + secar + passar?",
+                                    a: `Em "somente passar" você lava em casa e nós passamos: melhor custo R$ ${formatBRL(SO_PASSAR.porPeca)}/peça no pacote de ${SO_PASSAR.pecas} peças (R$ ${formatBRL(SO_PASSAR.valor)}). Em "lavar + secar + passar" cuidamos de tudo: melhor custo R$ ${formatBRL(COMPLETO.porPeca)}/peça no pacote de ${COMPLETO.pecas} peças (R$ ${formatBRL(COMPLETO.valor)}). Os dois são sem fidelidade e com validade de 90 dias.`,
                                 },
                                 {
                                     q: "Qual o prazo?",
-                                    a: "Em média 2 a 3 dias úteis. Confirmamos antes de fechar, para você não ficar sem roupa.",
+                                    a: `Em média ${LAVEXPRESS.sla.washDryIronBusinessDaysMin} a ${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis para lavar e passar. Confirmamos antes de fechar, para você não ficar sem roupa.`,
                                 },
                                 {
                                     q: "Passam qualquer tecido?",
-                                    a: "Sim. Ajustamos temperatura e cuidado por tipo de tecido para manter o acabamento sem agredir a peça.",
+                                    a: "Avaliamos peça por peça. Ajustamos temperatura e técnica ao tipo de tecido e tratamos à parte itens delicados ou com indicação específica na etiqueta. Se alguma peça não puder ser passada com segurança, avisamos antes — não assumimos risco com a sua roupa.",
                                 },
                                 {
                                     q: "Por que pacote vale mais?",
@@ -369,8 +436,8 @@ export default function PassadoriaPage() {
                                 className="h-12 md:h-14 px-6 md:px-10 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all font-extrabold text-base md:text-lg"
                                 asChild
                             >
-                                <WhatsAppLink href={waAgendar} target="_blank" rel="noreferrer">
-                                    <span className="hidden sm:inline">Quero meu pacote com passadoria</span>
+                                <WhatsAppLink href={waSoPassar} target="_blank" rel="noreferrer">
+                                    <span className="hidden sm:inline">Quero meu pacote de passadoria</span>
                                     <span className="sm:hidden">Quero o pacote</span>
                                     <ArrowRight className="ml-2 h-5 w-5" />
                                 </WhatsAppLink>
