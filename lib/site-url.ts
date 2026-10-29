@@ -1,34 +1,45 @@
 /**
- * Origem canônica do site em produção.
+ * Origem canônica do site.
  *
- * Fica num módulo só para que sitemap, robots e metadata nunca divirjam.
+ * Fica num módulo só para que sitemap, robots e metadata nunca divirjam, e é
+ * deliberadamente restritiva: só o domínio oficial é aceito.
  *
- * Duas defesas, porque já falhou nas duas pontas:
+ * O histórico justifica o rigor. A produção publicou `http://localhost:3000`
+ * no sitemap.xml e no robots.txt porque `NEXT_PUBLIC_BASE_URL` estava definida
+ * assim no ambiente de Production — e `env || fallback` nunca corrige uma
+ * variável presente e errada. Antes disso, o fallback do código apontava para
+ * `lavexpress.com.br`, que também não é o domínio oficial.
  *
- * 1. O fallback é o domínio REAL. Antes era `lavexpress.com.br`, que não é o
- *    domínio oficial.
- * 2. Um valor de `NEXT_PUBLIC_BASE_URL` apontando para localhost é ignorado.
- *    A produção estava publicando `http://localhost:3000` no sitemap.xml e no
- *    robots.txt justamente porque a variável estava definida assim no ambiente
- *    de Production — e `env || fallback` nunca corrige um valor presente e
- *    errado. Como este módulo só alimenta URLs canônicas (sitemap, robots,
- *    metadataBase), localhost jamais é uma resposta válida aqui, nem em dev.
+ * Regras:
+ * - só `lavexpresslavanderia.com` (com ou sem `www`) é aceito;
+ * - `www` é normalizado para o ápice, que é a forma canônica;
+ * - o esquema é sempre forçado para https;
+ * - qualquer outra coisa — localhost, domínio errado, string inválida, vazio —
+ *   cai no domínio oficial.
  */
-const PRODUCAO = "https://lavexpresslavanderia.com";
+export const ORIGEM_CANONICA = "https://lavexpresslavanderia.com";
 
-function origemValida(valor: string | undefined): valor is string {
-    if (!valor) return false;
+const HOST_CANONICO = "lavexpresslavanderia.com";
+
+/** Normaliza um valor para a origem canônica, ou devolve null se não servir. */
+export function normalizarOrigem(valor: string | undefined | null): string | null {
+    if (typeof valor !== "string" || valor.trim() === "") return null;
+
+    let url: URL;
     try {
-        const { protocol, hostname } = new URL(valor);
-        if (protocol !== "https:" && protocol !== "http:") return false;
-        return !["localhost", "127.0.0.1", "[::1]", "::1"].includes(hostname);
+        url = new URL(valor.trim());
     } catch {
-        return false;
+        return null;
     }
+
+    if (url.protocol !== "https:" && url.protocol !== "http:") return null;
+
+    const host = url.hostname.toLowerCase().replace(/^www\./, "");
+    if (host !== HOST_CANONICO) return null;
+
+    // Sempre https e sempre o ápice: www e http são variantes, não canônicos.
+    return `https://${HOST_CANONICO}`;
 }
 
-const bruto = process.env.NEXT_PUBLIC_BASE_URL;
-
-export const SITE_URL = origemValida(bruto)
-    ? bruto.replace(/\/+$/, "")
-    : PRODUCAO;
+export const SITE_URL =
+    normalizarOrigem(process.env.NEXT_PUBLIC_BASE_URL) ?? ORIGEM_CANONICA;
