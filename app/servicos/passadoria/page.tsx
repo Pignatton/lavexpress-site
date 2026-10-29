@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { LAVEXPRESS } from "@/lib/lavexpress";
+import { PACOTES } from "@/lib/catalogo";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { WhatsAppLink } from "@/components/whatsapp-link";
 import {
@@ -27,10 +28,19 @@ export const metadata: Metadata = {
 };
 
 /**
- * ✅ Menor preço por peça dentro de PACOTES COM PASSADORIA (Lavar + Secar + Passar)
- * Pelo seu próprio critério: "Passadoria nunca abaixo de R$ 4,40/peça".
+ * Melhor custo por peça DENTRO do pacote com passadoria (Lavar + Secar + Passar).
+ *
+ * Derivado da tabela real em `PACOTES.lavarSecarPassar` — nunca escrito à mão.
+ * Antes havia aqui um `4.40` fixo, que é o melhor preço do pacote
+ * **lavar + secar** (215 peças). O pacote com passadoria não chega a esse
+ * valor: o melhor dele é R$ 4,41, em 320 peças. A página anunciava o número
+ * do pacote errado em cinco lugares.
  */
-const STARTING_PRICE = 4.40;
+const MELHOR_PASSADORIA = PACOTES.lavarSecarPassar.reduce((a, b) =>
+    b.porPeca < a.porPeca ? b : a,
+);
+const STARTING_PRICE = MELHOR_PASSADORIA.porPeca;
+const STARTING_PIECES = MELHOR_PASSADORIA.pecas;
 
 function Stars({ rating = 4.7, count = 37 }: { rating?: number; count?: number }) {
     return (
@@ -132,7 +142,7 @@ export default function PassadoriaPage() {
                                     <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-900 shadow-sm">
                                         <span className="text-slate-500 font-bold">A partir de</span>
                                         <span className="text-blue-600">R$ {formatBRL(STARTING_PRICE)}/peça</span>
-                                        <span className="text-slate-500 font-bold hidden sm:inline">no pacote com passadoria</span>
+                                        <span className="text-slate-500 font-bold hidden sm:inline">no pacote de {STARTING_PIECES} peças com passadoria</span>
                                     </div>
 
                                     <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-700 shadow-sm">
@@ -215,7 +225,7 @@ export default function PassadoriaPage() {
                                 </div>
 
                                 <p className="mt-4 text-xs text-slate-500">
-                                    Observação: &quot;a partir de&quot; refere-se ao melhor custo por peça nos pacotes com passadoria. Valor varia por tipo de peça e quantidade.
+                                    Observação: &quot;a partir de&quot; é o melhor custo por peça do pacote com passadoria, atingido no pacote de {STARTING_PIECES} peças. Pacotes menores têm custo por peça maior. Consulte a tabela completa em Pacotes.
                                 </p>
                             </div>
 
@@ -245,7 +255,7 @@ export default function PassadoriaPage() {
                                             <span className="text-xs md:text-sm font-bold text-slate-400">/peça</span>
                                         </div>
                                         <div className="mt-1.5 md:mt-2 text-[10px] md:text-xs text-slate-600 font-semibold leading-tight">
-                                            No pacote com passadoria (quanto mais peças, melhor).
+                                            No pacote de {STARTING_PIECES} peças com passadoria. Pacotes menores têm custo por peça maior.
                                         </div>
                                         <div className="mt-2 md:mt-3 text-[10px] md:text-xs text-emerald-700 font-extrabold flex items-center gap-1">
                                             <CheckCircle2 className="h-3 w-3" />
@@ -341,11 +351,11 @@ export default function PassadoriaPage() {
                             {[
                                 {
                                     q: "Esse valor é avulso?",
-                                    a: `Não. "A partir de R$ ${formatBRL(STARTING_PRICE)}/peça" é no pacote com passadoria (melhor custo por peça). No WhatsApp informamos a opção ideal para sua quantidade.`,
+                                    a: `Não. "A partir de R$ ${formatBRL(STARTING_PRICE)}/peça" é o melhor custo por peça do pacote com passadoria e vale no pacote de ${STARTING_PIECES} peças. Pacotes menores têm custo por peça maior, e o valor avulso é outro. No WhatsApp informamos a opção ideal para a sua quantidade.`,
                                 },
                                 {
                                     q: "Qual o prazo?",
-                                    a: "Em média 2 a 3 dias úteis. Confirmamos antes de fechar, para você não ficar sem roupa.",
+                                    a: `Em média ${LAVEXPRESS.sla.washDryIronBusinessDaysMin} a ${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis para lavar e passar. Confirmamos antes de fechar, para você não ficar sem roupa.`,
                                 },
                                 {
                                     q: "Passam qualquer tecido?",
