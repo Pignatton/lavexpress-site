@@ -1,7 +1,6 @@
 import { MetadataRoute } from "next";
 import { SERVICES_DETAILS } from "@/lib/catalogo";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://lavexpress.com.br";
+import { SITE_URL as BASE_URL } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const services = Object.keys(SERVICES_DETAILS).map((slug) => ({
