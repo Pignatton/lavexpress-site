@@ -211,11 +211,11 @@ const FAQ = [
     },
     {
         q: "Em quanto tempo a roupa volta?",
-        a: `Na nossa operação, lavagem e secagem ficam prontas em ${LAVEXPRESS.sla.washDryHoursMin} a ${LAVEXPRESS.sla.washDryHoursMax} horas e passadoria leva de ${LAVEXPRESS.sla.washDryIronBusinessDaysMin} a ${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis. No atendimento corporativo, trabalhamos com um calendário fixo de coleta e entrega, dimensionado para que a equipe tenha sempre peça disponível em circulação.`,
+        a: `Na nossa operação, lavagem e secagem ficam prontas em ${LAVEXPRESS.sla.washDryHoursMin} a ${LAVEXPRESS.sla.washDryHoursMax} horas e passadoria leva de ${LAVEXPRESS.sla.washDryIronBusinessDaysMin} a ${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis. Para empresas, esses prazos servem de referência: os dias de coleta e de entrega são combinados com você no orçamento, de acordo com o volume e a frequência da sua equipe.`,
     },
     {
         q: "Minha equipe é pequena. Vale a pena conversar?",
-        a: "Vale. Grande parte das empresas que atendemos tem equipe enxuta de escritório, com algumas peças por pessoa e rotina semanal. Conte quantas pessoas são e com que frequência a roupa precisa estar pronta, e montamos o atendimento no tamanho da sua operação.",
+        a: "Vale. Não existe tamanho mínimo para conversar: o orçamento é montado sobre o volume real da sua equipe, seja ela de cinco ou de cinquenta pessoas. Conte quantas são e com que frequência a roupa precisa estar pronta, e montamos o atendimento no tamanho da sua operação.",
     },
 ];
 
@@ -554,11 +554,10 @@ export default function EmpresasPage() {
                                 .
                             </p>
                             <p>
-                                Para empresas, esses números servem como referência de como a casa trabalha.
-                                O calendário real do seu atendimento — dias de coleta, dias de entrega e
-                                quantos envios ficam em circulação ao mesmo tempo — é desenhado com você no
-                                orçamento, a partir do seu volume e da sua frequência. É isso que faz a
-                                equipe nunca ficar sem peça disponível.
+                                Para empresas, esses números servem como referência de como a casa
+                                trabalha. Os dias de coleta e de entrega do seu atendimento são combinados
+                                com você no orçamento, a partir do volume e da frequência da sua equipe —
+                                e só são confirmados depois que a gente verificar que cabe na operação.
                             </p>
                         </div>
                     </div>
