@@ -1,6 +1,8 @@
 export const LAVEXPRESS = {
     name: "Lavexpress Lavanderia",
     email: "lavexpresslavanderia@hotmail.com",
+    /** Controlador dos dados pessoais, para efeito do art. 5, VI da LGPD. */
+    cnpj: "25.075.135/0001-47",
     whatsappE164: "5527996172403",
     whatsappDisplay: "(27) 99617-2403",
     phoneDisplay: "(27) 3337-7604",
