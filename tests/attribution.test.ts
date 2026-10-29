@@ -37,6 +37,7 @@ function base(parcial: Partial<Atribuicao> = {}): Atribuicao {
         referrer: null,
         first_seen_at: T0,
         last_seen_at: T0,
+        click_id_at: null,
         ...parcial,
     };
 }

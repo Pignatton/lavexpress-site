@@ -1,10 +1,11 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { REF_REGEX, desserializarCookie } from "@/lib/attribution";
+import { REF_REGEX, desserializarCookie, type Atribuicao } from "@/lib/attribution";
 import {
     COOKIE_MAX_AGE,
     COOKIE_NOME,
     capturarAtribuicao,
+    janelaRestante,
     linkWhatsAppComAtribuicao,
 } from "@/lib/attribution-client";
 
@@ -227,5 +228,230 @@ describe("linkWhatsAppComAtribuicao", () => {
         const link = linkWhatsAppComAtribuicao({ text: "Olá! Quero agendar." });
         expect(textoDoLink(link)).toBe("Olá! Quero agendar.");
         expect(link.startsWith("https://wa.me/")).toBe(true);
+    });
+});
+
+
+/* ========================================================================== */
+
+const DIA = 86400;
+
+/** Um cookie `lx_attr` válido, com os campos que o teste quiser sobrescrever. */
+function cookieCom(campos: Partial<Atribuicao>): string {
+    const agora = new Date().toISOString();
+    const a: Atribuicao = {
+        v: 1,
+        ref: "LX-AAAAAA",
+        gclid: null,
+        gbraid: null,
+        wbraid: null,
+        utm_source: null,
+        utm_medium: null,
+        utm_campaign: null,
+        utm_content: null,
+        utm_term: null,
+        landing_url: null,
+        referrer: null,
+        first_seen_at: agora,
+        last_seen_at: agora,
+        click_id_at: null,
+        ...campos,
+    };
+    return `${COOKIE_NOME}=${encodeURIComponent(JSON.stringify(a))}`;
+}
+
+function haDias(n: number): string {
+    return new Date(Date.now() - n * DIA * 1000).toISOString();
+}
+
+/** O `Max-Age` que foi efetivamente escrito em `document.cookie`. */
+function maxAgeEscrito(escritas: string[]): number {
+    const ultima = escritas[escritas.length - 1] ?? "";
+    const m = ultima.match(/Max-Age=(\d+)/);
+    return m ? Number(m[1]) : -1;
+}
+
+describe("janela de atribuição do lx_attr", () => {
+    it("REGRESSÃO: regravar devolve o que RESTA da janela, não 90 dias cheios", () => {
+        // Este é o bug que o teste existe para impedir de voltar. Antes, todo
+        // `Max-Age` saía cheio, e o <AttributionBoot> regrava a cada troca de
+        // rota — a janela rolava indefinidamente e nunca fechava.
+        const dezDias = haDias(10);
+        const b = montarBrowser({
+            url: "https://lavexpress.com/pacotes",
+            cookieInicial: cookieCom({
+                ref: "LX-ABC123",
+                gclid: "clique-de-10-dias",
+                click_id_at: dezDias,
+                first_seen_at: dezDias,
+            }),
+        });
+
+        const a = capturarAtribuicao();
+        expect(a.ref).toBe("LX-ABC123");
+
+        const maxAge = maxAgeEscrito(b.escritas);
+        expect(maxAge).toBeLessThan(COOKIE_MAX_AGE);
+        expect(maxAge).toBeGreaterThan(79 * DIA);
+        expect(maxAge).toBeLessThanOrEqual(80 * DIA);
+    });
+
+    it("janela vencida começa um período novo, com ref novo e sem arrastar o clique velho", () => {
+        const velho = haDias(91);
+        montarBrowser({
+            cookieInicial: cookieCom({
+                ref: "LX-ABC123",
+                gclid: "clique-vencido",
+                click_id_at: velho,
+                first_seen_at: velho,
+            }),
+        });
+
+        const a = capturarAtribuicao();
+
+        expect(a.ref).not.toBe("LX-ABC123");
+        expect(a.ref).toMatch(REF_REGEX);
+        expect(a.gclid).toBeNull();
+        expect(a.click_id_at).toBeNull();
+    });
+
+    it("ancora no clique pago, não na primeira visita orgânica", () => {
+        // Chegou por busca orgânica há 20 dias; volta hoje por um anúncio.
+        // A janela de atribuição abre AGORA — é assim que o Google conta.
+        const vinteDias = haDias(20);
+        const b = montarBrowser({
+            url: "https://lavexpress.com/?gclid=abc123",
+            cookieInicial: cookieCom({
+                ref: "LX-RG0001",
+                first_seen_at: vinteDias,
+                last_seen_at: vinteDias,
+                click_id_at: null,
+            }),
+        });
+
+        const a = capturarAtribuicao();
+
+        expect(a.ref).toBe("LX-RG0001");
+        expect(a.gclid).toBe("abc123");
+        expect(a.first_seen_at).toBe(vinteDias);
+        expect(a.click_id_at).not.toBeNull();
+        // 90 dias a partir do clique, não os 70 que sobrariam do first touch.
+        expect(maxAgeEscrito(b.escritas)).toBe(COOKIE_MAX_AGE);
+    });
+
+    it("dois cliques na mesma visita não esticam a janela", () => {
+        const cincoDias = haDias(5);
+        const b = montarBrowser({
+            cookieInicial: cookieCom({
+                ref: "LX-ABC123",
+                gclid: "x",
+                click_id_at: cincoDias,
+                first_seen_at: cincoDias,
+            }),
+        });
+
+        const um = linkWhatsAppComAtribuicao({ text: "Primeiro clique." });
+        const dois = linkWhatsAppComAtribuicao({ text: "Segundo clique." });
+
+        expect(textoDoLink(um)).toContain("Ref: LX-ABC123");
+        expect(textoDoLink(dois)).toContain("Ref: LX-ABC123");
+        for (const escrita of b.escritas) {
+            expect(maxAgeEscrito([escrita])).toBeLessThanOrEqual(86 * DIA);
+        }
+    });
+
+    it("cookie antigo, sem click_id_at, continua valendo e ancora no first_seen_at", () => {
+        // Compatibilidade: cookie gravado ANTES desta versão não tem o campo.
+        // Não pode invalidar, não pode migrar — tem que degradar sozinho.
+        const dezDias = haDias(10);
+        const antigo = {
+            v: 1,
+            ref: "LX-ABC123",
+            gclid: "clique-antigo",
+            gbraid: null,
+            wbraid: null,
+            utm_source: null,
+            utm_medium: null,
+            utm_campaign: null,
+            utm_content: null,
+            utm_term: null,
+            landing_url: null,
+            referrer: null,
+            first_seen_at: dezDias,
+            last_seen_at: dezDias,
+            // repare: NENHUM click_id_at aqui
+        };
+        const b = montarBrowser({
+            cookieInicial: `${COOKIE_NOME}=${encodeURIComponent(JSON.stringify(antigo))}`,
+        });
+
+        const a = capturarAtribuicao();
+
+        expect(a.ref).toBe("LX-ABC123");
+        expect(a.gclid).toBe("clique-antigo");
+        expect(a.click_id_at).toBeNull();
+
+        // Sem âncora de clique, a janela conta do first_seen_at: ~80 dias.
+        const maxAge = maxAgeEscrito(b.escritas);
+        expect(maxAge).toBeGreaterThan(79 * DIA);
+        expect(maxAge).toBeLessThanOrEqual(80 * DIA);
+    });
+
+    it("segundo clique pago NÃO sobrescreve o primeiro nem estende a janela", () => {
+        // Regra normativa de first touch: o click id que vale é o PRIMEIRO.
+        // Como click_id_at não se move, a janela também não recomeça — senão
+        // bastaria o visitante reencontrar um anúncio para a janela nunca fechar.
+        const trintaDias = haDias(30);
+        const b = montarBrowser({
+            url: "https://lavexpress.com/?gclid=segundo-clique",
+            cookieInicial: cookieCom({
+                ref: "LX-ABC123",
+                gclid: "primeiro-clique",
+                click_id_at: trintaDias,
+                first_seen_at: trintaDias,
+            }),
+        });
+
+        const a = capturarAtribuicao();
+
+        expect(a.ref).toBe("LX-ABC123");
+        expect(a.gclid).toBe("primeiro-clique");
+        expect(a.click_id_at).toBe(trintaDias);
+
+        const maxAge = maxAgeEscrito(b.escritas);
+        expect(maxAge).toBeLessThan(COOKIE_MAX_AGE);
+        expect(maxAge).toBeGreaterThan(59 * DIA);
+        expect(maxAge).toBeLessThanOrEqual(60 * DIA);
+    });
+
+    it("relógio ilegível devolve a janela cheia (fail-open)", () => {
+        const a = JSON.parse(
+            decodeURIComponent(cookieCom({}).slice(COOKIE_NOME.length + 1)),
+        ) as Atribuicao;
+        a.first_seen_at = "não é uma data";
+        a.click_id_at = null;
+
+        expect(janelaRestante(a, Date.now())).toBe(COOKIE_MAX_AGE);
+    });
+
+    it("sem cookie, o WhatsApp abre e o Ref: ainda vai", () => {
+        montarBrowser({ cookiesQuebrados: true });
+
+        const link = linkWhatsAppComAtribuicao({ text: "Olá! Quero agendar." });
+
+        expect(link.startsWith("https://wa.me/5527996172403?text=")).toBe(true);
+        expect(textoDoLink(link)).toMatch(
+            /\n\nRef: LX-[0123456789ABCDEFGHJKMNPQRSTVWXYZ]{6}$/,
+        );
+    });
+
+    it("sem crypto, o WhatsApp abre com a copy original — nunca engole o lead", () => {
+        montarBrowser();
+        vi.stubGlobal("crypto", undefined);
+
+        const link = linkWhatsAppComAtribuicao({ text: "Olá! Quero agendar." });
+
+        expect(link.startsWith("https://wa.me/5527996172403?text=")).toBe(true);
+        expect(textoDoLink(link)).toBe("Olá! Quero agendar.");
     });
 });

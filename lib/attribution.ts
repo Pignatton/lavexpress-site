@@ -60,6 +60,15 @@ export type Atribuicao = {
     referrer: string | null;
     first_seen_at: string;
     last_seen_at: string;
+    /**
+     * Instante em que um click id do Google entrou neste cookie.
+     *
+     * NÃO é o mesmo que `first_seen_at`. Quem chega por busca orgânica e só
+     * depois volta por um anúncio tem `first_seen_at` semanas antes do clique
+     * pago — e é o clique que abre a janela de atribuição, não a primeira
+     * visita. `null` enquanto não houve nenhum click id.
+     */
+    click_id_at: string | null;
 };
 
 /** As ÚNICAS chaves lidas da query string. Qualquer outra é ignorada. */
@@ -256,6 +265,7 @@ export function mesclarAtribuicao(
             referrer: nova.referrer ?? null,
             first_seen_at: agoraISO,
             last_seen_at: agoraISO,
+            click_id_at: temClickId(nova) ? agoraISO : null,
         };
     }
 
@@ -276,6 +286,8 @@ export function mesclarAtribuicao(
         utm_content: nova.utm_content ?? null,
         utm_term: nova.utm_term ?? null,
         last_seen_at: agoraISO,
+        // A janela de atribuição nasce aqui, no clique — não no primeiro acesso.
+        click_id_at: agoraISO,
     };
 }
 
@@ -350,6 +362,10 @@ export function desserializarCookie(bruto: string | null | undefined): Atribuica
             referrer: urlOuNulo(o.referrer, LIMITES.referrer),
             first_seen_at: first,
             last_seen_at: last,
+            // Cookie gravado antes desta versão não tem o campo: vira `null` e
+            // `janelaRestante` cai para `first_seen_at`. Sem migração, sem
+            // invalidar cookie de ninguém.
+            click_id_at: instanteValido(o.click_id_at),
         };
     } catch {
         return null;
