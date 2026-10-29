@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const PRICE_TAPETE = 65; // R$ 65,00 por m²
 const PRICE_CORTINA = 55; // R$ 55,00 por parte
 
-function Stars({ rating = 4.7, count = 37 }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
   return (
     <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
       <div className="flex items-center gap-1 text-yellow-500">
@@ -81,7 +81,7 @@ export default function CortinasPage() {
                     Lavagem de Cortinas
                   </Badge>
 
-                  <Stars rating={4.7} count={37} />
+                  <Stars />
 
                   <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
                     <span className="text-slate-500 font-bold">A partir de</span>
@@ -170,7 +170,7 @@ export default function CortinasPage() {
                     Lavagem de Tapetes
                   </Badge>
 
-                  <Stars rating={4.7} count={37} />
+                  <Stars />
 
                   <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
                     <span className="text-slate-500 font-bold">A partir de</span>

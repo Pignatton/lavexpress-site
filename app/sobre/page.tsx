@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         "Conheça a Lavexpress: lavanderia delivery em Vitória/ES. Qualidade profissional, conveniência real e confiança para sua rotina.",
 };
 
-function Stars({ rating = 4.7, count = 37 }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500" aria-hidden="true">

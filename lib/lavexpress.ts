@@ -16,6 +16,24 @@ export const LAVEXPRESS = {
         sunday: "Domingo • Fechado",
     },
 
+    /**
+     * Avaliação pública do Perfil da Empresa no Google.
+     *
+     * Conferido no Google Maps em 29/10/2026: 4,7 estrelas, 43 avaliações.
+     * Antes o par estava escrito à mão em 8 arquivos, todos com `count = 37` —
+     * o número tinha envelhecido e divergido do perfil real.
+     *
+     * A rota /api/google/rating existe e buscaria isto sozinha, mas hoje
+     * devolve REQUEST_DENIED porque o faturamento do projeto Google Cloud está
+     * desativado. Enquanto isso não for resolvido, este é o valor de
+     * referência — num lugar só, para não divergir de novo.
+     */
+    google: {
+        rating: 4.7,
+        reviews: 43,
+        conferidoEm: "2026-10-29",
+    },
+
     // Link oficial que você mandou (CID)
     googleMapsCidUrl:
         "https://www.google.com/maps?ll=-20.262486,-40.264914&z=16&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=13356030677811140771",

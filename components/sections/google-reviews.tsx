@@ -17,7 +17,7 @@ function StarsRow() {
 }
 
 export async function GoogleReviews() {
-    let rating = 4.7;
+    let rating: number = LAVEXPRESS.google.rating;
     let total = 37;
     let reviews: GoogleReview[] = [];
     let error = false;

@@ -121,7 +121,7 @@ function getFinalCTASubheading() {
     return "Agende agora e receba suas roupas prontas para usar. Atendimento claro, prazos previsíveis e cuidado profissional.";
 }
 
-function Stars({ rating = 4.7, count = 37 }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -181,7 +181,7 @@ export default async function ServicePage({ params }: Props) {
                                         {getHeroKicker(service.title)}
                                     </Badge>
 
-                                    <Stars rating={4.7} count={37} />
+                                    <Stars />
 
                                     <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-bold text-emerald-700">
                                         <Truck className="h-4 w-4" />
