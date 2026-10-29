@@ -74,6 +74,21 @@ export function SiteFooter() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/empresas" className="hover:text-emerald-600 transition-colors inline-flex items-center gap-1">
+                                    Empresas e Uniformes
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/agendamento" className="hover:text-emerald-600 transition-colors inline-flex items-center gap-1">
+                                    Agendar Coleta
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/servicos/lavagem-de-ternos" className="hover:text-emerald-600 transition-colors inline-flex items-center gap-1">
+                                    Ternos e Roupas Sociais
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/contato" className="hover:text-emerald-600 transition-colors inline-flex items-center gap-1">
                                     Contato
                                 </Link>
