@@ -38,8 +38,8 @@ const BRAND = {
     HERO_IMAGE_SMALL: "/imagens/hero-shirt-new.png",
 
     // Prova social (enquanto você não integra API do Google)
-    GOOGLE_RATING: 4.7,
-    GOOGLE_REVIEWS: 37,
+    GOOGLE_RATING: LAVEXPRESS.google.rating,
+    GOOGLE_REVIEWS: LAVEXPRESS.google.reviews,
     GOOGLE_REVIEWS_URL: "https://search.google.com/local/reviews?placeid=ChIJ_fmjZbIZuAARoxgnYCMnWrk",
 
     // SLAs e mensagens operacionais

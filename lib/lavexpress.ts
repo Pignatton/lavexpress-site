@@ -19,19 +19,23 @@ export const LAVEXPRESS = {
     /**
      * Avaliação pública do Perfil da Empresa no Google.
      *
-     * Conferido no Google Maps em 29/10/2026: 4,7 estrelas, 43 avaliações.
+     * Conferido no Google Maps em 28/10/2026 (horário de Brasília): 4,7 estrelas,
+     * 43 avaliações.
      * Antes o par estava escrito à mão em 8 arquivos, todos com `count = 37` —
      * o número tinha envelhecido e divergido do perfil real.
      *
      * A rota /api/google/rating existe e buscaria isto sozinha, mas hoje
-     * devolve REQUEST_DENIED porque o faturamento do projeto Google Cloud está
-     * desativado. Enquanto isso não for resolvido, este é o valor de
-     * referência — num lugar só, para não divergir de novo.
+     * devolve REQUEST_DENIED: o faturamento do projeto Google Cloud está
+     * desativado, e não há autorização para habilitá-lo. Enquanto isso, este é
+     * o valor de referência — num lugar só, para não divergir de novo.
+     *
+     * Este objeto SUBSTITUI o antigo `rating: { score, count }`, que era uma
+     * segunda fonte de verdade com os mesmos dados desatualizados.
      */
     google: {
         rating: 4.7,
         reviews: 43,
-        conferidoEm: "2026-10-29",
+        conferidoEm: "2026-10-28",
     },
 
     // Link oficial que você mandou (CID)
@@ -49,7 +53,6 @@ export const LAVEXPRESS = {
     // Legacy fields kept for compatibility if needed elsewhere
     brand: "Lavexpress",
     phone: "2733377604",
-    rating: { score: 4.7, count: 37 },
     serviceAreas: ["Vitória/ES", "Serra/ES", "Vila Velha/ES"],
     pickupRules: {
         fixedMorningDays: ["Terça", "Sexta", "Sábado"],

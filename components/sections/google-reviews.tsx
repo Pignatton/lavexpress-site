@@ -18,14 +18,14 @@ function StarsRow() {
 
 export async function GoogleReviews() {
     let rating: number = LAVEXPRESS.google.rating;
-    let total = 37;
+    let total: number = LAVEXPRESS.google.reviews;
     let reviews: GoogleReview[] = [];
     let error = false;
 
     try {
         const data = await fetchPlaceDetails();
-        rating = data.rating ?? 4.7;
-        total = data.user_ratings_total ?? 37;
+        rating = data.rating ?? LAVEXPRESS.google.rating;
+        total = data.user_ratings_total ?? LAVEXPRESS.google.reviews;
 
         const allReviews = data.reviews ?? [];
         // Apenas 5 estrelas, com texto (evita card vazio)
