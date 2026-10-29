@@ -171,7 +171,7 @@ export function SiteFooter() {
                 <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between text-xs text-slate-500 text-center md:text-left">
                     <div>
                         <div className="font-medium text-slate-700">Pignatton Lavanderia LTDA</div>
-                        <div>CNPJ: 25.075.135/0001-47</div>
+                        <div>CNPJ: {LAVEXPRESS.cnpj}</div>
                     </div>
                     <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-center">
                         <span>© {new Date().getFullYear()} Lavexpress. Todos os direitos reservados.</span>
