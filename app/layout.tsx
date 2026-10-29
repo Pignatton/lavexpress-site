@@ -5,6 +5,7 @@ import "./globals.css";
 import { FloatingBubbles } from "@/components/ui/floating-bubbles";
 import { WhatsAppFloatingButton } from "@/components/layout/whatsapp-floating-button";
 import { AttributionBoot } from "@/components/attribution-boot";
+import { SITE_URL } from "@/lib/site-url";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,6 +21,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  // Resolve URLs relativas de OG/canonical. Sem isto o Next nao consegue
+  // montar URLs absolutas e o Google recebe metadados incompletos.
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Lavexpress | Lavanderia Delivery em Vitória e Vila Velha",
     template: "%s | Lavexpress",
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://lavexpress.com.br",
+    url: SITE_URL,
     title: "Lavexpress | Lavanderia Delivery Premium",
     description:
       "Lavanderia com coleta e entrega em Vitória e Vila Velha. Cuidado profissional para suas roupas.",
