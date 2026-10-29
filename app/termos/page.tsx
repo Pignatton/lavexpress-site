@@ -199,13 +199,16 @@ export default function TermosPage() {
                                 Nacional de Proteção de Dados (ANPD).
                             </p>
                             <p className="mt-4">
-                                <strong>Sobre o pedido de oposição, com honestidade:</strong> hoje não temos um botão
-                                que desligue a medição para uma pessoa específica. Ao receber seu pedido, nós o
-                                registramos, paramos de usar seus dados nas nossas análises e apagamos os registros
-                                que já tivermos. Para <strong>interromper a coleta</strong> enquanto não oferecemos
-                                esse controle no site, o caminho efetivo é bloquear ou apagar os cookies nas
-                                configurações do seu navegador — instruções na seção 6. Estamos trabalhando para
-                                oferecer o controle aqui mesmo.
+                                <strong>Sobre o pedido de oposição, com honestidade:</strong> hoje o site não tem um
+                                controle que desligue a medição para uma pessoa específica. Ao receber seu pedido,
+                                nós o registramos, paramos de usar seus dados nas nossas análises e apagamos os
+                                registros que já tivermos.
+                            </p>
+                            <p className="mt-4">
+                                O que não podemos prometer é interromper tecnicamente, por conta do seu pedido, a
+                                coleta feita pelas ferramentas de terceiros descritas em 5.3 — não temos hoje esse
+                                controle. A seção 6 explica o que as configurações do seu navegador conseguem fazer
+                                e o que elas não conseguem. Estamos trabalhando para oferecer o controle aqui mesmo.
                             </p>
 
                             <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">5.6 Segurança</h3>
@@ -257,12 +260,18 @@ export default function TermosPage() {
                                 preferências no próprio site.
                             </p>
                             <p className="mt-4">
-                                Enquanto esse controle não existe, o caminho que <strong>efetivamente interrompe a
-                                coleta</strong> é bloquear ou apagar cookies nas configurações do seu navegador —
-                                todos os navegadores permitem fazer isso por site. Você também pode se opor pelos
-                                canais de 5.1: nesse caso registramos o pedido, paramos de usar seus dados nas nossas
-                                análises e apagamos o que já tivermos, mas o bloqueio no navegador continua sendo o
-                                que impede a coleta de acontecer.
+                                Enquanto esse controle não existe, você pode bloquear ou apagar cookies nas
+                                configurações do seu navegador. <strong>Vale ser exato sobre o alcance disso:</strong>{" "}
+                                apagar ou bloquear os cookies impede que essas ferramentas mantenham um identificador
+                                estável entre as suas visitas, o que limita bastante o que elas conseguem medir — mas
+                                <strong> não impede, por si só, que os scripts carreguem</strong> e enviem informações
+                                da sua navegação, como endereço IP, páginas visitadas e características do navegador.
+                                Para bloquear os próprios scripts é preciso usar um navegador ou uma extensão que faça
+                                esse bloqueio.
+                            </p>
+                            <p className="mt-4">
+                                Você também pode se opor pelos canais de 5.1: registramos o pedido, paramos de usar
+                                seus dados nas nossas análises e apagamos o que já tivermos.
                             </p>
                             <p className="mt-4">
                                 Recusar esses cookies não impede você de usar o site, pedir orçamento ou contratar o
