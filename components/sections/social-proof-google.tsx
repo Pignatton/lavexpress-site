@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { LAVEXPRESS } from "@/lib/lavexpress";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, MapPin, ExternalLink } from "lucide-react";
@@ -56,8 +57,8 @@ export function SocialProofGoogle() {
     }, []);
 
     const placeName = data?.placeName ?? "Lavexpress Lavanderia";
-    const rating = data?.rating ?? 4.7; // fallback pro seu número real atual
-    const total = data?.total ?? 37; // fallback pro seu número real atual
+    const rating = data?.rating ?? LAVEXPRESS.google.rating;
+    const total = data?.total ?? LAVEXPRESS.google.reviews;
     const googleUrl =
         data?.googleUrl ??
         "https://www.google.com/maps?cid=13356030677811140771";

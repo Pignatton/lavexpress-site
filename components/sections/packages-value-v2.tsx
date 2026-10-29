@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { LAVEXPRESS } from "@/lib/lavexpress";
 import { motion, useReducedMotion } from "framer-motion";
 import {
     ArrowRight,
@@ -21,8 +22,8 @@ type Mode = "pacotes" | "avulso" | "emcasa";
 
 type Props = {
     pricePerPieceFrom?: number; // ex 4.40
-    ratingFallback?: number; // ex 4.7
-    totalFallback?: number; // ex 37
+    ratingFallback?: number;
+    totalFallback?: number;
     slaWashDry?: string; // "24–48h"
     slaIron?: string; // "4–5 dias úteis"
 };
@@ -55,8 +56,8 @@ type ReviewsApi = {
 
 export function PackagesValueV2({
     pricePerPieceFrom = 4.4,
-    ratingFallback = 4.7,
-    totalFallback = 37,
+    ratingFallback = LAVEXPRESS.google.rating,
+    totalFallback = LAVEXPRESS.google.reviews,
     slaWashDry = "24–48h",
     slaIron = "4–5 dias úteis",
 }: Props) {

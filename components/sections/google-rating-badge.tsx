@@ -57,7 +57,7 @@ export async function GoogleRatingBadge() {
     return (
         <Badge variant="secondary" className="bg-blue-50 text-blue-700 hover:bg-blue-100 px-3 py-1">
             <Star className="mr-1.5 size-4 fill-blue-700" />
-            {LAVEXPRESS.rating.score.toFixed(1)} ({LAVEXPRESS.rating.count} avaliações)
+            {LAVEXPRESS.google.rating.toFixed(1)} ({LAVEXPRESS.google.reviews} avaliações)
         </Badge>
     );
 }

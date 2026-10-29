@@ -1,6 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { LAVEXPRESS } from "@/lib/lavexpress";
 import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -12,8 +13,8 @@ type RatingData = {
 
 export function GoogleRatingBadgeClient() {
     const [data, setData] = useState<RatingData>({
-        rating: 4.7,
-        count: 37,
+        rating: LAVEXPRESS.google.rating,
+        count: LAVEXPRESS.google.reviews,
     });
     const [isLoading, setIsLoading] = useState(true);
 

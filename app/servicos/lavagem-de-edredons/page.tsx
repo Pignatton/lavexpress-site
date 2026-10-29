@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 const STARTING_PRICE = 40; // ✅ a partir de R$ 40,00
 
-function Stars({ rating = 4.7, count = 37 }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -96,7 +96,7 @@ export default function EdredonsPage() {
                                         Edredons & Cobertores
                                     </Badge>
 
-                                    <Stars rating={4.7} count={37} />
+                                    <Stars />
 
                                     <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-extrabold text-emerald-700 shadow-sm">
                                         <Truck className="h-4 w-4" />
