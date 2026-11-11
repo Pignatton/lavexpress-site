@@ -69,12 +69,12 @@ export const LAVEXPRESS = {
         expressInStoreHoursMax: 4,
     },
     /**
-     * Peças que NÃO entram nos pacotes mensais e são cobradas à parte, pela
+     * Peças que NÃO entram nos pacotes (validade de 90 dias) e são cobradas à parte, pela
      * tabela de peças avulsas.
      *
      * ⚠️ Isto NÃO é uma lista de serviços recusados. Terno, blazer e couro são
-     * atendidos e têm preço próprio em `catalogo.ts` (Terno Completo R$ 45,00,
-     * Blazer R$ 35,00, Jaqueta de Couro R$ 75,00). O nome anterior do campo era
+     * atendidos e têm preço próprio em `catalogo.ts` (tabela 2027: Terno Completo R$ 55,00,
+     * Blazer R$ 40,00, Jaqueta de Couro R$ 80,00). O nome anterior do campo era
      * `exclusions`, o que fazia a lista ser lida como "não fazemos" — inclusive
      * por quem auditou o site. O nome atual diz o que a lista é.
      *
@@ -83,9 +83,9 @@ export const LAVEXPRESS = {
      * operação não executa.
      */
     foraDosPacotes: [
-        "Edredons especiais (avaliar caso a caso)",
+        "Edredons",
         "Ternos e blazers",
         "Vestidos de festa",
-        "Peças delicadas que não podem ir à máquina",
+        "Peças que não podem ir à máquina",
     ],
 } as const;

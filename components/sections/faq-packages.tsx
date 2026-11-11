@@ -20,7 +20,7 @@ const FAQ_ITEMS = [
     },
     {
         question: "Posso incluir edredons ou ternos no pacote?",
-        answer: "Não. Os pacotes são exclusivos para roupas do dia a dia (camisetas, calças, shorts, roupas de cama simples, toalhas). Peças especiais como edredons, ternos, vestidos de festa e tapetes são cobradas à parte na tabela de 'Peças Avulsas'.",
+        answer: "Não. Os pacotes são exclusivos para roupas do dia a dia (camisetas, calças, shorts, roupas de cama simples, toalhas). Peças especiais como edredons, ternos, vestidos de festa, tapetes e peças que não podem ir à máquina são cobradas à parte na tabela de 'Peças Avulsas'.",
     },
     {
         question: "Como é feita a contagem das peças?",
