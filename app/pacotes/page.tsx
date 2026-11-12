@@ -78,7 +78,9 @@ function PackageCard({
     icon: any;
 }) {
     const bestValue = items.reduce((prev, current) => (prev.porPeca < current.porPeca ? prev : current));
-    const topRows = items.slice(0, 5);
+    // Todas as faixas do catálogo: a faixa do valor em destaque precisa
+    // aparecer na lista logo abaixo dele, com o preço total do pacote.
+    const rows = items;
 
     const colorStyles = {
         blue: {
@@ -194,12 +196,12 @@ function PackageCard({
             {/* body */}
             <div className="p-6 md:p-8">
                 <div className="flex items-center justify-between">
-                    <div className="text-sm font-extrabold text-slate-900">Tabelas mais escolhidas</div>
+                    <div className="text-sm font-extrabold text-slate-900">Todas as faixas deste pacote</div>
                     <div className="text-xs font-semibold text-slate-500">Escolha no WhatsApp</div>
                 </div>
 
                 <div className="mt-4 space-y-3">
-                    {topRows.map((item) => (
+                    {rows.map((item) => (
                         <div
                             key={item.pecas}
                             className="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm"
