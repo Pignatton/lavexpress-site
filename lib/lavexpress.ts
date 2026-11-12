@@ -88,4 +88,14 @@ export const LAVEXPRESS = {
         "Vestidos de festa",
         "Peças que não podem ir à máquina",
     ],
+    /**
+     * Regras dos pacotes (tabela de preços 2027) — fonte única dos textos que
+     * dizem a validade e o que os pacotes não incluem. Usada em /pacotes, nas
+     * perguntas frequentes dos pacotes e no aviso "Importante".
+     */
+    regrasPacotes: {
+        validadeDias: 90,
+        exclusoes:
+            "Os pacotes não incluem edredons, ternos, vestidos de festa e peças que não podem ir à máquina.",
+    },
 } as const;

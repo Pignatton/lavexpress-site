@@ -52,10 +52,11 @@ function formatBRL(n: number) {
     return FORMATO_BRL.format(n);
 }
 
-// Regra dos pacotes (tabela de preços 2027): o que fica de fora. Precisa
-// aparecer nesta página, que é onde o cliente lê "Validade 90 dias".
-const REGRA_EXCLUSOES =
-    "Os pacotes não incluem edredons, ternos, vestidos de festa e peças que não podem ir à máquina.";
+// Regras dos pacotes (tabela de preços 2027): validade e o que fica de fora.
+// Precisam aparecer nesta página, que é onde o cliente lê os valores.
+// O texto vem de um lugar só (lib/lavexpress.ts).
+const VALIDADE_DIAS = LAVEXPRESS.regrasPacotes.validadeDias;
+const REGRA_EXCLUSOES = LAVEXPRESS.regrasPacotes.exclusoes;
 
 type PackageItem = { pecas: number; valor: number; porPeca: number };
 
@@ -474,7 +475,7 @@ export default function PacotesPage() {
 
                         {/* Regras dos pacotes: validade e exclusões, junto das tabelas */}
                         <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-slate-200 bg-white px-6 py-4 text-center text-sm text-slate-600 shadow-sm">
-                            <strong className="text-slate-900">Regras dos pacotes:</strong> validade de 90 dias.{" "}
+                            <strong className="text-slate-900">Regras dos pacotes:</strong> validade de {VALIDADE_DIAS} dias.{" "}
                             {REGRA_EXCLUSOES} Edredons, ternos e vestidos de festa têm preço avulso — consulte no WhatsApp.
                         </p>
 

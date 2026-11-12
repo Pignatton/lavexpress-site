@@ -7,6 +7,7 @@ export function LegalNotice() {
             <Card className="p-6">
                 <div className="text-base font-medium">Importante</div>
                 <div className="mt-2 text-sm text-muted-foreground">
+                    Os pacotes têm validade de {LAVEXPRESS.regrasPacotes.validadeDias} dias.
                     Estas peças não entram nos pacotes, mas são atendidas
                     normalmente e cobradas à parte, pela tabela de peças avulsas:
                 </div>
