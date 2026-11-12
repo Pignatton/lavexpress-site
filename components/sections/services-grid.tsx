@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { LAVEXPRESS } from "@/lib/lavexpress";
 
 const SERVICES = [
     {
@@ -18,7 +19,7 @@ const SERVICES = [
     },
     {
         title: "Pacotes Lavexpress",
-        description: "Pacotes de peças para a sua rotina, com validade de 90 dias. Quanto maior o pacote, menor o valor por peça.",
+        description: `Pacotes de peças para a sua rotina, com validade de ${LAVEXPRESS.regrasPacotes.validadeDias} dias. Quanto maior o pacote, menor o valor por peça.`,
         image: "/images/carousel_folded_shirts.png", // Reused Generated
         features: ["Coleta semanal fixa", "Valor por peça menor nos pacotes maiores", "Prioridade na entrega"],
         link: "/pacotes",
