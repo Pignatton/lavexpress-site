@@ -6,6 +6,7 @@ import { FloatingBubbles } from "@/components/ui/floating-bubbles";
 import { WhatsAppFloatingButton } from "@/components/layout/whatsapp-floating-button";
 import { AttributionBoot } from "@/components/attribution-boot";
 import { SITE_URL } from "@/lib/site-url";
+import { IS_PREVIEW } from "@/lib/ambiente";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,6 +56,8 @@ export const metadata: Metadata = {
   icons: {
     icon: "/imagens/favcon.ico",
   },
+  // Prévia de teste (Vercel preview) nunca é indexada. Produção não é afetada.
+  ...(IS_PREVIEW ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function RootLayout({
@@ -92,6 +95,14 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        {IS_PREVIEW && (
+          <div
+            role="status"
+            style={{ position: "sticky", top: 0, zIndex: 1000, background: "#B45309", color: "#fff", textAlign: "center", padding: "6px 12px", fontSize: 14, fontWeight: 600 }}
+          >
+            AMBIENTE DE TESTE — prévia da tabela 2027, não publicada. Não use para atendimento.
+          </div>
+        )}
         <AttributionBoot />
         <FloatingBubbles />
         <div className="relative z-10">
