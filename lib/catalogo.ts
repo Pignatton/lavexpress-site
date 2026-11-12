@@ -90,8 +90,8 @@ export const SERVICES_DETAILS: Record<string, {
         included: [
             "Coleta e entrega no seu endereço",
             "Lavagem profissional com produtos adequados",
-            "Secagem controlada para preservar as roupas",
-            "Dobra organizada e higienizada",
+            "Secagem",
+            "Dobra organizada",
             "Processo padronizado, seguro e confiável"
         ],
         allowedItems: [
