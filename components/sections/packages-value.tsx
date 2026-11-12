@@ -14,9 +14,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
+import { PACOTES } from "@/lib/catalogo";
+
+/**
+ * Menor custo por peça entre os pacotes (hoje: lavar + secar, maior faixa).
+ * Derivado de `PACOTES` — nunca escrito à mão. O valor por peça só vale para
+ * aquela faixa, então o texto sempre mostra junto o tamanho do pacote.
+ */
+const MELHOR_PACOTE = PACOTES.lavarSecar.reduce((a, b) => (b.porPeca < a.porPeca ? b : a));
+const FAIXA_DO_MELHOR = `no pacote de ${MELHOR_PACOTE.pecas} peças (lavar + secar)`;
 
 type Props = {
-    pricePerPieceFrom?: number;
     showImage?: boolean;
     slaWashDry?: string; // ex: "24–48h"
     slaIron?: string; // ex: "4–5 dias úteis"
@@ -34,13 +42,12 @@ function scrollToPlans() {
 }
 
 export function PackagesValue({
-    pricePerPieceFrom = 4.4,
     showImage = true,
     slaWashDry = "24–48h",
     slaIron = "4–5 dias úteis",
 }: Props) {
     const reduceMotion = useReducedMotion();
-    const priceLabel = formatBRL(pricePerPieceFrom);
+    const priceLabel = formatBRL(MELHOR_PACOTE.porPeca);
 
     return (
         <section className="relative overflow-hidden bg-white py-20 md:py-24">
@@ -89,7 +96,7 @@ export function PackagesValue({
                                 </div>
                                 <div className="text-sm font-bold text-slate-900">A partir de</div>
                                 <div className="text-2xl font-extrabold text-blue-700">{priceLabel}</div>
-                                <div className="text-xs text-slate-500">/peça nos pacotes</div>
+                                <div className="text-xs text-slate-500">/peça {FAIXA_DO_MELHOR}</div>
                             </Card>
 
                             <Card className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition-transform hover:scale-105">

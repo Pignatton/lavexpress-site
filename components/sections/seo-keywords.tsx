@@ -17,7 +17,7 @@ export function SeoKeywords() {
         <li>Lavanderia delivery em Vitória ES</li>
         <li>Lavanderia delivery em Jardim Camburi</li>
         <li>Lavar, secar e passar roupas</li>
-        <li>Pacotes de lavanderia com preço fixo</li>
+        <li>Pacotes de lavanderia por quantidade de peças</li>
         <li>Lavagem profissional de edredons</li>
         <li>Lavagem de cortinas e tapetes</li>
         <li>Passadoria profissional</li>

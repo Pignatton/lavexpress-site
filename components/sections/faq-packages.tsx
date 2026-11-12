@@ -8,19 +8,23 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { HelpCircle } from "lucide-react";
+import { LAVEXPRESS } from "@/lib/lavexpress";
+
+// Validade e exclusões vêm de um lugar só, para não divergir de /pacotes.
+const REGRAS = LAVEXPRESS.regrasPacotes;
 
 const FAQ_ITEMS = [
     {
         question: "Como funciona a validade dos pacotes?",
-        answer: "Todos os pacotes têm validade de 90 dias (3 meses) a partir da data da compra. Você pode usar suas peças como quiser dentro desse período, sem pressa.",
+        answer: `Todos os pacotes têm validade de ${REGRAS.validadeDias} dias a partir da data da compra. Você pode usar suas peças como quiser dentro desse período.`,
     },
     {
         question: "O que acontece se eu não usar todas as peças?",
-        answer: "As peças não utilizadas expiram após 90 dias. Recomendamos escolher um pacote adequado ao seu volume mensal para garantir o melhor custo-benefício.",
+        answer: `As peças não utilizadas expiram após ${REGRAS.validadeDias} dias. Recomendamos escolher um pacote adequado ao volume que você usa nesse período.`,
     },
     {
         question: "Posso incluir edredons ou ternos no pacote?",
-        answer: "Não. Os pacotes são exclusivos para roupas do dia a dia (camisetas, calças, shorts, roupas de cama simples, toalhas). Peças especiais como edredons, ternos, vestidos de festa e tapetes são cobradas à parte na tabela de 'Peças Avulsas'.",
+        answer: `Não. ${REGRAS.exclusoes} Essas peças são atendidas normalmente e cobradas à parte, pela tabela de peças avulsas.`,
     },
     {
         question: "Como é feita a contagem das peças?",
@@ -32,7 +36,7 @@ const FAQ_ITEMS = [
     },
     {
         question: "O pagamento é antecipado?",
-        answer: "Sim, para garantir o desconto exclusivo dos pacotes, o pagamento é realizado na contratação (Pix ou Cartão). Assim você ganha créditos de peças para usar quando quiser.",
+        answer: `Sim, o pagamento é realizado na contratação (Pix ou Cartão). Assim você tem créditos de peças para usar dentro da validade de ${REGRAS.validadeDias} dias.`,
     },
 ];
 

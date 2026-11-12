@@ -28,7 +28,9 @@ export function QuickCalculator() {
             .filter(([_, qty]) => qty > 0)
             .map(([id, qty]) => {
                 const item = ITEMS.find((i) => i.id === id);
-                return `${qty}x ${item?.name}`;
+                // "a partir de" vai junto do item, para o total não ser lido
+                // como preço fechado na mensagem.
+                return `${qty}x ${item?.name}${item?.aPartirDe ? " — a partir de" : ""}`;
             })
             .join(", ");
 
@@ -61,8 +63,8 @@ export function QuickCalculator() {
                                     <ShoppingBag className="h-6 w-6" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-slate-900">Coleta e Entrega Grátis</h3>
-                                    <p className="text-sm text-slate-600">Para pedidos acima de R$ 100,00 em bairros atendidos.</p>
+                                    <h3 className="font-semibold text-slate-900">{LAVEXPRESS.coletaEntrega.titulo}</h3>
+                                    <p className="text-sm text-slate-600">{LAVEXPRESS.coletaEntrega.condicaoFrase}</p>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +80,10 @@ export function QuickCalculator() {
                                     <div key={item.id} className="flex items-center justify-between">
                                         <div className="flex flex-col">
                                             <span className="font-medium text-slate-900">{item.name}</span>
-                                            <span className="text-xs text-slate-500">{formatarMoeda(item.price)}</span>
+                                            <span className="text-xs text-slate-500">
+                                                {item.aPartirDe ? "a partir de " : ""}
+                                                {formatarMoeda(item.price)}
+                                            </span>
                                         </div>
                                         <div className="flex items-center gap-3">
                                             <Button
@@ -105,10 +110,13 @@ export function QuickCalculator() {
                             </div>
 
                             <div className="mt-4 rounded-xl bg-slate-50 p-4 border border-slate-100">
-                                <div className="flex items-center justify-between mb-4">
+                                <div className="flex items-center justify-between mb-2">
                                     <span className="text-sm text-slate-600">Total Estimado</span>
                                     <span className="text-2xl font-bold text-slate-900">{formatarMoeda(total)}</span>
                                 </div>
+                                <p className="mb-4 text-xs text-slate-500">
+                                    É uma estimativa. Cortinas entram pelo valor inicial (a partir de); o valor final é confirmado no WhatsApp.
+                                </p>
                                 <Button
                                     className="w-full h-12 text-base font-semibold bg-gradient-to-r from-blue-600 to-green-600 hover:brightness-110 shadow-lg shadow-blue-600/20"
                                     onClick={handleSchedule}

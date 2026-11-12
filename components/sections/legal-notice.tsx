@@ -7,7 +7,8 @@ export function LegalNotice() {
             <Card className="p-6">
                 <div className="text-base font-medium">Importante</div>
                 <div className="mt-2 text-sm text-muted-foreground">
-                    Estas peças não entram nos pacotes mensais, mas são atendidas
+                    Os pacotes têm validade de {LAVEXPRESS.regrasPacotes.validadeDias} dias.
+                    Estas peças não entram nos pacotes, mas são atendidas
                     normalmente e cobradas à parte, pela tabela de peças avulsas:
                 </div>
                 <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
