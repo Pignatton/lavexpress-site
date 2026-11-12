@@ -28,8 +28,10 @@ export const metadata: Metadata = {
 };
 
 // Preços por serviço
-const PRICE_TAPETE = 65; // R$ 65,00 por m²
-const PRICE_CORTINA = 60; // R$ 60,00 por parte (tabela 2027)
+// Tapete: a tabela de preços 2027 não traz valor. Enquanto não houver um
+// preço aprovado, a página não mostra número (o antigo era R$ 65,00/m²).
+const TAPETE_SEM_PRECO = "sob consulta";
+const PRICE_CORTINA = 60; // a partir de R$ 60,00 por parte (tabela 2027)
 
 function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
   return (
@@ -173,8 +175,8 @@ export default function CortinasPage() {
                   <Stars />
 
                   <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
-                    <span className="text-slate-500 font-bold">A partir de</span>
-                    <span className="text-emerald-600">R$ {formatBRL(PRICE_TAPETE)}/m²</span>
+                    <span className="text-slate-500 font-bold">Valor</span>
+                    <span className="text-emerald-600">{TAPETE_SEM_PRECO}</span>
                   </div>
                 </div>
 
@@ -302,7 +304,7 @@ export default function CortinasPage() {
                 },
                 {
                   q: "Como é calculado o valor?",
-                  a: `Tapetes: R$ ${formatBRL(PRICE_TAPETE)}/m². Cortinas: R$ ${formatBRL(PRICE_CORTINA)}/parte. Confirmamos medidas e valor total no WhatsApp antes de fechar.`,
+                  a: `Cortinas: a partir de R$ ${formatBRL(PRICE_CORTINA)}/parte. Tapetes: ${TAPETE_SEM_PRECO}. Confirmamos medidas e valor total no WhatsApp antes de fechar.`,
                 },
               ].map((item) => (
                 <Card key={item.q} className="p-6 rounded-2xl border-slate-100 bg-slate-50/50">

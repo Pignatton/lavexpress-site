@@ -27,6 +27,9 @@ export const metadata: Metadata = {
 };
 
 const STARTING_PRICE = 50; // ✅ a partir de R$ 50,00 (edredom solteiro, tabela 2027)
+// Cobertor: a tabela de preços 2027 não traz valor. O "a partir de" desta
+// página é o do edredom; cobertor não pode herdar esse número.
+const COBERTOR_SEM_PRECO = "sob consulta";
 
 function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
     return (
@@ -125,8 +128,12 @@ export default function EdredonsPage() {
                                 {/* VALUE STRIP (oferta clara) */}
                                 <div className="flex flex-wrap items-center gap-3 mb-6">
                                     <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-900 shadow-sm">
-                                        <span className="text-slate-500 font-bold">A partir de</span>
+                                        <span className="text-slate-500 font-bold">Edredom a partir de</span>
                                         <span className="text-blue-600">R$ {formatBRL(STARTING_PRICE)}</span>
+                                    </div>
+                                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-extrabold text-slate-900 shadow-sm">
+                                        <span className="text-slate-500 font-bold">Cobertor</span>
+                                        <span className="text-blue-600">{COBERTOR_SEM_PRECO}</span>
                                     </div>
                                     <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-extrabold text-blue-700 shadow-sm">
                                         <ShieldCheck className="h-4 w-4" />
@@ -227,7 +234,7 @@ export default function EdredonsPage() {
                                     {/* Price Tag Overlay */}
                                     <div className="absolute bottom-3 right-3 md:bottom-6 md:right-6 bg-white/95 backdrop-blur rounded-xl md:rounded-2xl p-3 md:p-4 shadow-xl border border-slate-100 max-w-[190px] md:max-w-[260px]">
                                         <div className="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
-                                            A partir de
+                                            Edredom a partir de
                                         </div>
                                         <div className="flex items-baseline gap-1">
                                             <span className="text-xs md:text-sm font-bold text-slate-400">R$</span>
@@ -237,7 +244,7 @@ export default function EdredonsPage() {
                                             <span className="text-xs md:text-sm font-bold text-slate-400">,00</span>
                                         </div>
                                         <div className="mt-1.5 md:mt-2 text-[10px] md:text-xs text-slate-600 font-semibold leading-tight">
-                                            Valor varia por tamanho/tipo/quantidade.
+                                            Varia pelo tamanho do edredom. Cobertor: {COBERTOR_SEM_PRECO}.
                                         </div>
                                         <div className="mt-2 md:mt-3 text-[10px] md:text-xs text-emerald-700 font-extrabold flex items-center gap-1">
                                             <CheckCircle2 className="h-3 w-3" />
@@ -457,7 +464,7 @@ export default function EdredonsPage() {
                                 },
                                 {
                                     q: "Qual o valor?",
-                                    a: `A partir de R$ ${formatBRL(STARTING_PRICE)}. O valor varia conforme tamanho, tipo (edredom/cobertor) e quantidade. Confirmamos antes de finalizar.`,
+                                    a: `Edredom: a partir de R$ ${formatBRL(STARTING_PRICE)}; o valor varia conforme o tamanho. Cobertor: ${COBERTOR_SEM_PRECO}. Confirmamos antes de finalizar.`,
                                 },
                             ].map((item) => (
                                 <Card key={item.q} className="p-6 rounded-2xl border-slate-100 bg-slate-50/50">
