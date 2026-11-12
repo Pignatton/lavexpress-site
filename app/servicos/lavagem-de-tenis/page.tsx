@@ -202,7 +202,7 @@ export default function SneakersPage() {
                                         </div>
                                         <div className="flex items-baseline gap-1">
                                             <span className="text-xs md:text-sm font-bold text-slate-400">R$</span>
-                                            <span className="text-3xl md:text-4xl font-extrabold text-slate-900">50</span>
+                                            <span className="text-3xl md:text-4xl font-extrabold text-slate-900">60</span>
                                             <span className="text-xs md:text-sm font-bold text-slate-400">,00</span>
                                         </div>
                                         <div className="mt-1.5 md:mt-2 text-[10px] md:text-xs text-slate-600 font-semibold leading-tight">

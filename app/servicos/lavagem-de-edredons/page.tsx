@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         "Lavagem e secagem completa de edredons e cobertores com padrão profissional: mais volume, maciez e sensação de limpeza. Coleta e entrega em Vitória/ES.",
 };
 
-const STARTING_PRICE = 40; // ✅ a partir de R$ 40,00
+const STARTING_PRICE = 50; // ✅ a partir de R$ 50,00 (edredom solteiro, tabela 2027)
 
 function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
     return (

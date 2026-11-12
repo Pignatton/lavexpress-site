@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 // Preços por serviço
 const PRICE_TAPETE = 65; // R$ 65,00 por m²
-const PRICE_CORTINA = 55; // R$ 55,00 por parte
+const PRICE_CORTINA = 60; // R$ 60,00 por parte (tabela 2027)
 
 function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
   return (
