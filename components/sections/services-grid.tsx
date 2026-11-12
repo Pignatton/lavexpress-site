@@ -18,9 +18,9 @@ const SERVICES = [
     },
     {
         title: "Pacotes Lavexpress",
-        description: "Garanta sua tranquilidade com pacotes Lavexpress. Coletas semanais e descontos exclusivos.",
+        description: "Pacotes de peças para a sua rotina, com validade de 90 dias. Quanto maior o pacote, menor o valor por peça.",
         image: "/images/carousel_folded_shirts.png", // Reused Generated
-        features: ["Coleta semanal fixa", "Desconto progressivo", "Prioridade na entrega"],
+        features: ["Coleta semanal fixa", "Valor por peça menor nos pacotes maiores", "Prioridade na entrega"],
         link: "/pacotes",
         badge: "Melhor Custo",
     },

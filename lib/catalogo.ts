@@ -84,7 +84,7 @@ export const SERVICES_DETAILS: Record<string, {
         description: "Você recebe um cesto exclusivo, coloca suas roupas do dia a dia, e nós cuidamos de todo o processo. Atenção: O cliente decide a separação das peças. Se colocar tudo junto no cesto, lavaremos tudo junto (responsabilidade do cliente sobre mistura de cores).",
         benefits: [
             { title: "Economia de Tempo", description: "Você não perde horas lavando roupa. Deixe isso com a gente.", icon: "Clock" },
-            { title: "Custo Inteligente", description: "Mais barato que serviço avulso. Padrão profissional com economia.", icon: "Wallet" },
+            { title: "Valor por Cesto", description: "O valor é por cesto, e não peça por peça. Confirmamos no WhatsApp antes de começar.", icon: "Wallet" },
             { title: "Conforto Absoluto", description: "Coleta e entrega na sua porta. Tudo feito sem sair de casa.", icon: "Truck" }
         ],
         included: [

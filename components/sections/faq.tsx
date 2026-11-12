@@ -9,12 +9,19 @@ import { MessageCircle, Clock, Wallet, ShieldCheck, Sparkles } from "lucide-reac
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { WhatsAppLink } from "@/components/whatsapp-link";
+import { PACOTES } from "@/lib/catalogo";
+
+const PACOTE_MENOR = PACOTES.lavarSecar[0];
+const PACOTE_MAIOR = PACOTES.lavarSecar[PACOTES.lavarSecar.length - 1];
+const brl = (n: number) => n.toFixed(2).replace(".", ",");
 
 const FAQS = [
     {
         icon: Wallet,
         question: "Lavar na lavanderia não sai muito caro?",
-        answer: "Essa é a maior surpresa dos nossos clientes: na ponta do lápis, sai mais barato. Quando você soma o custo de sabão de qualidade, amaciante, tira-manchas, água, energia elétrica, manutenção da máquina e, principalmente, o valor do seu tempo, lavar em casa custa caro. Nossos Pacotes Lavexpress reduzem o custo por peça para centavos, com resultado profissional.",
+        // Só afirma o que a tabela de preços sustenta: os dois extremos do
+        // pacote lavar + secar, cada valor por peça junto do tamanho do pacote.
+        answer: `Nos Pacotes Lavexpress, quanto maior o pacote, menor o valor por peça: no lavar + secar, vai de R$ ${brl(PACOTE_MENOR.porPeca)}/peça no pacote de ${PACOTE_MENOR.pecas} peças a R$ ${brl(PACOTE_MAIOR.porPeca)}/peça no pacote de ${PACOTE_MAIOR.pecas} peças. Para comparar com lavar em casa, some sabão, amaciante, tira-manchas, água, energia elétrica, manutenção da máquina e o seu tempo.`,
     },
     {
         icon: Clock,

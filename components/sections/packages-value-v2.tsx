@@ -125,7 +125,7 @@ export function PackagesValueV2({
                 {
                     icon: Wallet,
                     title: "Preço por peça que vale a pena",
-                    desc: `A partir de ${priceLabel}/peça ${FAIXA_DO_MELHOR}. Mais barato do que parece quando você soma tempo, energia e produtos.`,
+                    desc: `A partir de ${priceLabel}/peça ${FAIXA_DO_MELHOR}. Quanto maior o pacote, menor o valor por peça.`,
                 },
                 {
                     icon: Truck,
