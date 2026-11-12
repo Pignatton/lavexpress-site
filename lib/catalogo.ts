@@ -27,7 +27,7 @@ export const TABELA_PRECOS = [
     { nome: "Jaqueta de Couro", valor: 80.00, prazo: 7 },
     { nome: "Jaquetas Simples", valor: 45.00, prazo: 2 },
     { nome: "Lençol (Lavar/Secar/Passar)", valor: 18.00, prazo: 1 },
-    { nome: "Tapete Sintético (m²)", valor: 65.00, prazo: 7 },
+    // Tapete: sem preço aprovado na tabela 2027 (sob consulta). O antigo R$ 65/m² saiu.
     { nome: "Tênis", valor: 60.00, prazo: 5 },
     { nome: "Terno Completo", valor: 55.00, prazo: 3 },
     { nome: "Toalha de Banho", valor: 10.00, prazo: 2 },

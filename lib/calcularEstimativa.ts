@@ -15,7 +15,7 @@ export const ITEMS: ClothingItem[] = [
     { id: "Calça Jeans", name: "Calça Jeans", price: 18.00, category: "dia-a-dia" },
     { id: "Tênis", name: "Tênis", price: 60.00, category: "dia-a-dia" },
     { id: "Terno Completo", name: "Terno Completo", price: 55.00, category: "social" },
-    { id: "Cortinas (a partir)", name: "Cortinas (por parte)", price: 60.00, category: "social", aPartirDe: true },
+    { id: "Cortinas (a partir)", name: "Cortinas (a partir de)", price: 60.00, category: "social", aPartirDe: true },
     { id: "Edredom Casal", name: "Edredom Casal", price: 55.00, category: "cama-mesa" },
 ];
 

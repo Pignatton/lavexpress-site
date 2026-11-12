@@ -122,7 +122,7 @@ export default function EdredonsPage() {
 
                                 <p className="text-base md:text-lg lg:text-xl text-slate-600 mb-6 md:mb-8 leading-relaxed text-pretty">
                                     Lavagem e secagem <strong>com padrão profissional</strong> para peças volumosas.
-                                    A Lavexpress busca, higieniza e entrega pronto para você guardar ou usar.
+                                    A Lavexpress lava, seca e deixa pronto para você guardar ou usar.
                                 </p>
 
                                 {/* VALUE STRIP (oferta clara) */}
@@ -162,7 +162,7 @@ export default function EdredonsPage() {
                                         <div>
                                             <div className="font-extrabold text-slate-900">Secagem completa + volume de volta</div>
                                             <div className="text-sm text-slate-600">
-                                                Secagem controlada para evitar cheiro de umidade e devolver o &quot;fofinho&quot; do edredom.
+                                                Secagem completa, para o edredom voltar pronto para usar.
                                             </div>
                                         </div>
                                     </div>
@@ -258,7 +258,7 @@ export default function EdredonsPage() {
                                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     {[
                                         { title: "Lavagem", desc: "padrão profissional" },
-                                        { title: "Secagem", desc: "completa e controlada" },
+                                        { title: "Secagem", desc: "completa" },
                                         { title: "Finalização", desc: "pronto p/ guardar" },
                                     ].map((it) => (
                                         <Card key={it.title} className="p-4 rounded-2xl border-slate-100 bg-white shadow-sm">
@@ -310,7 +310,7 @@ export default function EdredonsPage() {
                                 </div>
                                 <h3 className="text-xl font-extrabold text-slate-900 mb-3">Mais maciez e volume</h3>
                                 <p className="text-slate-600 leading-relaxed">
-                                    Secagem controlada para devolver o &quot;fofinho&quot; e a sensação gostosa ao toque.
+                                    Secagem completa, para a peça voltar pronta para usar.
                                 </p>
                             </Card>
 

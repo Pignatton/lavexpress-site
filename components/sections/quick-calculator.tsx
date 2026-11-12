@@ -115,7 +115,7 @@ export function QuickCalculator() {
                                     <span className="text-2xl font-bold text-slate-900">{formatarMoeda(total)}</span>
                                 </div>
                                 <p className="mb-4 text-xs text-slate-500">
-                                    É uma estimativa. Cortinas entram pelo valor inicial (a partir de, por parte); o valor final é confirmado no WhatsApp.
+                                    É uma estimativa. Cortinas entram pelo valor inicial (a partir de); o valor final é confirmado no WhatsApp.
                                 </p>
                                 <Button
                                     className="w-full h-12 text-base font-semibold bg-gradient-to-r from-blue-600 to-green-600 hover:brightness-110 shadow-lg shadow-blue-600/20"

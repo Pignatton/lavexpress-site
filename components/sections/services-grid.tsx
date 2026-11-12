@@ -21,36 +21,36 @@ const SERVICES = [
         title: "Pacotes Lavexpress",
         description: `Pacotes de peças para a sua rotina, com validade de ${LAVEXPRESS.regrasPacotes.validadeDias} dias. Quanto maior o pacote, menor o valor por peça.`,
         image: "/images/carousel_folded_shirts.png", // Reused Generated
-        features: ["Coleta semanal fixa", "Valor por peça menor nos pacotes maiores", "Prioridade na entrega"],
+        features: [`Validade de ${LAVEXPRESS.regrasPacotes.validadeDias} dias`, "Valor por peça menor nos pacotes maiores", "Coleta e entrega: consulte as condições"],
         link: "/pacotes",
         badge: "Melhor Custo",
     },
     {
         title: "Tênis e Calçados",
-        description: "Renove seus calçados. Limpeza profunda que remove manchas e odores sem danificar.",
+        description: "Lavagem de tênis e calçados, com avaliação do material e orçamento antes de fechar.",
         image: "/images/carousel_sneakers.png", // Reused Generated
-        features: ["Limpeza manual", "Secagem técnica", "Cadarços inclusos"],
+        features: ["Avaliação do material", "Orçamento antes de fechar", "Coleta e entrega: consulte as condições"],
         link: "/servicos/lavagem-de-tenis",
     },
     {
         title: "Edredons e Cobertores",
-        description: "Higienização completa que elimina ácaros e fungos. Seu sono muito mais saudável.",
+        description: "Lavagem e secagem de edredons e cobertores, peças grandes demais para a máquina de casa.",
         image: "/images/carousel_comforter.png", // Reused Generated
-        features: ["Tratamento anti-ácaro", "Secagem total", "Embalagem a vácuo"],
+        features: ["Lavar e secar", "Solteiro, casal e queen/king", "Orçamento antes de fechar"],
         link: "/servicos/lavagem-de-edredons",
     },
     {
         title: "Passadoria Express",
         description: "Suas roupas passadas com perfeição. Ideal para camisas sociais e roupas de trabalho.",
         image: "/images/carousel_ironing.png", // Reused Generated
-        features: ["Acabamento impecável", "Em cabides ou dobradas", "Goma opcional"],
+        features: ["Camisas sociais e roupas de trabalho", "Pacotes só de passar", "Coleta e entrega: consulte as condições"],
         link: "/servicos/passadoria",
     },
     {
         title: "Cortinas e Tapetes",
-        description: "Higienização especializada para itens grandes. Removemos poeira acumulada e odores.",
+        description: "Lavagem de cortinas e tapetes, peças grandes e pesadas para lavar em casa.",
         image: "/images/carousel_delicate.png", // Reused Generated (Delicate Fabric)
-        features: ["Remoção de manchas", "Lavagem profunda", "Secagem controlada"],
+        features: ["Cortinas a partir de R$ 60", "Tapetes sob consulta", "Orçamento antes de fechar"],
         link: "/servicos/lavagem-de-cortinas",
     },
 ];
