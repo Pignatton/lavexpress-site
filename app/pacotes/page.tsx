@@ -23,7 +23,7 @@ import {
 
 export const metadata: Metadata = {
     title: "Pacotes | Lavexpress",
-    description: "Pacotes Lavexpress: melhor custo-benefício por peça, com coleta e entrega grátis e padrão profissional. Escolha o ideal para sua rotina.",
+    description: `Pacotes Lavexpress: melhor custo-benefício por peça e padrão profissional. Coleta e entrega: ${LAVEXPRESS.coletaEntrega.condicao}. Escolha o ideal para sua rotina.`,
 };
 
 function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
@@ -278,7 +278,7 @@ export default function PacotesPage() {
 
                                 <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-extrabold text-emerald-700 shadow-sm">
                                     <Truck className="h-4 w-4" />
-                                    Coleta e entrega grátis
+                                    {LAVEXPRESS.coletaEntrega.selo}
                                 </div>
                             </div>
 
@@ -375,9 +375,9 @@ export default function PacotesPage() {
                                 <div className="flex items-start gap-3">
                                     <Truck className="h-5 w-5 text-emerald-600 mt-0.5" />
                                     <div>
-                                        <div className="font-extrabold text-slate-900">Coleta e entrega grátis</div>
+                                        <div className="font-extrabold text-slate-900">{LAVEXPRESS.coletaEntrega.titulo}</div>
                                         <div className="text-sm text-slate-600">
-                                            Buscamos e levamos na sua porta. Sem taxa adicional nos pacotes.
+                                            Buscamos e levamos na sua porta. {LAVEXPRESS.coletaEntrega.condicaoFrase}
                                         </div>
                                     </div>
                                 </div>
