@@ -61,8 +61,8 @@ export function QuickCalculator() {
                                     <ShoppingBag className="h-6 w-6" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-slate-900">Coleta e Entrega Grátis</h3>
-                                    <p className="text-sm text-slate-600">Para pedidos acima de R$ 100,00 em bairros atendidos.</p>
+                                    <h3 className="font-semibold text-slate-900">{LAVEXPRESS.coletaEntrega.titulo}</h3>
+                                    <p className="text-sm text-slate-600">{LAVEXPRESS.coletaEntrega.condicaoFrase}</p>
                                 </div>
                             </div>
                         </div>
