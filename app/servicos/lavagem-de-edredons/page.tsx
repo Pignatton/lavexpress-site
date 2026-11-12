@@ -404,11 +404,11 @@ export default function EdredonsPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <Card className="p-6 bg-white border-slate-100 shadow-sm rounded-2xl">
                                     <div className="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">
-                                        Prazo médio
+                                        Prazo
                                     </div>
-                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">2–3 dias</div>
+                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">No orçamento</div>
                                     <div className="text-sm text-slate-500 font-medium">
-                                        Para garantir secagem completa.
+                                        O prazo é informado no orçamento, conforme o tipo de peça e a disponibilidade da operação.
                                     </div>
                                 </Card>
 
@@ -456,7 +456,7 @@ export default function EdredonsPage() {
                                 },
                                 {
                                     q: "Quanto tempo leva?",
-                                    a: "Em média 2 a 3 dias úteis para garantir secagem completa. Confirmamos o prazo no WhatsApp antes de fechar.",
+                                    a: "O prazo é informado no orçamento, conforme o tipo de peça e a disponibilidade da operação.",
                                 },
                                 {
                                     q: "Vocês buscam e entregam?",

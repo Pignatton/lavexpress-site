@@ -344,11 +344,11 @@ export default function SneakersPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <Card className="p-6 bg-white border-slate-100 shadow-sm rounded-2xl">
                                     <div className="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">
-                                        Prazo médio
+                                        Prazo
                                     </div>
-                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">5–7 dias</div>
+                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">Após avaliação</div>
                                     <div className="text-sm text-slate-500 font-medium">
-                                        Depende do modelo, material e demanda da semana.
+                                        O prazo é confirmado após a avaliação do material e das condições do par.
                                     </div>
                                 </Card>
 
@@ -398,7 +398,7 @@ export default function SneakersPage() {
                                 },
                                 {
                                     q: "Qual é o prazo?",
-                                    a: "Em média, 5 a 7 dias. Depende muito do tênis e da demanda. Confirmamos o prazo exato antes de fechar.",
+                                    a: "O prazo é confirmado após a avaliação do material e das condições do par.",
                                 },
                                 {
                                     q: "Quais as formas de pagamento?",
