@@ -104,7 +104,7 @@ function WhatsAppComposer() {
                 >
                     <WhatsAppLink
                         href={wa(
-                            "Olá! Quero orçamento para itens maiores (edredom/cortina/tapete). Itens: _____. Quantidade: _____. Bairro/CEP: _____."
+                            "Olá! Quero orçamento para itens maiores (edredom/cortina). Itens: _____. Quantidade: _____. Bairro/CEP: _____."
                         )}
                         target="_blank"
                         rel="noreferrer"

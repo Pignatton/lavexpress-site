@@ -18,7 +18,7 @@ export function SeoKeywords() {
         <li>Lavanderia em Jardim Camburi</li>
         <li>Lavar, secar e passar roupas</li>
         <li>Pacotes de lavanderia com preço fixo</li>
-                <li>Lavagem de cortinas e tapetes</li>
+                <li>Lavagem de cortinas</li>
         <li>Lavagem de edredons e cobertores</li>
         <li>Passadoria profissional</li>
         <li>Lavanderia residencial e empresarial</li>

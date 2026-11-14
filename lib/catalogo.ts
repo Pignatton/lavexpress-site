@@ -27,7 +27,7 @@ export const TABELA_PRECOS = [
     { nome: "Jaqueta de Couro", valor: 75.00, prazo: 7 },
     { nome: "Jaquetas Simples", valor: 45.00, prazo: 2 },
     { nome: "Lençol (Lavar/Secar/Passar)", valor: 15.00, prazo: 1 },
-    // Tapete: sem preço homologado (sob consulta); o item antigo por m² saiu.
+    // Tapete: fora do catálogo até o serviço ser confirmado.
     { nome: "Tênis", valor: 50.00, prazo: 5 },
     { nome: "Terno Completo", valor: 45.00, prazo: 3 },
     { nome: "Toalha de Banho", valor: 10.00, prazo: 2 },
@@ -187,10 +187,10 @@ export const SERVICES_DETAILS: Record<string, {
         ctaText: "Quero Minhas Roupas Passadas"
     },
     "lavagem-de-cortinas": {
-        title: "Cortinas e Tapetes",
+        title: "Cortinas",
         subtitle: "Peças grandes que dão trabalho em casa.",
         heroImage: "/images/carousel_delicate.png",
-        description: "Cortinas acumulam poeira e são pesadas para lavar em casa. Informe o tipo e o tamanho aproximado e receba o orçamento. Tapetes: sob consulta, com avaliação por foto.",
+        description: "Cortinas acumulam poeira e são pesadas para lavar em casa. Informe o tipo e o tamanho aproximado e receba o orçamento.",
         benefits: [
             { title: "Orçamento antes", description: "Valor e prazo confirmados antes de fechar.", icon: "ShieldCheck" },
             { title: "Peças grandes", description: "Cortinas pesadas para lavar e secar em casa.", icon: "Sparkles" },
@@ -204,7 +204,7 @@ export const SERVICES_DETAILS: Record<string, {
         ],
         faq: [
             { question: "E a retirada e a instalação da cortina?", answer: "Fale com a gente no WhatsApp antes para combinar como a cortina chega e volta." },
-            { question: "Lavam tapete?", answer: "Sob consulta: mande uma foto e confirmamos se dá para lavar, o valor e o prazo." }
+
         ],
         ctaText: "Orçar Lavagem de Casa"
     },
