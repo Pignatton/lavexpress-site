@@ -88,11 +88,11 @@ export const SERVICES_DETAILS: Record<string, {
             { title: "Atendimento no balcão", description: "Traga à loja em Jardim Camburi. Coleta e entrega: consulte as condições.", icon: "Truck" }
         ],
         included: [
-            "Coleta e entrega no seu endereço",
+            "Atendimento no balcão (coleta e entrega: consulte as condições)",
             "Lavagem profissional com produtos adequados",
             "Secagem",
             "Dobra organizada",
-            "Processo padronizado, seguro e confiável"
+            "Processo padronizado"
         ],
         allowedItems: [
             "Camisetas",
@@ -114,8 +114,8 @@ export const SERVICES_DETAILS: Record<string, {
         process: [
             { step: 1, title: "Solicitação", description: "Peça seu cesto exclusivo Lavexpress." },
             { step: 2, title: "Preenchimento", description: "Coloque suas roupas (separe por cor se desejar lavagem separada)." },
-            { step: 3, title: "Coleta e Lavagem", description: "Buscamos e lavamos conforme seu cesto." },
-            { step: 4, title: "Entrega", description: "Receba tudo limpo, seco e dobrado." }
+            { step: 3, title: "Lavagem", description: "Lavamos conforme o seu cesto." },
+            { step: 4, title: "Retirada", description: "Você retira tudo limpo, seco e dobrado." }
         ],
         ctaText: "Pedir Meu Cesto"
     },
@@ -167,22 +167,22 @@ export const SERVICES_DETAILS: Record<string, {
         title: "Passadoria Express",
         subtitle: "Chega de perder horas no ferro de passar.",
         heroImage: "/images/carousel_ironing.png",
-        description: "Passar roupa é a tarefa doméstica mais odiada. Deixe isso com a gente. Entregamos suas camisas e roupas sociais impecáveis, alinhadas e prontas para vestir. Você ganha tempo e apresentação pessoal.",
+        description: "Passar roupa toma tempo. Deixe isso com a gente: você traz as peças e retira tudo passado, pronto para vestir.",
         benefits: [
-            { title: "Apresentação Impecável", description: "Roupas sem vincos, com colarinhos e punhos perfeitos.", icon: "Sparkles" },
+            { title: "Roupa pronta para usar", description: "Camisas e roupas de trabalho passadas com cuidado.", icon: "Sparkles" },
             { title: "Economia de Tempo", description: "Quantas horas você gasta passando? Nós devolvemos esse tempo para você.", icon: "Clock" },
-            { title: "Praticidade", description: "Receba tudo no cabide ou dobrado, direto para o armário.", icon: "Truck" }
+            { title: "Orçamento antes", description: "Valor e prazo confirmados antes de fechar.", icon: "Truck" }
         ],
         process: [
-            { step: 1, title: "Coleta", description: "Buscamos suas roupas limpas (secas)." },
-            { step: 2, title: "Passadoria", description: "Equipamentos industriais a vapor que protegem o tecido." },
-            { step: 3, title: "Conferência", description: "Inspeção de qualidade peça a peça." },
-            { step: 4, title: "Entrega", description: "Tudo pronto para usar, sem amassados." }
+            { step: 1, title: "Balcão", description: "Você traz as roupas limpas e secas à loja." },
+            { step: 2, title: "Orçamento", description: "Confirmamos valor e prazo antes de fechar." },
+            { step: 3, title: "Passadoria", description: "As peças são passadas conforme o tecido." },
+            { step: 4, title: "Retirada", description: "Você retira tudo pronto para usar." }
         ],
         faq: [
-            { question: "Preciso fornecer cabides?", answer: "Pode enviar os seus ou fornecemos os nossos (consulte condições)." },
-            { question: "Qual o prazo?", answer: "Rápido! Em 2 a 3 dias suas roupas estão de volta." },
-            { question: "Passam qualquer tecido?", answer: "Sim, temos temperatura certa para seda, linho, algodão e sintéticos." }
+            { question: "Como as peças voltam?", answer: "Combine no atendimento como prefere receber as peças." },
+            { question: "Qual o prazo?", answer: "O prazo depende do volume e é confirmado antes de fechar." },
+            { question: "Passam qualquer tecido?", answer: "Depende do tecido e da etiqueta. Na dúvida, mande uma foto pelo WhatsApp." }
         ],
         ctaText: "Quero Minhas Roupas Passadas"
     },

@@ -13,13 +13,13 @@ const SERVICES = [
         title: "Cesto de Roupas",
         description: "Ideal para o dia a dia. Roupas lavadas, secas e dobradas. Preço por volume, sem surpresas.",
         image: "/images/service_basket.png", // Generated
-        features: ["Roupas do dia a dia", "Cama e banho simples", "Entrega dobrada"],
+        features: ["Roupas do dia a dia", "Cama e banho simples", "Roupas dobradas"],
         link: "/servicos/lavagem-de-roupas",
         badge: "Mais Popular",
     },
     {
         title: "Pacotes Lavexpress",
-        description: "Garanta sua tranquilidade com pacotes Lavexpress. Coletas semanais e descontos exclusivos.",
+        description: "Pacotes com quantidade definida de peças, para usar dentro da validade.",
         image: "/images/carousel_folded_shirts.png", // Reused Generated
         features: [`Validade de ${LAVEXPRESS.regrasPacotes.validadeDias} dias`, "Valor por peça menor nos pacotes maiores", "Coleta e entrega: consulte as condições"],
         link: "/pacotes",
@@ -40,10 +40,10 @@ const SERVICES = [
         link: "/servicos/lavagem-de-edredons",
     },
     {
-        title: "Passadoria Express",
-        description: "Suas roupas passadas com perfeição. Ideal para camisas sociais e roupas de trabalho.",
+        title: "Passadoria",
+        description: "Roupas passadas e prontas para usar. Ideal para camisas sociais e roupas de trabalho.",
         image: "/images/carousel_ironing.png", // Reused Generated
-        features: ["Camisas sociais e roupas de trabalho", "Pacotes só de passar", "Coleta e entrega: consulte as condições"],
+        features: ["Camisas sociais e roupas de trabalho", "Peças lavadas em casa", "Coleta e entrega: consulte as condições"],
         link: "/servicos/passadoria",
     },
     {
