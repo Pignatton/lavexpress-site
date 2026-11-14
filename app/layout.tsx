@@ -29,12 +29,13 @@ export const metadata: Metadata = {
     template: "%s | Lavexpress",
   },
   description:
-    "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Pacotes por peça, passadoria, tênis e cortinas. Orçamento no WhatsApp.",
+    "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Pacotes por peça, passadoria, tênis, cortinas e edredons. Orçamento no WhatsApp.",
   keywords: [
     "lavanderia",
     "lavanderia jardim camburi",
     "lavanderia vitória es",
     "lavanderia vila velha",
+    "lavar edredom",
     "passadoria vitória",
     "passadoria",
     // "lavagem a seco" saiu daqui de proposito: a operacao nao executa dry

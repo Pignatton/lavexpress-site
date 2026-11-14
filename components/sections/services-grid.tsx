@@ -50,7 +50,7 @@ const SERVICES = [
         title: "Cortinas e Tapetes",
         description: "Lavagem de cortinas e tapetes, peças grandes e pesadas para lavar em casa.",
         image: "/images/carousel_delicate.png", // Reused Generated (Delicate Fabric)
-        features: ["Cortinas a partir de R$ 60", "Tapetes sob consulta", "Orçamento antes de fechar"],
+        features: ["Cortinas: orçamento por tipo e tamanho", "Tapetes sob consulta", "Orçamento antes de fechar"],
         link: "/servicos/lavagem-de-cortinas",
     },
 ];

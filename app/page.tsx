@@ -16,7 +16,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 
 export const metadata: Metadata = {
   title: "Lavanderia em Jardim Camburi, Vitória/ES | Lavexpress",
-  description: "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Pacotes por peça, passadoria, tênis e cortinas. Orçamento no WhatsApp.",
+  description: "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Pacotes por peça, passadoria, tênis, cortinas e edredons. Orçamento no WhatsApp.",
 };
 
 export default function HomePage() {

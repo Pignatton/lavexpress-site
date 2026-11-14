@@ -27,7 +27,7 @@ export const TABELA_PRECOS = [
     { nome: "Jaqueta de Couro", valor: 75.00, prazo: 7 },
     { nome: "Jaquetas Simples", valor: 45.00, prazo: 2 },
     { nome: "Lençol (Lavar/Secar/Passar)", valor: 15.00, prazo: 1 },
-    { nome: "Tapete Sintético (m²)", valor: 65.00, prazo: 7 },
+    // Tapete: sem preço homologado (sob consulta); o item R$ 65/m² saiu.
     { nome: "Tênis", valor: 50.00, prazo: 5 },
     { nome: "Terno Completo", valor: 45.00, prazo: 3 },
     { nome: "Toalha de Banho", valor: 10.00, prazo: 2 },
@@ -188,24 +188,23 @@ export const SERVICES_DETAILS: Record<string, {
     },
     "lavagem-de-cortinas": {
         title: "Cortinas e Tapetes",
-        subtitle: "Sua casa livre de poeira e odores.",
+        subtitle: "Peças grandes que dão trabalho em casa.",
         heroImage: "/images/carousel_delicate.png",
-        description: "Cortinas e tapetes acumulam quilos de poeira por ano. Nossa limpeza especializada remove a sujeira profunda, elimina odores de mofo/animais e renova as cores do ambiente.",
+        description: "Cortinas acumulam poeira e são pesadas para lavar em casa. Informe o tipo e o tamanho aproximado e receba o orçamento. Tapetes: sob consulta, com avaliação por foto.",
         benefits: [
-            { title: "Ar Puro", description: "Removemos a poeira acumulada que causa rinite e alergias.", icon: "ShieldCheck" },
-            { title: "Cores Vivas", description: "A sujeira esconde a cor real. A lavagem devolve a vida à decoração.", icon: "Sparkles" },
-            { title: "Sem Trabalho", description: "Esqueça o esforço de esfregar tapete ou tirar cortina pesada.", icon: "Truck" }
+            { title: "Orçamento antes", description: "Valor e prazo confirmados antes de fechar.", icon: "ShieldCheck" },
+            { title: "Peças grandes", description: "Cortinas pesadas para lavar e secar em casa.", icon: "Sparkles" },
+            { title: "Atendimento no balcão", description: "Traga à loja em Jardim Camburi.", icon: "Truck" }
         ],
         process: [
-            { step: 1, title: "Retirada", description: "Agendamos a retirada (consulte serviço de desmontagem)." },
-            { step: 2, title: "Bate-Poeira", description: "Remoção física da sujeira sólida antes da lavagem." },
-            { step: 3, title: "Lavagem Profunda", description: "Imersão e escovação específica para cada fibra." },
-            { step: 4, title: "Secagem e Entrega", description: "Secagem lenta e entrega agendada." }
+            { step: 1, title: "Orçamento", description: "Você informa tipo e tamanho; confirmamos valor e prazo." },
+            { step: 2, title: "Lavagem", description: "Conforme o tecido e a etiqueta." },
+            { step: 3, title: "Secagem", description: "A peça é seca na loja." },
+            { step: 4, title: "Retirada", description: "Você retira na loja." }
         ],
         faq: [
-            { question: "Vocês instalam a cortina?", answer: "Temos parceiros e equipe para desmontagem e instalação. Consulte." },
-            { question: "Tapete demora a secar?", answer: "Sim, tapetes grossos precisam de 7 a 10 dias para secar sem cheiro." },
-            { question: "Lavam tapete persa?", answer: "Sim, com processo delicado e produtos neutros." }
+            { question: "E a retirada e a instalação da cortina?", answer: "Fale com a gente no WhatsApp antes para combinar como a cortina chega e volta." },
+            { question: "Lavam tapete?", answer: "Sob consulta: mande uma foto e confirmamos se dá para lavar, o valor e o prazo." }
         ],
         ctaText: "Orçar Lavagem de Casa"
     },
