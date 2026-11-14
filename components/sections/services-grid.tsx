@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { LAVEXPRESS } from "@/lib/lavexpress";
 
 const SERVICES = [
     {

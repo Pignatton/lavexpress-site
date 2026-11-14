@@ -164,7 +164,7 @@ export function WhyLavexpress() {
                     </div>
 
                     <div className="text-xs text-slate-500">
-                        Processo profissional • Prazos previsíveis • Custo-benefício
+                        Processo profissional • Prazo confirmado antes • Custo-benefício
                     </div>
                 </div>
             </div>

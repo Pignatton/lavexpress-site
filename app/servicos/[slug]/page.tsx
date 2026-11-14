@@ -118,10 +118,10 @@ function getFinalCTAHeading() {
 }
 
 function getFinalCTASubheading() {
-    return "Agende agora e receba suas roupas prontas para usar. Atendimento claro, prazos previsíveis e cuidado profissional.";
+    return "Agende agora e receba suas roupas prontas para usar. Atendimento claro e valor e prazo confirmados antes de fechar.";
 }
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -130,7 +130,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -201,8 +201,7 @@ export default async function ServicePage({ params }: Props) {
                                     <div className="inline-flex items-center gap-2 text-sm text-slate-600">
                                         <Clock className="h-4 w-4 text-blue-600" />
                                         <span>
-                                            Lavar + secar: <strong>24–48h</strong> | Passadoria:{" "}
-                                            <strong>4–5 dias úteis</strong>
+                                            O prazo depende das peças e do volume e é confirmado antes de fechar.
                                         </span>
                                     </div>
 
@@ -365,10 +364,10 @@ export default async function ServicePage({ params }: Props) {
                                 <Card className="p-5 rounded-2xl border-slate-200 bg-white">
                                     <div className="flex items-center gap-2 font-extrabold text-slate-900">
                                         <Clock className="h-5 w-5 text-emerald-600" />
-                                        Prazo previsível
+                                        Prazo combinado
                                     </div>
                                     <p className="mt-1 text-sm text-slate-600">
-                                        Você sabe quando busca e quando recebe. Isso organiza sua rotina.
+                                        Confirmamos valor e prazo antes de fechar.
                                     </p>
                                 </Card>
 
@@ -508,7 +507,7 @@ export default async function ServicePage({ params }: Props) {
                                     <Truck className="h-5 w-5 text-emerald-600 mt-0.5" />
                                     <div>
                                         <div className="font-extrabold text-slate-900">Coleta e entrega</div>
-                                        <div className="text-sm text-slate-600">Você não perde tempo saindo de casa.</div>
+                                        <div className="text-sm text-slate-600">Consulte as condições para a sua região.</div>
                                     </div>
                                 </div>
 
@@ -576,7 +575,7 @@ export default async function ServicePage({ params }: Props) {
                         </div>
 
                         <p className="mt-8 text-sm text-emerald-100/80 font-medium">
-                            Atendimento: Vitória/ES e região • Prazos previsíveis • Padrão profissional
+                            Loja em Jardim Camburi, Vitória/ES • Prazo confirmado antes de fechar
                         </p>
                     </div>
                 </section>

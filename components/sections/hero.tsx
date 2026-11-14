@@ -43,12 +43,12 @@ const BRAND = {
     GOOGLE_REVIEWS_URL: "https://search.google.com/local/reviews?placeid=ChIJ_fmjZbIZuAARoxgnYCMnWrk",
 
     // SLAs e mensagens operacionais
-    SLA_WASH_DRY: "Coleta e entrega em 24–48h",
-    SLA_IRON: "Passadoria em 4–5 dias úteis",
+    SLA_WASH_DRY: "Atendimento no balcão em Jardim Camburi",
+    SLA_IRON: "Prazo confirmado antes de fechar",
     PAYMENT_HINT: "Pagamento facilitado",
 
     // Região
-    AREAS: "Vitória, Serra e Vila Velha",
+    AREAS: "Jardim Camburi, Vitória/ES",
 };
 
 // Normaliza string (sem acentos, sem pontuação)
@@ -81,7 +81,7 @@ function checkArea(input: string): { ok: boolean; label: string } | null {
 
     // Regras "largas" para não perder lead
     if (v.includes("vitoria") || v.includes("vitória")) {
-        return { ok: true, label: "Atendimento confirmado para Vitória." };
+        return { ok: true, label: "Vitória: confirmamos as condições de coleta e entrega no WhatsApp." };
     }
     if (v.includes("serra")) {
         return { ok: true, label: "Serra: atendimento sob confirmação rápida no WhatsApp." };
@@ -175,7 +175,7 @@ export function Hero() {
 
                             {/* Subheadline (valor real) */}
                             <p className="mt-4 max-w-xl text-pretty text-lg text-slate-600 md:text-xl">
-                                Cuidado profissional de verdade, acabamento superior e prazos previsíveis.
+                                Cuidado profissional de verdade, acabamento cuidadoso e prazo confirmado antes de fechar.
                                 Coleta e entrega agendadas para sua total comodidade.
                             </p>
 

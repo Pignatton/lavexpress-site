@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         "Lavagem de tênis e calçados na Lavexpress, em Jardim Camburi: avaliação do material e orçamento antes de fechar. Coleta e entrega em Vitória/ES: consulte as condições.",
 };
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -35,7 +35,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -187,7 +187,7 @@ export default function SneakersPage() {
                                 <div className="relative rounded-[2rem] overflow-hidden border border-white/60 shadow-2xl bg-white/80 backdrop-blur-sm">
                                     <Image
                                         src="/imagens/hero-sneakers.png"
-                                        alt="Tênis higienizado e renovado"
+                                        alt="Par de tênis"
                                         width={800}
                                         height={600}
                                         className="w-full h-auto object-cover"

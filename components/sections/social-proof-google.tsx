@@ -58,7 +58,6 @@ export function SocialProofGoogle() {
 
     const placeName = data?.placeName ?? "Lavexpress Lavanderia";
     const rating = data?.rating ?? LAVEXPRESS.google.rating;
-    const total = data?.total ?? LAVEXPRESS.google.reviews;
     const googleUrl =
         data?.googleUrl ??
         "https://www.google.com/maps?cid=13356030677811140771";
@@ -116,7 +115,7 @@ export function SocialProofGoogle() {
                                             <div className="space-y-1">
                                                 <StarsRow value={5} />
                                                 <div className="text-sm text-emerald-100">
-                                                    {total} avaliações no Google
+                                                    Nota no Google
                                                 </div>
                                             </div>
                                         </div>

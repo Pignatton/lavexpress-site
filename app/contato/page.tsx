@@ -155,7 +155,7 @@ export default function ContatoPage() {
                             </Badge>
 
                             <h1 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
-                                Atendimento rápido. Coleta e entrega com padrão profissional.
+                                Fale com a Lavexpress. Orçamento pelo WhatsApp.
                             </h1>
 
                             <p className="mt-4 text-lg md:text-xl text-emerald-50 leading-relaxed">

@@ -25,31 +25,30 @@ export const metadata: Metadata = {
   // montar URLs absolutas e o Google recebe metadados incompletos.
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Lavexpress | Lavanderia Delivery em Vitória e Vila Velha",
+    default: "Lavanderia em Jardim Camburi, Vitória/ES | Lavexpress",
     template: "%s | Lavexpress",
   },
   description:
-    "Sua lavanderia delivery premium em Vitória e Vila Velha. Coleta e entrega em Jardim Camburi, Praia do Canto, Praia da Costa e região. Agende agora.",
+    "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Pacotes por peça, passadoria, tênis e cortinas. Orçamento no WhatsApp.",
   keywords: [
     "lavanderia",
-    "lavanderia delivery",
+    "lavanderia jardim camburi",
     "lavanderia vitória es",
     "lavanderia vila velha",
-    "lavar edredom",
+    "passadoria vitória",
     "passadoria",
     // "lavagem a seco" saiu daqui de proposito: a operacao nao executa dry
     // cleaning. Anunciar o termo atrai busca que o atendimento nao atende — e a
     // campanha do Google Ads ja bloqueia essas consultas como negativas.
     "lavanderia de ternos",
-    "lavagem de couro",
   ],
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
-    title: "Lavexpress | Lavanderia Delivery Premium",
+    title: "Lavanderia em Jardim Camburi, Vitória/ES | Lavexpress",
     description:
-      "Lavanderia com coleta e entrega em Vitória e Vila Velha. Cuidado profissional para suas roupas.",
+      "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Orçamento no WhatsApp.",
     siteName: "Lavexpress",
   },
   icons: {

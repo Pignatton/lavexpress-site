@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 
 const STARTING_PRICE = 40; // ✅ a partir de R$ 40,00
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -37,7 +37,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -217,7 +217,7 @@ export default function EdredonsPage() {
                                 <div className="relative rounded-[2rem] overflow-hidden border border-white/60 shadow-2xl bg-white/80 backdrop-blur-sm">
                                     <Image
                                         src="/images/edredom_hero_clean_1767392053952.png"
-                                        alt="Edredom higienizado e volumoso"
+                                        alt="Edredom dobrado"
                                         width={800}
                                         height={600}
                                         className="w-full h-auto object-cover"

@@ -48,7 +48,7 @@ const COMPLETO = melhorDe(PACOTES.lavarSecarPassar);
 const STARTING_PRICE = SO_PASSAR.porPeca;
 const STARTING_PIECES = SO_PASSAR.pecas;
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -57,7 +57,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -412,7 +412,7 @@ export default function PassadoriaPage() {
                                 },
                                 {
                                     q: "Qual o prazo?",
-                                    a: `Em média ${LAVEXPRESS.sla.washDryIronBusinessDaysMin} a ${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis para lavar e passar. Confirmamos antes de fechar, para você não ficar sem roupa.`,
+                                    a: "O prazo depende das peças e do volume. Confirmamos antes de fechar, para você não ficar sem roupa.",
                                 },
                                 {
                                     q: "Passam qualquer tecido?",
