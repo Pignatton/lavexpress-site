@@ -37,6 +37,7 @@ describe("localização da loja (fonte única)", () => {
 });
 
 describe("JSON-LD do negócio local", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- leitura livre do JSON-LD no teste
     const ld = negocioLocalJsonLd() as Record<string, any>;
 
     it("tem tipo, nome, endereço completo, CEP, telefone e URL", () => {
