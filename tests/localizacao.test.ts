@@ -45,7 +45,8 @@ describe("JSON-LD do negócio local", () => {
         expect(ld.name).toBe("Lavexpress Lavanderia");
         expect(ld.address.streetAddress).toContain("R. Ruy Pinto Bandeira, 580 - loja 1");
         expect(ld.address.postalCode).toBe("29090-130");
-        expect(ld.telephone).toBe("+552733377604");
+        // Igual ao telefone da ficha do Google (NAP consistente).
+        expect(ld.telephone).toBe("+5527996172403");
         expect(ld.url).toMatch(/^https:\/\//);
     });
 

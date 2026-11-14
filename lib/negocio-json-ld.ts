@@ -20,8 +20,11 @@ import { SITE_URL } from "@/lib/site-url";
  * Vitória, Serra e Vila Velha inteiras, ambos a corrigir).
  */
 
-/** Telefone fixo da ficha do Google: (27) 3337-7604. */
-const TELEFONE_FIXO_E164 = `+55${LAVEXPRESS.phone}`;
+/**
+ * Telefone igual ao da ficha pública do Google (conferida em 14/11/2026):
+ * (27) 99617-2403. NAP (nome, endereço, telefone) tem de bater com o Perfil.
+ */
+const TELEFONE_FICHA_E164 = `+${LAVEXPRESS.whatsappE164}`;
 
 /** Coordenada da fonte única (`GEO_LOJA` em lib/lavexpress.ts). */
 const GEO = { latitude: LAVEXPRESS.geo.lat, longitude: LAVEXPRESS.geo.lng } as const;
@@ -33,7 +36,7 @@ export function negocioLocalJsonLd(): Record<string, unknown> {
         "@id": `${SITE_URL}/#negocio`,
         name: LAVEXPRESS.name,
         url: SITE_URL,
-        telephone: TELEFONE_FIXO_E164,
+        telephone: TELEFONE_FICHA_E164,
         email: LAVEXPRESS.email,
         address: {
             "@type": "PostalAddress",
