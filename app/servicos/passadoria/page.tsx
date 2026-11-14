@@ -269,7 +269,7 @@ export default function PassadoriaPage() {
 
                                 {/* micro garantias */}
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
-                                    <Pill>Preço por peça previsível</Pill>
+                                    <Pill>Preço por peça</Pill>
                                     <Pill>Qualidade conferida</Pill>
                                     <Pill>Ideal para rotina</Pill>
                                 </div>
@@ -322,7 +322,7 @@ export default function PassadoriaPage() {
                                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     {[
                                         { title: "Passadoria", desc: "padrão profissional" },
-                                        { title: "Conferência", desc: "peça por peça" },
+                                        { title: "Orçamento", desc: "antes de fechar" },
                                         { title: "Organização", desc: "pronto p/ usar" },
                                     ].map((it) => (
                                         <Card key={it.title} className="p-4 rounded-2xl border-slate-100 bg-white shadow-sm">
@@ -416,7 +416,7 @@ export default function PassadoriaPage() {
                                 },
                                 {
                                     q: "Passam qualquer tecido?",
-                                    a: "Avaliamos peça por peça. Ajustamos temperatura e técnica ao tipo de tecido e tratamos à parte itens delicados ou com indicação específica na etiqueta. Se alguma peça não puder ser passada com segurança, avisamos antes — não assumimos risco com a sua roupa.",
+                                    a: "Depende do tecido. Ajustamos temperatura e técnica ao tipo de tecido e tratamos à parte itens delicados ou com indicação específica na etiqueta. Se alguma peça não puder ser passada com segurança, avisamos antes — não assumimos risco com a sua roupa.",
                                 },
                                 {
                                     q: "Por que pacote vale mais?",

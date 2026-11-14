@@ -97,7 +97,7 @@ export function SocialProofGoogle() {
                     </h2>
 
                     <p className="mt-4 text-lg text-emerald-50">
-                        Comentários reais de clientes que usam a Lavexpress no dia a dia. Você agenda, a gente busca, cuida e entrega no prazo.
+                        Comentários reais de clientes que usam a Lavexpress no dia a dia. Valor e prazo confirmados antes de fechar.
                     </p>
                 </div>
 

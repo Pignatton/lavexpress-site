@@ -340,7 +340,7 @@ export default function EdredonsPage() {
                                     {[
                                         {
                                             title: "1) Coleta",
-                                            desc: "A gente busca na sua casa (ou você entrega na loja).",
+                                            desc: "Você entrega na loja. Coleta e entrega: consulte as condições.",
                                         },
                                         {
                                             title: "2) Identificação do tipo/tamanho",

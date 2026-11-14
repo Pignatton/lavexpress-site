@@ -362,7 +362,7 @@ export default function PacotesPage() {
                                     <div>
                                         <div className="font-extrabold text-slate-900">{LAVEXPRESS.coletaEntrega.titulo}</div>
                                         <div className="text-sm text-slate-600">
-                                            Buscamos e levamos na sua porta. {LAVEXPRESS.coletaEntrega.condicaoFrase}
+                                            {LAVEXPRESS.coletaEntrega.condicaoFrase}
                                         </div>
                                     </div>
                                 </div>

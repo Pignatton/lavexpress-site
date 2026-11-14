@@ -88,7 +88,7 @@ export function LifeQuality() {
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-slate-700 font-medium">
                                 <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                                <span>Zero trabalho: Buscamos e entregamos na sua porta.</span>
+                                <span>Menos trabalho: você traz, a gente lava, seca e passa.</span>
                             </li>
                             <li className="flex items-start gap-3 text-slate-700 font-medium">
                                 <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />

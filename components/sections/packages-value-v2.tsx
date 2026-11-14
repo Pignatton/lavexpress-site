@@ -160,7 +160,7 @@ export function PackagesValueV2({
                 },
                 {
                     icon: Clock,
-                    title: "Menos previsível",
+                    title: "Custo que varia",
                     desc: "Na prática, você volta a depender de encaixe e disponibilidade. Pacote organiza seu fluxo.",
                 },
                 {

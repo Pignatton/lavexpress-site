@@ -13,8 +13,8 @@ const STEPS = [
     },
     {
         icon: Truck,
-        title: "2. Coleta na sua porta",
-        description: `Buscamos suas roupas na sua porta, no horário combinado. ${LAVEXPRESS.coletaEntrega.condicaoFrase}`,
+        title: "2. Traga ao balcão",
+        description: `Você traz as roupas à loja em Jardim Camburi. ${LAVEXPRESS.coletaEntrega.titulo}: ${LAVEXPRESS.coletaEntrega.condicao}.`,
         color: "text-emerald-600",
         bg: "bg-emerald-50",
     },

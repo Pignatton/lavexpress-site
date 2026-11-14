@@ -390,7 +390,7 @@ export default function SneakersPage() {
                             {[
                                 {
                                     q: "Dá para lavar tênis branco?",
-                                    a: "Sim. A gente avalia o estado (amarelado antigo, manchas profundas) antes de fechar. Não prometemos “zero marca” em desgaste antigo — mas buscamos o melhor resultado possível com segurança.",
+                                    a: "Sim. A gente avalia o estado (amarelado antigo, manchas profundas) antes de fechar. Não prometemos “zero marca” em desgaste antigo — o resultado depende do estado do par.",
                                 },
                                 {
                                     q: "E camurça / nobuck?",

@@ -29,7 +29,7 @@ const FAQS = [
     {
         icon: Sparkles,
         question: "E a parte chata de passar roupa?",
-        answer: "Pode esquecer o ferro de passar. Entregamos suas roupas (dependendo do pacote) perfeitamente passadas e embaladas. Camisas sociais no cabide, lençóis dobrados com perfeição. A sensação de vestir uma roupa com acabamento profissional todos os dias é impagável.",
+        answer: "Pode esquecer o ferro de passar. Na passadoria, você retira as roupas passadas e prontas para usar. Valor e prazo são confirmados antes de fechar.",
     },
     {
         question: "Como funciona a coleta e entrega?",

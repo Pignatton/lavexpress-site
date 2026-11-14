@@ -74,7 +74,7 @@ const PERFIS = [
     {
         icon: Building2,
         title: "Escritórios e equipes administrativas",
-        text: "Camisaria e calça social do time que recebe cliente, atende no balcão e participa de reunião. Volume previsível, padrão de apresentação constante.",
+        text: "Camisaria e calça social do time que recebe cliente, atende no balcão e participa de reunião. Padrão de apresentação para o time.",
     },
     {
         icon: ShieldCheck,
@@ -111,13 +111,13 @@ const PASSOS = [
     },
     {
         n: 3,
-        title: "Buscamos na empresa ou você traz",
+        title: "Você traz à loja",
         text: "Sua equipe deixa e retira na nossa loja em Jardim Camburi. Coleta e entrega: consulte as condições no orçamento.",
     },
     {
         n: 4,
         title: "Conferimos e processamos",
-        text: "As peças são conferidas na entrada, separadas por tipo e tratamento, lavadas, secas e — quando o atendimento inclui — passadas peça por peça.",
+        text: "As peças são conferidas na entrada, separadas por tipo e tratamento, lavadas, secas e — quando o atendimento inclui — passadas.",
     },
     {
         n: 5,
