@@ -1,6 +1,9 @@
+import { GEO_LOJA } from "@/lib/lavexpress";
+
+// Coordenada vinda da fonte única (lib/lavexpress.ts).
 export const STORE_LOCATION = {
-    lat: -20.2589,
-    lng: -40.2922,
+    lat: GEO_LOJA.lat,
+    lng: GEO_LOJA.lng,
     address: "R. Ruy Pinto Bandeira, 580 - loja 1 - Jardim Camburi, Vitória/ES",
 };
 

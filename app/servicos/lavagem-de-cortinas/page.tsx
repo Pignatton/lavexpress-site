@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Lavagem de Cortinas em Vitória | Lavexpress",
+  title: "Lavagem de Cortinas em Vitória",
   description:
     "Lavagem de cortinas na Lavexpress, em Jardim Camburi, Vitória (ES). Informe o tipo e o tamanho aproximado e receba o orçamento no WhatsApp.",
 };

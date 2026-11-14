@@ -159,7 +159,7 @@ export function SocialProofGoogle() {
                                         asChild
                                     >
                                         <a
-                                            href="https://www.google.com/maps/dir/?api=1&destination=-20.262486,-40.264914"
+                                            href={`https://www.google.com/maps/dir/?api=1&destination=${LAVEXPRESS.geo.lat},${LAVEXPRESS.geo.lng}`}
                                             target="_blank"
                                             rel="noreferrer"
                                         >
@@ -230,7 +230,7 @@ export function SocialProofGoogle() {
                             loading="lazy"
                             allowFullScreen
                             referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps?ll=-20.262486,-40.264914&z=16&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=13356030677811140771&output=embed"
+                            src={`${LAVEXPRESS.googleMapsCidUrl}&output=embed`}
                             title="Localização Lavexpress"
                             className="grayscale-[0.35] hover:grayscale-0 transition-all duration-700"
                         />

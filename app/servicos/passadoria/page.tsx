@@ -22,9 +22,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Passadoria Profissional | Lavexpress",
+    title: "Passadoria em Jardim Camburi, Vitória",
     description:
-        "Passadoria profissional com acabamento impecável e padrão de lavanderia profissional. Ganhe tempo e receba roupas prontas para vestir. Coleta e entrega em Vitória/ES.",
+        "Você lava em casa e a gente passa. Passadoria avulsa e camisa social na Lavexpress, em Jardim Camburi, Vitória (ES). Orçamento no WhatsApp.",
 };
 
 /**

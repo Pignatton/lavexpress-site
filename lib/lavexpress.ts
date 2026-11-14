@@ -13,6 +13,14 @@
  */
 const CONDICAO_COLETA_ENTREGA = "consulte as condições para a sua região";
 
+/**
+ * Localização da loja: FONTE ÚNICA. É a coordenada do pino oficial da ficha
+ * do Google (link CID). Todo consumidor (mapa, rota, JSON-LD, validação de
+ * área) lê daqui. A coordenada antiga de bairrosAtendidos (-20.2589,
+ * -40.2922) ficava a ~3 km da loja e foi removida.
+ */
+export const GEO_LOJA = { lat: -20.262486, lng: -40.264914 } as const;
+
 export const LAVEXPRESS = {
     name: "Lavexpress Lavanderia",
     email: "lavexpresslavanderia@hotmail.com",
@@ -56,8 +64,9 @@ export const LAVEXPRESS = {
     },
 
     // Link oficial que você mandou (CID)
+    geo: GEO_LOJA,
     googleMapsCidUrl:
-        "https://www.google.com/maps?ll=-20.262486,-40.264914&z=16&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=13356030677811140771",
+        `https://www.google.com/maps?ll=${GEO_LOJA.lat},${GEO_LOJA.lng}&z=16&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=13356030677811140771`,
 
     // Para abrir no app do Google Maps com query do endereço
     googleMapsDirectionsUrl:
