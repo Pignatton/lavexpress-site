@@ -1,7 +1,7 @@
 export const STORE_LOCATION = {
     lat: -20.2589,
     lng: -40.2922,
-    address: "R. Ruy Pinto Bandeira, 580 - Jardim Camburi, Vitória/ES",
+    address: "R. Ruy Pinto Bandeira, 580 - loja 1 - Jardim Camburi, Vitória/ES",
 };
 
 // Vitória: atendimento total

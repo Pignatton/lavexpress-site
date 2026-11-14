@@ -13,8 +13,8 @@ const STEPS = [
     },
     {
         icon: Truck,
-        title: "2. Coleta Grátis",
-        description: "Buscamos suas roupas na sua porta, no horário combinado. Sem taxas extras para a nossa área.",
+        title: "2. Traga ao balcão",
+        description: `Você traz as roupas à loja em Jardim Camburi. ${LAVEXPRESS.coletaEntrega.titulo}: ${LAVEXPRESS.coletaEntrega.condicao}.`,
         color: "text-emerald-600",
         bg: "bg-emerald-50",
     },
@@ -27,10 +27,9 @@ const STEPS = [
     },
     {
         icon: Shirt,
-        title: "4. Entrega Expressa",
-        // Prazo vindo da fonte de verdade (`lib/lavexpress.ts`): a promessa
-        // anterior de "até 24h" era mais curta que o SLA real de lavagem.
-        description: `Receba tudo limpo, cheiroso e dobrado/pendurado em ${LAVEXPRESS.sla.washDryHoursMin}–${LAVEXPRESS.sla.washDryHoursMax}h (consulte disponibilidade).`,
+        title: "4. Retirada",
+        // Sem prazo em horas: o prazo depende das peças e é confirmado antes de fechar.
+        description: `Quando estiver pronta, você retira no balcão da loja. ${LAVEXPRESS.coletaEntrega.titulo}: ${LAVEXPRESS.coletaEntrega.condicao}.`,
         color: "text-indigo-600",
         bg: "bg-indigo-50",
     },

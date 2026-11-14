@@ -6,6 +6,7 @@ import { FloatingBubbles } from "@/components/ui/floating-bubbles";
 import { WhatsAppFloatingButton } from "@/components/layout/whatsapp-floating-button";
 import { AttributionBoot } from "@/components/attribution-boot";
 import { SITE_URL } from "@/lib/site-url";
+import { IS_PREVIEW } from "@/lib/ambiente";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,36 +26,38 @@ export const metadata: Metadata = {
   // montar URLs absolutas e o Google recebe metadados incompletos.
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Lavexpress | Lavanderia Delivery em Vitória e Vila Velha",
+    default: "Lavanderia em Jardim Camburi, Vitória/ES | Lavexpress",
     template: "%s | Lavexpress",
   },
   description:
-    "Sua lavanderia delivery premium em Vitória e Vila Velha. Coleta e entrega em Jardim Camburi, Praia do Canto, Praia da Costa e região. Agende agora.",
+    "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Pacotes por peça, passadoria, tênis, cortinas e edredons. Orçamento no WhatsApp.",
   keywords: [
     "lavanderia",
-    "lavanderia delivery",
+    "lavanderia jardim camburi",
     "lavanderia vitória es",
     "lavanderia vila velha",
     "lavar edredom",
+    "passadoria vitória",
     "passadoria",
     // "lavagem a seco" saiu daqui de proposito: a operacao nao executa dry
     // cleaning. Anunciar o termo atrai busca que o atendimento nao atende — e a
     // campanha do Google Ads ja bloqueia essas consultas como negativas.
     "lavanderia de ternos",
-    "lavagem de couro",
   ],
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
-    title: "Lavexpress | Lavanderia Delivery Premium",
+    title: "Lavanderia em Jardim Camburi, Vitória/ES | Lavexpress",
     description:
-      "Lavanderia com coleta e entrega em Vitória e Vila Velha. Cuidado profissional para suas roupas.",
+      "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Orçamento no WhatsApp.",
     siteName: "Lavexpress",
   },
   icons: {
     icon: "/imagens/favcon.ico",
   },
+  // Prévia de teste (Vercel preview) nunca é indexada. Produção não é afetada.
+  ...(IS_PREVIEW ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function RootLayout({
@@ -92,6 +95,14 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        {IS_PREVIEW && (
+          <div
+            role="status"
+            style={{ position: "sticky", top: 0, zIndex: 1000, background: "#B45309", color: "#fff", textAlign: "center", padding: "6px 12px", fontSize: 14, fontWeight: 600 }}
+          >
+            AMBIENTE DE TESTE — prévia das correções de texto, não publicada. Não use para atendimento.
+          </div>
+        )}
         <AttributionBoot />
         <FloatingBubbles />
         <div className="relative z-10">

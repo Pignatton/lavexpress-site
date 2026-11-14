@@ -48,7 +48,7 @@ const COMPLETO = melhorDe(PACOTES.lavarSecarPassar);
 const STARTING_PRICE = SO_PASSAR.porPeca;
 const STARTING_PIECES = SO_PASSAR.pecas;
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -57,7 +57,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -269,7 +269,7 @@ export default function PassadoriaPage() {
 
                                 {/* micro garantias */}
                                 <div className="mt-6 flex flex-wrap items-center gap-3">
-                                    <Pill>Preço por peça previsível</Pill>
+                                    <Pill>Preço por peça</Pill>
                                     <Pill>Qualidade conferida</Pill>
                                     <Pill>Ideal para rotina</Pill>
                                 </div>
@@ -322,7 +322,7 @@ export default function PassadoriaPage() {
                                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     {[
                                         { title: "Passadoria", desc: "padrão profissional" },
-                                        { title: "Conferência", desc: "peça por peça" },
+                                        { title: "Orçamento", desc: "antes de fechar" },
                                         { title: "Organização", desc: "pronto p/ usar" },
                                     ].map((it) => (
                                         <Card key={it.title} className="p-4 rounded-2xl border-slate-100 bg-white shadow-sm">
@@ -412,11 +412,11 @@ export default function PassadoriaPage() {
                                 },
                                 {
                                     q: "Qual o prazo?",
-                                    a: `Em média ${LAVEXPRESS.sla.washDryIronBusinessDaysMin} a ${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis para lavar e passar. Confirmamos antes de fechar, para você não ficar sem roupa.`,
+                                    a: "O prazo depende das peças e do volume. Confirmamos antes de fechar, para você não ficar sem roupa.",
                                 },
                                 {
                                     q: "Passam qualquer tecido?",
-                                    a: "Avaliamos peça por peça. Ajustamos temperatura e técnica ao tipo de tecido e tratamos à parte itens delicados ou com indicação específica na etiqueta. Se alguma peça não puder ser passada com segurança, avisamos antes — não assumimos risco com a sua roupa.",
+                                    a: "Depende do tecido. Ajustamos temperatura e técnica ao tipo de tecido e tratamos à parte itens delicados ou com indicação específica na etiqueta. Se alguma peça não puder ser passada com segurança, avisamos antes — não assumimos risco com a sua roupa.",
                                 },
                                 {
                                     q: "Por que pacote vale mais?",

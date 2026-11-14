@@ -45,7 +45,7 @@ export function GoogleRatingBadgeClient() {
     const badgeContent = (
         <Badge variant="secondary" className="bg-blue-50 text-blue-700 hover:bg-blue-100 px-3 py-1">
             <Star className="mr-1.5 size-4 fill-blue-700" />
-            {data.rating.toFixed(1)} ({data.count} avaliações)
+            {data.rating.toFixed(1)} no Google
         </Badge>
     );
 

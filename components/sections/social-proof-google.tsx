@@ -58,7 +58,6 @@ export function SocialProofGoogle() {
 
     const placeName = data?.placeName ?? "Lavexpress Lavanderia";
     const rating = data?.rating ?? LAVEXPRESS.google.rating;
-    const total = data?.total ?? LAVEXPRESS.google.reviews;
     const googleUrl =
         data?.googleUrl ??
         "https://www.google.com/maps?cid=13356030677811140771";
@@ -98,7 +97,7 @@ export function SocialProofGoogle() {
                     </h2>
 
                     <p className="mt-4 text-lg text-emerald-50">
-                        Comentários reais de clientes que usam a Lavexpress no dia a dia. Você agenda, a gente busca, cuida e entrega no prazo.
+                        Comentários reais de clientes que usam a Lavexpress no dia a dia. Valor e prazo confirmados antes de fechar.
                     </p>
                 </div>
 
@@ -116,7 +115,7 @@ export function SocialProofGoogle() {
                                             <div className="space-y-1">
                                                 <StarsRow value={5} />
                                                 <div className="text-sm text-emerald-100">
-                                                    {total} avaliações no Google
+                                                    Nota no Google
                                                 </div>
                                             </div>
                                         </div>

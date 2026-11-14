@@ -79,7 +79,6 @@ export function PackagesValueV2({
     }, []);
 
     const rating = (reviewsMeta?.rating ?? ratingFallback) as number;
-    const total = (reviewsMeta?.total ?? totalFallback) as number;
     const googleUrl =
         reviewsMeta?.googleUrl ?? "https://www.google.com/maps?cid=13356030677811140771";
 
@@ -122,8 +121,8 @@ export function PackagesValueV2({
                 },
                 {
                     icon: Truck,
-                    title: "Coleta e entrega previsíveis",
-                    desc: `Lavar + Secar em ${slaWashDry}. Passadoria em ${slaIron}. Sem “talvez amanhã”.`,
+                    title: "Prazo combinado antes",
+                    desc: "Valor e prazo confirmados antes de fechar. Sem surpresa.",
                 },
                 {
                     icon: ShieldCheck,
@@ -161,7 +160,7 @@ export function PackagesValueV2({
                 },
                 {
                     icon: Clock,
-                    title: "Menos previsível",
+                    title: "Custo que varia",
                     desc: "Na prática, você volta a depender de encaixe e disponibilidade. Pacote organiza seu fluxo.",
                 },
                 {
@@ -252,7 +251,7 @@ export function PackagesValueV2({
                             >
                                 <StarsRow value={5} />
                                 <span>
-                                    {String(rating).replace(".", ",")} no Google ({total})
+                                    {String(rating).replace(".", ",")} no Google
                                 </span>
                             </a>
 
@@ -361,9 +360,9 @@ export function PackagesValueV2({
                                         <Clock className="h-5 w-5" />
                                     </div>
                                     <div>
-                                        <div className="font-extrabold text-slate-900">Prazo previsível</div>
+                                        <div className="font-extrabold text-slate-900">Prazo combinado</div>
                                         <div className="text-sm text-slate-600">
-                                            Lavar + Secar em <strong>{slaWashDry}</strong>. Passadoria em <strong>{slaIron}</strong>.
+                                            O prazo depende das peças e é confirmado antes de fechar.
                                         </div>
                                     </div>
                                 </div>
@@ -375,7 +374,7 @@ export function PackagesValueV2({
                                     <div>
                                         <div className="font-extrabold text-slate-900">Coleta e entrega</div>
                                         <div className="text-sm text-slate-600">
-                                            Você não perde tempo: é só agendar e receber pronto.
+                                            Consulte as condições para a sua região.
                                         </div>
                                     </div>
                                 </div>

@@ -78,7 +78,7 @@ export function PackagesValue({
 
                         <p className="mb-8 max-w-2xl text-pretty text-lg leading-relaxed text-slate-600">
                             Lavar em casa parece “barato” — até você somar <strong>produtos</strong>, <strong>energia</strong>, <strong>tempo</strong> e o risco de estragar suas peças.
-                            Nos pacotes Lavexpress, você tem processo profissional, prazo previsível e custo-benefício de verdade.
+                            Nos pacotes Lavexpress, você tem processo profissional, prazo confirmado antes e custo-benefício de verdade.
                         </p>
 
                         {/* Value Cards Row */}

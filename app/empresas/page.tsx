@@ -32,14 +32,14 @@ import {
 export const metadata: Metadata = {
     title: "Lavagem de uniformes para empresas em Vitória",
     description:
-        "Lavagem e passadoria de uniformes leves, camisas sociais e roupas de escritório para empresas em Vitória, Vila Velha e Serra. Coleta e entrega. Orçamento pelo WhatsApp.",
+        "Lavagem e passadoria de uniformes leves, camisas sociais e roupas de escritório para empresas. Lavexpress em Jardim Camburi, Vitória (ES). Orçamento pelo WhatsApp.",
     alternates: { canonical: "/empresas" },
     openGraph: {
         type: "website",
         url: "/empresas",
         title: "Uniformes leves e roupa de escritório — atendimento corporativo Lavexpress",
         description:
-            "Camisa social, polo, calça e blazer leve da sua equipe, lavados e passados com coleta e entrega na Grande Vitória.",
+            "Camisa social, polo, calça e blazer leve da sua equipe, lavados e passados. Orçamento conforme o volume.",
     },
 };
 
@@ -74,7 +74,7 @@ const PERFIS = [
     {
         icon: Building2,
         title: "Escritórios e equipes administrativas",
-        text: "Camisaria e calça social do time que recebe cliente, atende no balcão e participa de reunião. Volume previsível, padrão de apresentação constante.",
+        text: "Camisaria e calça social do time que recebe cliente, atende no balcão e participa de reunião. Padrão de apresentação para o time.",
     },
     {
         icon: ShieldCheck,
@@ -107,17 +107,17 @@ const PASSOS = [
     {
         n: 2,
         title: "Combinamos o formato do atendimento",
-        text: "A partir do que você descreveu, montamos o orçamento e definimos juntos o modelo que faz sentido: volume por envio, calendário de coleta e entrega e se a passadoria entra no fluxo.",
+        text: "A partir do que você descreveu, montamos o orçamento: tipo de peça, volume e se a passadoria entra.",
     },
     {
         n: 3,
-        title: "Buscamos na empresa ou você traz",
-        text: "Fazemos coleta e entrega em Vitória, Vila Velha e regiões selecionadas da Serra. Se preferir, sua equipe deixa e retira na nossa unidade no Jardim Camburi.",
+        title: "Você traz à loja",
+        text: "Sua equipe deixa e retira na nossa loja em Jardim Camburi. Coleta e entrega: consulte as condições no orçamento.",
     },
     {
         n: 4,
         title: "Conferimos e processamos",
-        text: "As peças são conferidas na entrada, separadas por tipo e tratamento, lavadas, secas e — quando o atendimento inclui — passadas peça por peça.",
+        text: "As peças são conferidas na entrada, separadas por tipo e tratamento, lavadas, secas e — quando o atendimento inclui — passadas.",
     },
     {
         n: 5,
@@ -183,8 +183,8 @@ const REFORCOS = [
     },
     {
         icon: Truck,
-        title: "Coleta e entrega na empresa",
-        text: "Sua equipe não para a rotina para resolver roupa.",
+        title: "Orçamento pelo volume",
+        text: "O valor considera o tipo de peça e a quantidade da sua equipe.",
     },
 ];
 
@@ -199,7 +199,7 @@ const FAQ = [
     },
     {
         q: "Vocês buscam e entregam na empresa?",
-        a: "Sim. Fazemos coleta e entrega em Vitória, Vila Velha e regiões selecionadas da Serra. Os dias e horários são combinados de acordo com a rotina do seu escritório. Se for mais prático, sua equipe também pode deixar e retirar na nossa unidade no Jardim Camburi.",
+        a: "Consulte as condições de coleta e entrega no orçamento. Sua equipe também pode deixar e retirar na nossa loja em Jardim Camburi.",
     },
     {
         q: "Como vocês controlam as peças de cada pessoa?",
@@ -211,7 +211,7 @@ const FAQ = [
     },
     {
         q: "Em quanto tempo a roupa volta?",
-        a: `Na nossa operação, lavagem e secagem ficam prontas em ${LAVEXPRESS.sla.washDryHoursMin} a ${LAVEXPRESS.sla.washDryHoursMax} horas e passadoria leva de ${LAVEXPRESS.sla.washDryIronBusinessDaysMin} a ${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis. Para empresas, esses prazos servem de referência: os dias de coleta e de entrega são combinados com você no orçamento, de acordo com o volume e a frequência da sua equipe.`,
+        a: "O prazo depende do tipo de peça e do volume da sua equipe e é confirmado no orçamento, antes de fechar.",
     },
     {
         q: "Minha equipe é pequena. Vale a pena conversar?",
@@ -274,12 +274,11 @@ export default function EmpresasPage() {
 
                             <p className="text-base md:text-lg lg:text-xl text-slate-600 mb-6 leading-relaxed text-pretty">
                                 Camisa social, polo, calça e blazer leve da sua equipe lavados, passados e
-                                devolvidos prontos para usar — com coleta e entrega em Vitória, Vila Velha
-                                e regiões selecionadas da Serra.
+                                devolvidos prontos para usar. Atendimento na nossa loja em Jardim Camburi.
                             </p>
 
                             <div className="flex flex-wrap items-center gap-3 mb-8">
-                                <Pill>Coleta e entrega</Pill>
+                                <Pill>Orçamento pelo volume</Pill>
                                 <Pill>Peça conferida na entrada e na saída</Pill>
                                 <Pill>Orçamento pelo WhatsApp</Pill>
                             </div>
@@ -542,22 +541,12 @@ export default function EmpresasPage() {
                         </div>
                         <div className="space-y-4 text-slate-600 leading-relaxed">
                             <p>
-                                Na nossa operação do dia a dia, lavagem e secagem ficam prontas em{" "}
-                                <strong>
-                                    {LAVEXPRESS.sla.washDryHoursMin} a {LAVEXPRESS.sla.washDryHoursMax} horas
-                                </strong>
-                                , e passadoria leva de{" "}
-                                <strong>
-                                    {LAVEXPRESS.sla.washDryIronBusinessDaysMin} a{" "}
-                                    {LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis
-                                </strong>
-                                .
+                                O prazo depende do tipo de peça e do volume e é confirmado no orçamento, antes de fechar.
                             </p>
                             <p>
-                                Para empresas, esses números servem como referência de como a casa
-                                trabalha. Os dias de coleta e de entrega do seu atendimento são combinados
-                                com você no orçamento, a partir do volume e da frequência da sua equipe —
-                                e só são confirmados depois que a gente verificar que cabe na operação.
+                                Para empresas, o atendimento é combinado no orçamento, a partir do tipo
+                                de peça e do volume da sua equipe — e só é confirmado depois que a gente
+                                verificar que cabe na operação.
                             </p>
                         </div>
                     </div>
@@ -611,17 +600,14 @@ export default function EmpresasPage() {
                             </h2>
                         </div>
                         <p className="text-slate-600 leading-relaxed mb-5">
-                            Coleta e entrega em <strong>Vitória</strong>, <strong>Vila Velha</strong> e{" "}
-                            <strong>regiões selecionadas da Serra</strong>, com base no Jardim Camburi.
+                            Loja em <strong>Jardim Camburi, Vitória</strong>. Coleta e entrega: consulte as condições no orçamento.
                         </p>
                         <div className="flex flex-wrap gap-3 mb-6">
-                            {LAVEXPRESS.serviceAreas.map((area) => (
-                                <Pill key={area}>{area}</Pill>
-                            ))}
+                            <Pill>Jardim Camburi, Vitória/ES</Pill>
                         </div>
                         <p className="text-slate-600 leading-relaxed">
-                            Não tem certeza se o endereço da sua empresa está na rota? Manda o bairro na
-                            mensagem e confirmamos na hora.
+                            Quer saber as condições de coleta e entrega para a sua empresa? Manda o bairro na
+                            mensagem do orçamento.
                         </p>
                     </div>
                 </section>
