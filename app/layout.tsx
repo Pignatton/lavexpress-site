@@ -7,6 +7,8 @@ import { WhatsAppFloatingButton } from "@/components/layout/whatsapp-floating-bu
 import { AttributionBoot } from "@/components/attribution-boot";
 import { SITE_URL } from "@/lib/site-url";
 import { IS_PREVIEW } from "@/lib/ambiente";
+import { JsonLd } from "@/components/seo/json-ld";
+import { negocioLocalJsonLd } from "@/lib/negocio-json-ld";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -103,6 +105,7 @@ export default function RootLayout({
             AMBIENTE DE TESTE — prévia das correções de texto, não publicada. Não use para atendimento.
           </div>
         )}
+        <JsonLd dados={negocioLocalJsonLd()} />
         <AttributionBoot />
         <FloatingBubbles />
         <div className="relative z-10">

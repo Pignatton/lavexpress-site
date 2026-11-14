@@ -22,8 +22,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Pacotes | Lavexpress",
-    description: `Pacotes Lavexpress: melhor custo-benefício por peça e padrão profissional. Coleta e entrega: ${LAVEXPRESS.coletaEntrega.condicao}. Escolha o ideal para sua rotina.`,
+    title: "Pacotes de lavanderia por peça",
+    description:
+        "Pacotes Lavexpress com quantidade definida de peças, válidos por 90 dias: lavar e secar ou lavar, secar e passar. Jardim Camburi, Vitória.",
 };
 
 function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {

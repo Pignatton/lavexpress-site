@@ -21,9 +21,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Lavagem de Tênis | Lavexpress",
+    title: "Lavagem de Tênis em Vitória",
     description:
-        "Lavagem de tênis e calçados na Lavexpress, em Jardim Camburi: avaliação do material e orçamento antes de fechar. Coleta e entrega em Vitória/ES: consulte as condições.",
+        "Mande uma foto do par pelo WhatsApp: avaliamos o material e o estado e passamos o orçamento antes de fechar. Lavexpress, Jardim Camburi.",
 };
 
 function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
