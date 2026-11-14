@@ -85,7 +85,7 @@ export const SERVICES_DETAILS: Record<string, {
         benefits: [
             { title: "Economia de Tempo", description: "Você não perde horas lavando roupa. Deixe isso com a gente.", icon: "Clock" },
             { title: "Custo Inteligente", description: "Mais barato que serviço avulso. Padrão profissional com economia.", icon: "Wallet" },
-            { title: "Conforto Absoluto", description: "Coleta e entrega na sua porta. Tudo feito sem sair de casa.", icon: "Truck" }
+            { title: "Atendimento no balcão", description: "Traga à loja em Jardim Camburi. Coleta e entrega: consulte as condições.", icon: "Truck" }
         ],
         included: [
             "Coleta e entrega no seu endereço",

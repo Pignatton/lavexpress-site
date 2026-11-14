@@ -23,8 +23,8 @@ const PILLARS: Pillar[] = [
         tone: "green",
     },
     {
-        title: "Zero imprevistos",
-        desc: "Sem “talvez amanhã”. Você tem prazos claros e rotina organizada com coleta e entrega combinadas.",
+        title: "Sem surpresa",
+        desc: "Valor e prazo confirmados antes de fechar, para você organizar a rotina.",
         icon: Clock,
         tone: "blue",
     },

@@ -170,13 +170,13 @@ export function Hero() {
                                 <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
                                     impecável
                                 </span>
-                                , sem sair de casa.
+                                , sem perder seu tempo.
                             </h1>
 
                             {/* Subheadline (valor real) */}
                             <p className="mt-4 max-w-xl text-pretty text-lg text-slate-600 md:text-xl">
                                 Cuidado profissional de verdade, acabamento cuidadoso e prazo confirmado antes de fechar.
-                                Coleta e entrega agendadas para sua total comodidade.
+                                Atendimento no balcão em Jardim Camburi e orçamento pelo WhatsApp.
                             </p>
 
                             {/* Trust row */}
@@ -312,7 +312,7 @@ export function Hero() {
                                     <div className="rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 backdrop-blur">
                                         <div className="text-sm font-semibold text-slate-900">Qualidade + previsibilidade</div>
                                         <div className="mt-1 text-xs text-slate-600">
-                                            Pacotes com custo-benefício e prazos claros.
+                                            Pacotes com custo-benefício e prazo confirmado antes.
                                         </div>
                                     </div>
                                 </div>

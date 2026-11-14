@@ -197,7 +197,7 @@ export default function SobrePage() {
                                         &quot;Famílias e empresas queriam um serviço confiável, pontual e com padrão profissional, sem preços abusivos ou improvisos.&quot;
                                     </p>
                                     <p>
-                                        Ao longo do tempo, estruturamos processos, definimos prazos claros e criamos um modelo que une <strong>resultado premium</strong>, <strong>preço justo</strong> e <strong>praticidade</strong> — algo que hoje faz parte do nosso DNA.
+                                        Ao longo do tempo, estruturamos processos, definimos um atendimento claro e criamos um modelo que une <strong>resultado premium</strong>, <strong>preço justo</strong> e <strong>praticidade</strong> — algo que hoje faz parte do nosso DNA.
                                     </p>
                                     <p>
                                         Nossa base sempre foi o compromisso com a qualidade e a praticidade, refletido em cada etapa do atendimento.

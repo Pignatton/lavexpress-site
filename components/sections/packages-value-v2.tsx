@@ -79,7 +79,6 @@ export function PackagesValueV2({
     }, []);
 
     const rating = (reviewsMeta?.rating ?? ratingFallback) as number;
-    const total = (reviewsMeta?.total ?? totalFallback) as number;
     const googleUrl =
         reviewsMeta?.googleUrl ?? "https://www.google.com/maps?cid=13356030677811140771";
 
@@ -252,7 +251,7 @@ export function PackagesValueV2({
                             >
                                 <StarsRow value={5} />
                                 <span>
-                                    {String(rating).replace(".", ",")} no Google ({total})
+                                    {String(rating).replace(".", ",")} no Google
                                 </span>
                             </a>
 
