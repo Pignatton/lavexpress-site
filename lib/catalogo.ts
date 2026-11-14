@@ -27,7 +27,7 @@ export const TABELA_PRECOS = [
     { nome: "Jaqueta de Couro", valor: 75.00, prazo: 7 },
     { nome: "Jaquetas Simples", valor: 45.00, prazo: 2 },
     { nome: "Lençol (Lavar/Secar/Passar)", valor: 15.00, prazo: 1 },
-    // Tapete: sem preço homologado (sob consulta); o item R$ 65/m² saiu.
+    // Tapete: sem preço homologado (sob consulta); o item antigo por m² saiu.
     { nome: "Tênis", valor: 50.00, prazo: 5 },
     { nome: "Terno Completo", valor: 45.00, prazo: 3 },
     { nome: "Toalha de Banho", valor: 10.00, prazo: 2 },

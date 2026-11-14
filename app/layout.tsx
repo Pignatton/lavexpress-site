@@ -100,7 +100,7 @@ export default function RootLayout({
             role="status"
             style={{ position: "sticky", top: 0, zIndex: 1000, background: "#B45309", color: "#fff", textAlign: "center", padding: "6px 12px", fontSize: 14, fontWeight: 600 }}
           >
-            AMBIENTE DE TESTE — prévia da tabela 2027, não publicada. Não use para atendimento.
+            AMBIENTE DE TESTE — prévia das correções de texto, não publicada. Não use para atendimento.
           </div>
         )}
         <AttributionBoot />
