@@ -3,7 +3,7 @@ import { QuickCalculator } from "@/components/sections/quick-calculator";
 
 export const metadata: Metadata = {
     title: "Agendar Coleta | Lavexpress",
-    description: "Agende sua coleta de lavanderia online. Buscamos e entregamos em Vitória, Vila Velha e Serra. Praticidade e qualidade profissional.",
+    description: "Peça seu atendimento na Lavexpress, em Jardim Camburi, Vitória (ES). Coleta e entrega: consulte as condições pelo WhatsApp.",
 };
 
 export default function AgendamentoPage() {

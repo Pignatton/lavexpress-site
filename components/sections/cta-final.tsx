@@ -23,11 +23,11 @@ export function CtaFinal() {
                             Agende agora e resolva sua lavanderia da semana com padrão profissional.
                         </h3>
                         <p className="mt-2 text-sm text-muted-foreground md:text-base">
-                            Nós indicamos o melhor pacote para seu volume e já confirmamos o melhor horário de coleta.
+                            Nós indicamos o melhor pacote para o seu volume e confirmamos valor e prazo antes de fechar.
                         </p>
 
                         <div className="mt-3 text-xs text-muted-foreground">
-                            Coletas fixas (manhã): {LAVEXPRESS.pickupRules.fixedMorningDays.join(", ")} • Outros dias: {LAVEXPRESS.pickupRules.otherDaysMinNoticeHours}h de antecedência
+                            {LAVEXPRESS.coletaEntrega.titulo}: {LAVEXPRESS.coletaEntrega.condicao}.
                         </div>
                     </div>
 
@@ -39,7 +39,7 @@ export function CtaFinal() {
                         </Button>
 
                         <div className="text-xs text-muted-foreground">
-                            Atendimento: {LAVEXPRESS.serviceAreas.join(", ")}
+                            Loja em Jardim Camburi, Vitória/ES
                         </div>
                     </div>
                 </div>

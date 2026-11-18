@@ -1,4 +1,3 @@
-import { LAVEXPRESS } from "@/lib/lavexpress";
 import { REF_REGEX } from "@/lib/attribution";
 
 /**
@@ -48,14 +47,8 @@ export function buildAgendamentoMessage(input: {
         ? `Quero agendar: ${input.tipoServico.trim()}. `
         : "Quero agendar uma coleta. ";
 
-    const regras = `Coleta (manhã) fixa: ${LAVEXPRESS.pickupRules.fixedMorningDays.join(
-        ", "
-    )}. Outros dias: agendamento com ${LAVEXPRESS.pickupRules.otherDaysMinNoticeHours}h de antecedência. `;
-
-    const prazo = `Prazo padrão: lavar e secar em ${LAVEXPRESS.sla.washDryHoursMin}–${LAVEXPRESS.sla.washDryHoursMax}h. Lavar, secar e passar em ${LAVEXPRESS.sla.washDryIronBusinessDaysMin}–${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis. `;
-
     const fechamento =
-        "Pode me passar os horários disponíveis e o melhor pacote para o meu volume de roupas?";
+        "Pode me passar o orçamento e o melhor pacote para o meu volume de roupas?";
 
-    return `${nome}${local}${servico}${regras}${prazo}${fechamento}`;
+    return `${nome}${local}${servico}${fechamento}`;
 }

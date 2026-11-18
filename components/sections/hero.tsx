@@ -43,12 +43,12 @@ const BRAND = {
     GOOGLE_REVIEWS_URL: "https://search.google.com/local/reviews?placeid=ChIJ_fmjZbIZuAARoxgnYCMnWrk",
 
     // SLAs e mensagens operacionais
-    SLA_WASH_DRY: "Coleta e entrega em 24–48h",
-    SLA_IRON: "Passadoria em 4–5 dias úteis",
+    SLA_WASH_DRY: "Atendimento no balcão em Jardim Camburi",
+    SLA_IRON: "Prazo confirmado antes de fechar",
     PAYMENT_HINT: "Pagamento facilitado",
 
     // Região
-    AREAS: "Vitória, Serra e Vila Velha",
+    AREAS: "Jardim Camburi, Vitória/ES",
 };
 
 // Normaliza string (sem acentos, sem pontuação)
@@ -81,7 +81,7 @@ function checkArea(input: string): { ok: boolean; label: string } | null {
 
     // Regras "largas" para não perder lead
     if (v.includes("vitoria") || v.includes("vitória")) {
-        return { ok: true, label: "Atendimento confirmado para Vitória." };
+        return { ok: true, label: "Vitória: confirmamos as condições de coleta e entrega no WhatsApp." };
     }
     if (v.includes("serra")) {
         return { ok: true, label: "Serra: atendimento sob confirmação rápida no WhatsApp." };
@@ -170,13 +170,13 @@ export function Hero() {
                                 <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
                                     impecável
                                 </span>
-                                , sem sair de casa.
+                                , sem perder seu tempo.
                             </h1>
 
                             {/* Subheadline (valor real) */}
                             <p className="mt-4 max-w-xl text-pretty text-lg text-slate-600 md:text-xl">
-                                Cuidado profissional de verdade, acabamento superior e prazos previsíveis.
-                                Coleta e entrega agendadas para sua total comodidade.
+                                Cuidado profissional de verdade, acabamento cuidadoso e prazo confirmado antes de fechar.
+                                Atendimento no balcão em Jardim Camburi e orçamento pelo WhatsApp.
                             </p>
 
                             {/* Trust row */}
@@ -312,7 +312,7 @@ export function Hero() {
                                     <div className="rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 backdrop-blur">
                                         <div className="text-sm font-semibold text-slate-900">Qualidade + previsibilidade</div>
                                         <div className="mt-1 text-xs text-slate-600">
-                                            Pacotes com custo-benefício e prazos claros.
+                                            Pacotes com custo-benefício e prazo confirmado antes.
                                         </div>
                                     </div>
                                 </div>

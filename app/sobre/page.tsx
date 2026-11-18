@@ -29,10 +29,10 @@ import {
 export const metadata: Metadata = {
     title: "Sobre Nós | Lavexpress Lavanderia",
     description:
-        "Conheça a Lavexpress: lavanderia delivery em Vitória/ES. Qualidade profissional, conveniência real e confiança para sua rotina.",
+        "Conheça a Lavexpress: lavanderia em Jardim Camburi, Vitória/ES. Lavamos, secamos e passamos, com atendimento no balcão e orçamento no WhatsApp.",
 };
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500" aria-hidden="true">
@@ -41,7 +41,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -113,7 +113,7 @@ export default function SobrePage() {
 
                                 <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
                                     <p>
-                                        A <strong>Lavexpress Lavanderia</strong> é referência em delivery em Vitória – ES. Nossa proposta é simples e direta: <strong>qualidade profissional</strong>, <strong>conveniência real</strong> e <strong>confiança</strong>.
+                                        A <strong>Lavexpress Lavanderia</strong> é uma lavanderia de serviço completo em Jardim Camburi, Vitória – ES. Nossa proposta é simples e direta: <strong>qualidade profissional</strong>, <strong>conveniência real</strong> e <strong>confiança</strong>.
                                     </p>
                                     <p>
                                         Nós cuidamos de todo o processo para que você ganhe tempo, receba suas roupas limpas, cheirosas e prontas para o uso, sem precisar sair de casa ou reorganizar sua rotina.
@@ -197,7 +197,7 @@ export default function SobrePage() {
                                         &quot;Famílias e empresas queriam um serviço confiável, pontual e com padrão profissional, sem preços abusivos ou improvisos.&quot;
                                     </p>
                                     <p>
-                                        Ao longo do tempo, estruturamos processos, definimos prazos claros e criamos um modelo que une <strong>resultado premium</strong>, <strong>preço justo</strong> e <strong>praticidade</strong> — algo que hoje faz parte do nosso DNA.
+                                        Ao longo do tempo, estruturamos processos, definimos um atendimento claro e criamos um modelo que une <strong>resultado premium</strong>, <strong>preço justo</strong> e <strong>praticidade</strong> — algo que hoje faz parte do nosso DNA.
                                     </p>
                                     <p>
                                         Nossa base sempre foi o compromisso com a qualidade e a praticidade, refletido em cada etapa do atendimento.

@@ -18,14 +18,12 @@ function StarsRow() {
 
 export async function GoogleReviews() {
     let rating: number = LAVEXPRESS.google.rating;
-    let total: number = LAVEXPRESS.google.reviews;
     let reviews: GoogleReview[] = [];
     let error = false;
 
     try {
         const data = await fetchPlaceDetails();
         rating = data.rating ?? LAVEXPRESS.google.rating;
-        total = data.user_ratings_total ?? LAVEXPRESS.google.reviews;
 
         const allReviews = data.reviews ?? [];
         // Apenas 5 estrelas, com texto (evita card vazio)
@@ -65,7 +63,7 @@ export async function GoogleReviews() {
                                     <div className="flex items-center gap-2">
                                         <StarsRow />
                                         <span className="text-sm font-extrabold text-slate-900">
-                                            {String(rating).replace(".", ",")} • {total} avaliações
+                                            {String(rating).replace(".", ",")} no Google
                                         </span>
                                     </div>
                                     <div className="text-xs text-slate-600 mt-1">

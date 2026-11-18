@@ -497,7 +497,9 @@ describe("assinaturas preexistentes de lib/whatsapp", () => {
         const msg = buildAgendamentoMessage({});
         expect(msg.startsWith("Olá! ")).toBe(true);
         expect(msg).toContain("Quero agendar uma coleta.");
-        expect(msg).toContain(LAVEXPRESS.pickupRules.fixedMorningDays.join(", "));
+        // Coerência com o Instagram (PR #11): a mensagem pronta não promete
+        // dias fixos de coleta.
+        expect(msg).not.toContain(LAVEXPRESS.pickupRules.fixedMorningDays.join(", "));
     });
 
     it("buildAgendamentoMessage monta nome, local e serviço", () => {
@@ -511,14 +513,13 @@ describe("assinaturas preexistentes de lib/whatsapp", () => {
         expect(msg).toContain("Quero agendar: Passadoria.");
     });
 
-    it("buildAgendamentoMessage cita o SLA da fonte de verdade", () => {
+    it("buildAgendamentoMessage não promete prazo (confirmado antes de fechar)", () => {
         const msg = buildAgendamentoMessage({});
-        expect(msg).toContain(
+        expect(msg).not.toContain(
             `${LAVEXPRESS.sla.washDryHoursMin}–${LAVEXPRESS.sla.washDryHoursMax}h`,
         );
-        expect(msg).toContain(
-            `${LAVEXPRESS.sla.washDryIronBusinessDaysMin}–${LAVEXPRESS.sla.washDryIronBusinessDaysMax} dias úteis`,
-        );
+        expect(msg).not.toContain("dias úteis");
+        expect(msg).toContain("orçamento");
     });
 
     it("buildWhatsAppLink continua devolvendo o wa.me com o text codificado", () => {
