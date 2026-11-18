@@ -24,7 +24,7 @@ export function SeoKeywords() {
         <li>Lavanderia residencial e empresarial</li>
       </ul>
 
-      <h3>Bairros atendidos pela Lavexpress</h3>
+      <h3>Bairros perto da loja da Lavexpress</h3>
       <ul>
         <li>Jardim Camburi</li>
         <li>Mata da Praia</li>
@@ -34,10 +34,6 @@ export function SeoKeywords() {
         <li>Enseada do Suá</li>
         <li>Bento Ferreira</li>
         <li>Centro de Vitória</li>
-        <li>Praia da Costa</li>
-        <li>Itapuã</li>
-        <li>Itaparica</li>
-        <li>Bairros nobres de Vila Velha</li>
         <li>Bairros próximos à loja em Jardim Camburi</li>
       </ul>
 
