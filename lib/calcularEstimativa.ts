@@ -3,15 +3,20 @@ export interface ClothingItem {
     name: string;
     price: number;
     category: "dia-a-dia" | "social" | "cama-mesa";
+    /**
+     * `true` quando `price` é um valor inicial ("a partir de") e não um preço
+     * fechado. O simulador precisa dizer isso ao lado do valor e do total.
+     */
+    aPartirDe?: boolean;
 }
 
 export const ITEMS: ClothingItem[] = [
     { id: "Camisa Social Manga Longa", name: "Camisa (Social Manga Longa)", price: 18.00, category: "dia-a-dia" },
-    { id: "Calça Jeans", name: "Calça Jeans", price: 15.00, category: "dia-a-dia" },
-    { id: "Tênis", name: "Tênis", price: 50.00, category: "dia-a-dia" },
-    { id: "Terno Completo", name: "Terno Completo", price: 45.00, category: "social" },
-    { id: "Cortinas (a partir)", name: "Cortinas (a partir)", price: 55.00, category: "social" },
-    { id: "Edredom Casal", name: "Edredom Casal", price: 45.00, category: "cama-mesa" },
+    { id: "Calça Jeans", name: "Calça Jeans", price: 18.00, category: "dia-a-dia" },
+    { id: "Tênis", name: "Tênis", price: 60.00, category: "dia-a-dia" },
+    { id: "Terno Completo", name: "Terno Completo", price: 55.00, category: "social" },
+    { id: "Cortinas (a partir)", name: "Cortinas (a partir de)", price: 60.00, category: "social", aPartirDe: true },
+    { id: "Edredom Casal", name: "Edredom Casal", price: 55.00, category: "cama-mesa" },
 ];
 
 export function calcularTotal(items: { [key: string]: number }): number {

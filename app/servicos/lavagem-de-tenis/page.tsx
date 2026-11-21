@@ -23,7 +23,7 @@ import {
 export const metadata: Metadata = {
     title: "Lavagem de Tênis | Lavexpress",
     description:
-        "Seus tênis renovados com limpeza técnica: higienização manual, secagem controlada e ozonização para reduzir odores. Coleta e entrega em Vitória/ES.",
+        "Lavagem de tênis e calçados na Lavexpress, em Jardim Camburi: avaliação do material e orçamento antes de fechar. Coleta e entrega em Vitória/ES: consulte as condições.",
 };
 
 function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
@@ -54,7 +54,7 @@ export default function SneakersPage() {
     const waAgendar = buildWhatsAppLink({
         phoneE164: LAVEXPRESS.whatsappE164,
         text:
-            "Olá! Quero higienizar meus tênis. Pode me dizer como funciona a coleta e o prazo aproximado? (Material: ___ / Cor: ___ / Estado: ___)",
+            "Olá! Quero lavar meus tênis. Pode me dizer como funciona a coleta e o prazo aproximado? (Material: ___ / Cor: ___ / Estado: ___)",
     });
 
     const waDuvidas = buildWhatsAppLink({
@@ -112,9 +112,8 @@ export default function SneakersPage() {
                                 </h1>
 
                                 <p className="text-base md:text-lg lg:text-xl text-slate-600 mb-6 md:mb-8 leading-relaxed text-pretty">
-                                    Higienização com <strong>limpeza técnica manual</strong>, secagem{" "}
-                                    <strong>controlada</strong> e <strong>ozonização</strong> para reduzir odores.
-                                    A gente cuida do material certo para cada par.
+                                    Antes de lavar, a gente <strong>avalia o material e o estado</strong> do par.
+                                    Você recebe o <strong>valor e o prazo antes de fechar</strong>.
                                 </p>
 
                                 {/* bullets (conversão) */}
@@ -123,10 +122,10 @@ export default function SneakersPage() {
                                         <ShieldCheck className="h-5 w-5 text-emerald-600 mt-0.5" />
                                         <div>
                                             <div className="font-extrabold text-slate-900">
-                                                Processo seguro para o material
+                                                Avaliação antes do serviço
                                             </div>
                                             <div className="text-sm text-slate-600">
-                                                Avaliamos couro, camurça e sintéticos para usar o produto correto.
+                                                Olhamos o material (couro, camurça, tecido, sintético) e o estado do par antes de dar o orçamento.
                                             </div>
                                         </div>
                                     </div>
@@ -134,9 +133,9 @@ export default function SneakersPage() {
                                     <div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                                         <Zap className="h-5 w-5 text-blue-600 mt-0.5" />
                                         <div>
-                                            <div className="font-extrabold text-slate-900">Cheiro mais leve e sensação de limpo</div>
+                                            <div className="font-extrabold text-slate-900">Valor e prazo antes de fechar</div>
                                             <div className="text-sm text-slate-600">
-                                                Ozonização ajuda a reduzir odor causado por bactérias e umidade.
+                                                Você só autoriza depois de saber quanto custa e quando fica pronto.
                                             </div>
                                         </div>
                                     </div>
@@ -202,16 +201,11 @@ export default function SneakersPage() {
                                         </div>
                                         <div className="flex items-baseline gap-1">
                                             <span className="text-xs md:text-sm font-bold text-slate-400">R$</span>
-                                            <span className="text-3xl md:text-4xl font-extrabold text-slate-900">50</span>
+                                            <span className="text-3xl md:text-4xl font-extrabold text-slate-900">60</span>
                                             <span className="text-xs md:text-sm font-bold text-slate-400">,00</span>
                                         </div>
                                         <div className="mt-1.5 md:mt-2 text-[10px] md:text-xs text-slate-600 font-semibold leading-tight">
                                             Valor varia por material/estado.
-                                        </div>
-                                        <div className="mt-2 md:mt-3 text-[10px] md:text-xs text-emerald-700 font-extrabold flex items-center gap-1">
-                                            <CheckCircle2 className="h-3 w-3" />
-                                            <span className="hidden md:inline">Garantia de satisfação (avaliamos no ato)</span>
-                                            <span className="md:hidden">Garantia de satisfação</span>
                                         </div>
                                     </div>
                                 </div>
@@ -231,11 +225,11 @@ export default function SneakersPage() {
                                 Padrão Lavexpress
                             </Badge>
                             <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3 md:mb-4">
-                                O que você ganha com a limpeza técnica
+                                Como a Lavexpress cuida do seu tênis
                             </h2>
                             <p className="text-slate-600 leading-relaxed">
-                                Em tênis, o segredo é combinar <strong>método</strong> + <strong>produto correto</strong> +{" "}
-                                <strong>secagem controlada</strong>. É isso que evita deformar, manchar e “endurecer” o material.
+                                Cada par é avaliado antes do serviço. Você sabe o <strong>valor</strong> e o <strong>prazo</strong> antes de autorizar,
+                                e decide se traz na loja ou pede a coleta.
                             </p>
                         </div>
 
@@ -244,9 +238,9 @@ export default function SneakersPage() {
                                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 text-blue-600 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
                                     <Sparkles className="h-7 w-7" />
                                 </div>
-                                <h3 className="text-xl font-extrabold text-slate-900 mb-3">Higienização manual</h3>
+                                <h3 className="text-xl font-extrabold text-slate-900 mb-3">Avaliação do material</h3>
                                 <p className="text-slate-600 leading-relaxed">
-                                    Tratamento detalhado por áreas (solado, tecido, palmilha, cadarço). Menos agressão, mais controle.
+                                    Couro, camurça, tecido ou sintético: o material e o estado do par definem o que dá para fazer.
                                 </p>
                             </Card>
 
@@ -254,9 +248,9 @@ export default function SneakersPage() {
                                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 text-emerald-600 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
                                     <ShieldCheck className="h-7 w-7" />
                                 </div>
-                                <h3 className="text-xl font-extrabold text-slate-900 mb-3">Secagem controlada</h3>
+                                <h3 className="text-xl font-extrabold text-slate-900 mb-3">Orçamento antes</h3>
                                 <p className="text-slate-600 leading-relaxed">
-                                    Secagem feita para reduzir risco de “descolar”, deformar e manter o conforto interno.
+                                    Mande uma foto do par no WhatsApp. O valor e o prazo são confirmados antes de você fechar.
                                 </p>
                             </Card>
 
@@ -264,9 +258,9 @@ export default function SneakersPage() {
                                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 text-purple-600 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform">
                                     <Zap className="h-7 w-7" />
                                 </div>
-                                <h3 className="text-xl font-extrabold text-slate-900 mb-3">Ozonização</h3>
+                                <h3 className="text-xl font-extrabold text-slate-900 mb-3">Na loja ou com coleta</h3>
                                 <p className="text-slate-600 leading-relaxed">
-                                    Ajuda a reduzir odores e sensação de “tênis abafado”, especialmente em pares usados no dia a dia.
+                                    Traga o par na loja em Jardim Camburi ou peça a coleta. {LAVEXPRESS.coletaEntrega.condicaoFrase}
                                 </p>
                             </Card>
                         </div>
@@ -293,19 +287,19 @@ export default function SneakersPage() {
                                     {[
                                         {
                                             title: "1) Coleta",
-                                            desc: "Buscamos na sua casa (ou você entrega na loja).",
+                                            desc: `Você traz na loja ou pede a coleta. ${LAVEXPRESS.coletaEntrega.condicaoFrase}`,
                                         },
                                         {
                                             title: "2) Avaliação do material",
-                                            desc: "Identificamos couro, camurça, knit, sintético e ajustamos o tratamento.",
+                                            desc: "Olhamos o material e o estado do par e confirmamos valor e prazo.",
                                         },
                                         {
-                                            title: "3) Higienização + secagem controlada",
-                                            desc: "Limpeza técnica por etapas para reduzir risco e melhorar acabamento.",
+                                            title: "3) Lavagem",
+                                            desc: "Feita conforme a avaliação do material.",
                                         },
                                         {
-                                            title: "4) Finalização + entrega",
-                                            desc: "Ozonização (quando indicado) e entrega do par pronto para uso.",
+                                            title: "4) Retirada ou entrega",
+                                            desc: "O par fica pronto para você retirar na loja ou receber, conforme combinado.",
                                         },
                                     ].map((step, i) => (
                                         <div key={i} className="flex gap-4">
@@ -350,11 +344,11 @@ export default function SneakersPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <Card className="p-6 bg-white border-slate-100 shadow-sm rounded-2xl">
                                     <div className="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">
-                                        Prazo médio
+                                        Prazo
                                     </div>
-                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">5–7 dias</div>
+                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">Após avaliação</div>
                                     <div className="text-sm text-slate-500 font-medium">
-                                        Depende do modelo, material e demanda da semana.
+                                        O prazo é confirmado após a avaliação do material e das condições do par.
                                     </div>
                                 </Card>
 
@@ -364,7 +358,7 @@ export default function SneakersPage() {
                                     </div>
                                     <div className="text-3xl font-extrabold text-slate-900 mb-1">Branco</div>
                                     <div className="text-sm text-slate-500 font-medium">
-                                        Ajuste de tratamento para evitar manchas e ressecamento.
+                                        Avaliamos o estado do par antes de dar o orçamento.
                                     </div>
                                 </Card>
 
@@ -396,15 +390,15 @@ export default function SneakersPage() {
                             {[
                                 {
                                     q: "Dá para lavar tênis branco?",
-                                    a: "Sim. A gente avalia o estado (amarelado antigo, manchas profundas) e aplica o método correto. Não prometemos “zero marca” em desgaste antigo — mas buscamos o melhor resultado possível com segurança.",
+                                    a: "Sim. A gente avalia o estado (amarelado antigo, manchas profundas) antes de fechar. Não prometemos “zero marca” em desgaste antigo — mas buscamos o melhor resultado possível com segurança.",
                                 },
                                 {
                                     q: "E camurça / nobuck?",
-                                    a: "Pode, com cuidado extra. Camurça exige produto e escova específicos. A avaliação do material define o tratamento e o prazo.",
+                                    a: "Depende do par. A avaliação do material define se dá para lavar, o valor e o prazo.",
                                 },
                                 {
                                     q: "Qual é o prazo?",
-                                    a: "Em média, 5 a 7 dias. Depende muito do tênis e da demanda. Confirmamos o prazo exato antes de fechar.",
+                                    a: "O prazo é confirmado após a avaliação do material e das condições do par.",
                                 },
                                 {
                                     q: "Quais as formas de pagamento?",

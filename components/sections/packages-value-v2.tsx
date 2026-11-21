@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { LAVEXPRESS } from "@/lib/lavexpress";
+import { PACOTES } from "@/lib/catalogo";
 import { motion, useReducedMotion } from "framer-motion";
 import {
     ArrowRight,
@@ -18,10 +19,17 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
+/**
+ * Menor custo por peça entre os pacotes (hoje: lavar + secar, maior faixa).
+ * Derivado de `PACOTES` — nunca escrito à mão. O valor por peça só vale para
+ * aquela faixa, então o texto sempre mostra junto o tamanho do pacote.
+ */
+const MELHOR_PACOTE = PACOTES.lavarSecar.reduce((a, b) => (b.porPeca < a.porPeca ? b : a));
+const FAIXA_DO_MELHOR = `no pacote de ${MELHOR_PACOTE.pecas} peças (lavar + secar)`;
+
 type Mode = "pacotes" | "avulso" | "emcasa";
 
 type Props = {
-    pricePerPieceFrom?: number; // ex 4.40
     ratingFallback?: number;
     totalFallback?: number;
     slaWashDry?: string; // "24–48h"
@@ -55,14 +63,13 @@ type ReviewsApi = {
 };
 
 export function PackagesValueV2({
-    pricePerPieceFrom = 4.4,
     ratingFallback = LAVEXPRESS.google.rating,
     totalFallback = LAVEXPRESS.google.reviews,
     slaWashDry = "24–48h",
     slaIron = "4–5 dias úteis",
 }: Props) {
     const reduceMotion = useReducedMotion();
-    const priceLabel = formatBRL(pricePerPieceFrom);
+    const priceLabel = formatBRL(MELHOR_PACOTE.porPeca);
 
     const [mode, setMode] = React.useState<Mode>("pacotes");
     const [reviewsMeta, setReviewsMeta] = React.useState<ReviewsApi | null>(null);
@@ -118,7 +125,7 @@ export function PackagesValueV2({
                 {
                     icon: Wallet,
                     title: "Preço por peça que vale a pena",
-                    desc: `A partir de ${priceLabel}/peça nos pacotes. Mais barato do que parece quando você soma tempo, energia e produtos.`,
+                    desc: `A partir de ${priceLabel}/peça ${FAIXA_DO_MELHOR}. Quanto maior o pacote, menor o valor por peça.`,
                 },
                 {
                     icon: Truck,
@@ -351,7 +358,7 @@ export function PackagesValueV2({
                                     Pacote = melhor custo por peça + rotina no eixo
                                 </div>
                                 <div className="mt-2 text-sm text-slate-600">
-                                    A partir de <span className="font-extrabold text-emerald-600">{priceLabel}/peça</span> nos pacotes.
+                                    A partir de <span className="font-extrabold text-emerald-600">{priceLabel}/peça</span> {FAIXA_DO_MELHOR}.
                                 </div>
                             </div>
 

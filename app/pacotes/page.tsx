@@ -23,7 +23,7 @@ import {
 
 export const metadata: Metadata = {
     title: "Pacotes | Lavexpress",
-    description: "Pacotes Lavexpress: melhor custo-benefício por peça, com coleta e entrega grátis e padrão profissional. Escolha o ideal para sua rotina.",
+    description: `Pacotes Lavexpress: melhor custo-benefício por peça e padrão profissional. Coleta e entrega: ${LAVEXPRESS.coletaEntrega.condicao}. Escolha o ideal para sua rotina.`,
 };
 
 function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
@@ -41,9 +41,22 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
     );
 }
 
+// Formato brasileiro com separador de milhar ("1.100,00"): vários pacotes
+// passam de R$ 1.000 e as outras páginas já exibem o ponto.
+const FORMATO_BRL = new Intl.NumberFormat("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+});
+
 function formatBRL(n: number) {
-    return n.toFixed(2).replace(".", ",");
+    return FORMATO_BRL.format(n);
 }
+
+// Regras dos pacotes (tabela de preços 2027): validade e o que fica de fora.
+// Precisam aparecer nesta página, que é onde o cliente lê os valores.
+// O texto vem de um lugar só (lib/lavexpress.ts).
+const VALIDADE_DIAS = LAVEXPRESS.regrasPacotes.validadeDias;
+const REGRA_EXCLUSOES = LAVEXPRESS.regrasPacotes.exclusoes;
 
 type PackageItem = { pecas: number; valor: number; porPeca: number };
 
@@ -66,7 +79,9 @@ function PackageCard({
     icon: any;
 }) {
     const bestValue = items.reduce((prev, current) => (prev.porPeca < current.porPeca ? prev : current));
-    const topRows = items.slice(0, 5);
+    // Todas as faixas do catálogo: a faixa do valor em destaque precisa
+    // aparecer na lista logo abaixo dele, com o preço total do pacote.
+    const rows = items;
 
     const colorStyles = {
         blue: {
@@ -182,12 +197,12 @@ function PackageCard({
             {/* body */}
             <div className="p-6 md:p-8">
                 <div className="flex items-center justify-between">
-                    <div className="text-sm font-extrabold text-slate-900">Tabelas mais escolhidas</div>
+                    <div className="text-sm font-extrabold text-slate-900">Todas as faixas deste pacote</div>
                     <div className="text-xs font-semibold text-slate-500">Escolha no WhatsApp</div>
                 </div>
 
                 <div className="mt-4 space-y-3">
-                    {topRows.map((item) => (
+                    {rows.map((item) => (
                         <div
                             key={item.pecas}
                             className="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm"
@@ -263,7 +278,7 @@ export default function PacotesPage() {
 
                                 <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-extrabold text-emerald-700 shadow-sm">
                                     <Truck className="h-4 w-4" />
-                                    Coleta e entrega grátis
+                                    {LAVEXPRESS.coletaEntrega.selo}
                                 </div>
                             </div>
 
@@ -360,9 +375,9 @@ export default function PacotesPage() {
                                 <div className="flex items-start gap-3">
                                     <Truck className="h-5 w-5 text-emerald-600 mt-0.5" />
                                     <div>
-                                        <div className="font-extrabold text-slate-900">Coleta e entrega grátis</div>
+                                        <div className="font-extrabold text-slate-900">{LAVEXPRESS.coletaEntrega.titulo}</div>
                                         <div className="text-sm text-slate-600">
-                                            Buscamos e levamos na sua porta. Sem taxa adicional nos pacotes.
+                                            Buscamos e levamos na sua porta. {LAVEXPRESS.coletaEntrega.condicaoFrase}
                                         </div>
                                     </div>
                                 </div>
@@ -457,6 +472,12 @@ export default function PacotesPage() {
                                 icon={Clock}
                             />
                         </div>
+
+                        {/* Regras dos pacotes: validade e exclusões, junto das tabelas */}
+                        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-slate-200 bg-white px-6 py-4 text-center text-sm text-slate-600 shadow-sm">
+                            <strong className="text-slate-900">Regras dos pacotes:</strong> validade de {VALIDADE_DIAS} dias.{" "}
+                            {REGRA_EXCLUSOES} Edredons, ternos e vestidos de festa têm preço avulso — consulte no WhatsApp.
+                        </p>
 
                         {/* CTA final */}
                         <div className="mt-16 text-center">

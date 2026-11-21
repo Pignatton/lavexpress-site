@@ -13,8 +13,8 @@ const STEPS = [
     },
     {
         icon: Truck,
-        title: "2. Coleta Grátis",
-        description: "Buscamos suas roupas na sua porta, no horário combinado. Sem taxas extras para a nossa área.",
+        title: "2. Coleta na sua porta",
+        description: `Buscamos suas roupas na sua porta, no horário combinado. ${LAVEXPRESS.coletaEntrega.condicaoFrase}`,
         color: "text-emerald-600",
         bg: "bg-emerald-50",
     },

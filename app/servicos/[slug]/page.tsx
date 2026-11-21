@@ -378,7 +378,7 @@ export default async function ServicePage({ params }: Props) {
                                         Pacotes valem mais
                                     </div>
                                     <p className="mt-1 text-sm text-slate-600">
-                                        Melhor custo-benefício no mês sem perder qualidade.
+                                        Quanto maior o pacote, menor o valor por peça. Validade de {LAVEXPRESS.regrasPacotes.validadeDias} dias.
                                     </p>
                                 </Card>
                             </div>

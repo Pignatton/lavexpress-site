@@ -1,3 +1,18 @@
+/**
+ * Condição de coleta e entrega — ÚNICO lugar onde ela é escrita.
+ *
+ * As condições reais (taxa, pedido mínimo, bairros) ainda não foram
+ * informadas pelo proprietário. Até lá, o site não afirma "grátis", "sem
+ * taxa" nem valor algum: só convida a consultar.
+ *
+ * Quando a condição real for confirmada, troque APENAS a linha abaixo
+ * (comece com letra minúscula e não ponha ponto final). Ela aparece na
+ * descrição da home e de /pacotes, em "Como funciona", no cartão de
+ * /pacotes e ao lado do simulador de /agendamento. O selo do topo de
+ * /pacotes usa a forma curta ("consulte condições").
+ */
+const CONDICAO_COLETA_ENTREGA = "consulte as condições para a sua região";
+
 export const LAVEXPRESS = {
     name: "Lavexpress Lavanderia",
     email: "lavexpresslavanderia@hotmail.com",
@@ -69,12 +84,12 @@ export const LAVEXPRESS = {
         expressInStoreHoursMax: 4,
     },
     /**
-     * Peças que NÃO entram nos pacotes mensais e são cobradas à parte, pela
+     * Peças que NÃO entram nos pacotes (validade de 90 dias) e são cobradas à parte, pela
      * tabela de peças avulsas.
      *
      * ⚠️ Isto NÃO é uma lista de serviços recusados. Terno, blazer e couro são
-     * atendidos e têm preço próprio em `catalogo.ts` (Terno Completo R$ 45,00,
-     * Blazer R$ 35,00, Jaqueta de Couro R$ 75,00). O nome anterior do campo era
+     * atendidos e têm preço próprio em `catalogo.ts` (tabela 2027: Terno Completo R$ 55,00,
+     * Blazer R$ 40,00, Jaqueta de Couro R$ 80,00). O nome anterior do campo era
      * `exclusions`, o que fazia a lista ser lida como "não fazemos" — inclusive
      * por quem auditou o site. O nome atual diz o que a lista é.
      *
@@ -83,9 +98,32 @@ export const LAVEXPRESS = {
      * operação não executa.
      */
     foraDosPacotes: [
-        "Edredons especiais (avaliar caso a caso)",
+        "Edredons",
         "Ternos e blazers",
         "Vestidos de festa",
-        "Peças delicadas que não podem ir à máquina",
+        "Peças que não podem ir à máquina",
     ],
+    /**
+     * Regras dos pacotes (tabela de preços 2027) — fonte única dos textos que
+     * dizem a validade e o que os pacotes não incluem. Usada em /pacotes, nas
+     * perguntas frequentes dos pacotes e no aviso "Importante".
+     */
+    /** Textos de coleta e entrega; a condição vem de CONDICAO_COLETA_ENTREGA. */
+    coletaEntrega: {
+        titulo: "Coleta e entrega",
+        /** Em minúscula, para o meio de uma frase. */
+        condicao: CONDICAO_COLETA_ENTREGA,
+        /** Frase completa: "Consulte as condições para a sua região." */
+        condicaoFrase: `${CONDICAO_COLETA_ENTREGA.charAt(0).toUpperCase()}${CONDICAO_COLETA_ENTREGA.slice(1)}.`,
+        /**
+         * Para selos curtos, onde a frase inteira não cabe no celular. Não
+         * afirma condição alguma, então continua verdadeiro depois da troca.
+         */
+        selo: "Coleta e entrega (consulte condições)",
+    },
+    regrasPacotes: {
+        validadeDias: 90,
+        exclusoes:
+            "Os pacotes não incluem edredons, ternos, vestidos de festa e peças que não podem ir à máquina.",
+    },
 } as const;

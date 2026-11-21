@@ -9,22 +9,29 @@ import { MessageCircle, Clock, Wallet, ShieldCheck, Sparkles } from "lucide-reac
 import { LAVEXPRESS } from "@/lib/lavexpress";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { WhatsAppLink } from "@/components/whatsapp-link";
+import { PACOTES } from "@/lib/catalogo";
+
+const PACOTE_MENOR = PACOTES.lavarSecar[0];
+const PACOTE_MAIOR = PACOTES.lavarSecar[PACOTES.lavarSecar.length - 1];
+const brl = (n: number) => n.toFixed(2).replace(".", ",");
 
 const FAQS = [
     {
         icon: Wallet,
         question: "Lavar na lavanderia não sai muito caro?",
-        answer: "Essa é a maior surpresa dos nossos clientes: na ponta do lápis, sai mais barato. Quando você soma o custo de sabão de qualidade, amaciante, tira-manchas, água, energia elétrica, manutenção da máquina e, principalmente, o valor do seu tempo, lavar em casa custa caro. Nossos Pacotes Lavexpress reduzem o custo por peça para centavos, com resultado profissional.",
+        // Só afirma o que a tabela de preços sustenta: os dois extremos do
+        // pacote lavar + secar, cada valor por peça junto do tamanho do pacote.
+        answer: `Nos Pacotes Lavexpress, quanto maior o pacote, menor o valor por peça: no lavar + secar, vai de R$ ${brl(PACOTE_MENOR.porPeca)}/peça no pacote de ${PACOTE_MENOR.pecas} peças a R$ ${brl(PACOTE_MAIOR.porPeca)}/peça no pacote de ${PACOTE_MAIOR.pecas} peças. Para comparar com lavar em casa, some sabão, amaciante, tira-manchas, água, energia elétrica, manutenção da máquina e o seu tempo.`,
     },
     {
         icon: Clock,
         question: "Quanto tempo eu ganho delegando isso?",
-        answer: "Em média, uma família gasta de 4 a 6 horas semanais lavando, estendendo, recolhendo e passando roupas. Com a Lavexpress, esse tempo é todo seu novamente. Imagine ter um sábado inteiro livre para curtir a família ou descansar, sem se preocupar com o cesto de roupa suja.",
+        answer: "Lavar, estender, recolher e passar roupa toma horas da semana. Com a Lavexpress, esse tempo volta para você: o sábado fica livre para a família ou para descansar, sem o cesto de roupa suja esperando.",
     },
     {
         icon: ShieldCheck,
         question: "Minhas roupas vão durar menos?",
-        answer: "Pelo contrário, elas vão durar mais. A lavagem doméstica agressiva (sabão em pó comum, secagem ao sol forte, torção na máquina) desgasta as fibras. Nossos processos usam produtos biodegradáveis de alta tecnologia e secagem controlada que preservam as cores e a integridade do tecido por muito mais tempo.",
+        answer: `Cada peça é lavada conforme o que ela suporta. ${LAVEXPRESS.regrasPacotes.exclusoes} Essas peças são avaliadas à parte, com valor e prazo combinados antes. Se tiver dúvida sobre alguma peça, mande uma foto no WhatsApp.`,
     },
     {
         icon: Sparkles,
@@ -33,11 +40,11 @@ const FAQS = [
     },
     {
         question: "Como funciona a coleta e entrega?",
-        answer: "Simples e sem burocracia. Temos rotas fixas semanais para pacotes recorrentes (você nem precisa pedir) e agendamento flexível para pedidos avulsos. Pode deixar na portaria se não estiver em casa. Nossa logística se adapta à sua rotina, não o contrário.",
+        answer: `As coletas são feitas pela manhã, nos dias fixos de coleta (${LAVEXPRESS.pickupRules.fixedMorningDays.join(", ").replace(/, ([^,]*)$/, " e $1")}). ${LAVEXPRESS.coletaEntrega.condicaoFrase} Você também pode trazer e retirar na loja.`,
     },
     {
         question: "O que acontece se uma peça manchar ou sumir?",
-        answer: "Transparência total e garantia. Todas as peças são filmadas e catalogadas na entrada. Temos seguro total sobre os itens e processos rigorosos de rastreio. Se houver qualquer incidente (o que é raríssimo), nós resolvemos e indenizamos imediatamente. Sua tranquilidade é nossa prioridade.",
+        answer: "Se acontecer qualquer problema com uma peça, fale com a gente pelo WhatsApp. Avaliamos cada caso diretamente com você.",
     },
 ];
 
@@ -94,7 +101,7 @@ export function Faq() {
                                     <div className="font-semibold text-slate-900">Ainda tem dúvida?</div>
                                 </div>
                                 <p className="text-sm text-slate-600 max-w-md">
-                                    Nossa equipe responde na hora pelo WhatsApp. Sem robôs, atendimento humano de verdade.
+                                    Nossa equipe responde pelo WhatsApp, com atendimento humano.
                                 </p>
                             </div>
                             <div className="mt-4 md:mt-0">

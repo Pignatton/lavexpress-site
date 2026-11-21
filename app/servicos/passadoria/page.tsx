@@ -33,7 +33,7 @@ export const metadata: Metadata = {
  * Derivado da tabela real em `PACOTES.lavarSecarPassar` — nunca escrito à mão.
  * Antes havia aqui um `4.40` fixo, que é o melhor preço do pacote
  * **lavar + secar** (215 peças). O pacote com passadoria não chega a esse
- * valor: o melhor dele é R$ 4,41, em 320 peças. A página anunciava o número
+ * valor (na tabela antiga, o melhor dele era R$ 4,41, em 320 peças). A página anunciava o número
  * do pacote errado em cinco lugares.
  */
 const melhorDe = (tabela: { pecas: number; valor: number; porPeca: number }[]) =>
