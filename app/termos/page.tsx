@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Separator } from "@/components/ui/separator";
@@ -10,7 +11,7 @@ import { LAVEXPRESS } from "@/lib/lavexpress";
  * fosse lida, o que é falso e some justamente com a informação que importa —
  * desde quando valem estes termos.
  */
-const ATUALIZADO_EM = "29 de outubro de 2026";
+const ATUALIZADO_EM = "21 de novembro de 2026";
 
 export const metadata = {
     title: "Termos de Uso e Privacidade | Lavexpress",
@@ -68,6 +69,12 @@ export default function TermosPage() {
                             <Separator className="my-8" />
 
                             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">5. Política de Privacidade (LGPD)</h2>
+
+                            <p className="mt-2">
+                                O atendimento automatizado no nosso WhatsApp tem regras próprias, descritas na{" "}
+                                <Link href="/privacidade-whatsapp" className="text-blue-700 underline">Política de Privacidade do Atendimento no WhatsApp</Link>{" "}
+                                e em <Link href="/exclusao-de-dados" className="text-blue-700 underline">Exclusão de dados</Link>.
+                            </p>
 
                             <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">5.1 Quem trata seus dados</h3>
                             <p>
@@ -134,6 +141,12 @@ export default function TermosPage() {
                                 <li>
                                     <strong>WhatsApp / Meta Platforms</strong> — quando você escolhe falar conosco por
                                     ali, a conversa acontece na plataforma deles e segue as políticas deles.
+                                </li>
+                                <li>
+                                    <strong>Anthropic e provedor de hospedagem do atendente automatizado</strong> — quando o
+                                    nosso atendente automatizado responde no WhatsApp, o texto da conversa é processado por eles,
+                                    como descrito na{" "}
+                                    <Link href="/privacidade-whatsapp" className="text-blue-700 underline">Política de Privacidade do Atendimento no WhatsApp</Link>.
                                 </li>
                             </ul>
                             <p className="mt-4">
