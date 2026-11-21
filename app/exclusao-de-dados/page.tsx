@@ -57,7 +57,9 @@ export default function ExclusaoDeDadosPage() {
                             <p>
                                 A exclusão é feita em até <strong>15 dias</strong> e você recebe a confirmação pelo mesmo canal do pedido.
                                 Cópias de segurança são substituídas em até 14 dias. Guardamos apenas o registro de que o pedido foi
-                                atendido, sem o conteúdo da conversa.
+                                atendido, sem o conteúdo da conversa, e o que precisarmos manter por obrigação legal ou para o exercício
+                                regular de direitos (art. 16 da LGPD) — por exemplo, se a conversa fizer parte de um pedido ou de uma
+                                reclamação em andamento.
                             </p>
 
                             <Separator className="my-8" />

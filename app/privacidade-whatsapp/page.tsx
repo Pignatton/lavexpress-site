@@ -48,6 +48,11 @@ export default function PrivacidadeWhatsappPage() {
                                 conversa para a nossa equipe quando necessário. Ele responde automaticamente só no horário da loja. Você
                                 pode pedir para falar com uma pessoa a qualquer momento.
                             </p>
+                            <p>
+                                O atendimento automatizado está em implantação. Enquanto não estiver ativo, as conversas no nosso
+                                WhatsApp são atendidas apenas pela nossa equipe, e o que está descrito aqui passa a valer a partir da
+                                ativação.
+                            </p>
 
                             <Separator className="my-8" />
 
@@ -120,8 +125,8 @@ export default function PrivacidadeWhatsappPage() {
                             <h2 className={h2}>6. Transferência internacional</h2>
                             <p>
                                 A Meta e a Anthropic tratam dados fora do Brasil (inclusive nos Estados Unidos), e o servidor do atendente
-                                pode estar no exterior. Essas transferências seguem o art. 33 da LGPD, com as garantias contratuais desses
-                                fornecedores.
+                                pode estar no exterior. Essas transferências se apoiam nas hipóteses admitidas pelos arts. 33 e 34 da LGPD,
+                                como descrito também nos nossos Termos.
                             </p>
 
                             <Separator className="my-8" />
@@ -152,8 +157,10 @@ export default function PrivacidadeWhatsappPage() {
 
                             <h2 className={h2}>9. Seus direitos</h2>
                             <p>
-                                Você pode pedir confirmação e acesso, correção, anonimização, bloqueio ou eliminação, informação sobre
-                                compartilhamento e revisão de resposta automatizada (arts. 18 e 20 da LGPD). Para pedir a exclusão, veja{" "}
+                                Você pode pedir, sem custo: confirmação e acesso, correção, anonimização, bloqueio ou eliminação, portabilidade,
+                                informação sobre compartilhamento, oposição ao tratamento baseado em legítimo interesse e revisão de
+                                resposta automatizada por uma pessoa (arts. 18 e 20 da LGPD). Respondemos em até 15 dias. Você também
+                                pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD). Para pedir a exclusão, veja{" "}
                                 <Link href="/exclusao-de-dados" className={link}>Exclusão de dados</Link>.
                             </p>
 

@@ -142,6 +142,12 @@ export default function TermosPage() {
                                     <strong>WhatsApp / Meta Platforms</strong> — quando você escolhe falar conosco por
                                     ali, a conversa acontece na plataforma deles e segue as políticas deles.
                                 </li>
+                                <li>
+                                    <strong>Anthropic e provedor de hospedagem do atendente automatizado</strong> — quando o
+                                    nosso atendente automatizado responde no WhatsApp, o texto da conversa é processado por eles,
+                                    como descrito na{" "}
+                                    <Link href="/privacidade-whatsapp" className="text-blue-700 underline">Política de Privacidade do Atendimento no WhatsApp</Link>.
+                                </li>
                             </ul>
                             <p className="mt-4">
                                 <strong>O que deixamos de usar:</strong> até 29 de outubro de 2026 este site usou o
