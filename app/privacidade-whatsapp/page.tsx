@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { LAVEXPRESS } from "@/lib/lavexpress";
 
 /** Data de revisão, fixa e escrita à mão (preencher na publicação). */
-const ATUALIZADO_EM = "[data da publicação]";
+const ATUALIZADO_EM = "21 de novembro de 2026";
 const RAZAO_SOCIAL = "PIGNATTON LAVANDERIA LTDA";
 
 export const metadata = {
