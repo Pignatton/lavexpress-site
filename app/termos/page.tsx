@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Separator } from "@/components/ui/separator";
@@ -68,6 +69,12 @@ export default function TermosPage() {
                             <Separator className="my-8" />
 
                             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">5. Política de Privacidade (LGPD)</h2>
+
+                            <p className="mt-2">
+                                O atendimento automatizado no nosso WhatsApp tem regras próprias, descritas na{" "}
+                                <Link href="/privacidade-whatsapp" className="text-blue-700 underline">Política de Privacidade do Atendimento no WhatsApp</Link>{" "}
+                                e em <Link href="/exclusao-de-dados" className="text-blue-700 underline">Exclusão de dados</Link>.
+                            </p>
 
                             <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-2">5.1 Quem trata seus dados</h3>
                             <p>
