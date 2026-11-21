@@ -11,7 +11,7 @@ import { LAVEXPRESS } from "@/lib/lavexpress";
  * fosse lida, o que é falso e some justamente com a informação que importa —
  * desde quando valem estes termos.
  */
-const ATUALIZADO_EM = "29 de outubro de 2026";
+const ATUALIZADO_EM = "21 de novembro de 2026";
 
 export const metadata = {
     title: "Termos de Uso e Privacidade | Lavexpress",
