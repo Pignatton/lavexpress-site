@@ -97,7 +97,7 @@ export const LAVEXPRESS = {
      * tabela de peças avulsas.
      *
      * ⚠️ Isto NÃO é uma lista de serviços recusados. Terno, blazer e couro são
-     * atendidos e têm preço próprio em `catalogo.ts` (Terno Completo R$ 45,00,
+     * atendidos e têm preço próprio em `catalogo.ts` (Terno Completo R$ 48,00,
      * Blazer R$ 35,00, Jaqueta de Couro R$ 75,00). O nome anterior do campo era
      * `exclusions`, o que fazia a lista ser lida como "não fazemos" — inclusive
      * por quem auditou o site. O nome atual diz o que a lista é.
