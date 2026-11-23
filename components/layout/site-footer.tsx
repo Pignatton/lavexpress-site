@@ -179,6 +179,14 @@ export function SiteFooter() {
                         <Link href="/termos" className="hover:text-emerald-600 transition-colors">
                             Termos de Uso e Privacidade
                         </Link>
+                        <span className="hidden md:inline">•</span>
+                        <Link href="/privacidade-whatsapp" className="hover:text-emerald-600 transition-colors">
+                            Privacidade no WhatsApp
+                        </Link>
+                        <span className="hidden md:inline">•</span>
+                        <Link href="/exclusao-de-dados" className="hover:text-emerald-600 transition-colors">
+                            Exclusão de dados
+                        </Link>
                     </div>
                 </div>
                 <SeoKeywords />
