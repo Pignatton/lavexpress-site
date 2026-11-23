@@ -22,11 +22,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Pacotes | Lavexpress",
-    description: "Pacotes Lavexpress: melhor custo-benefício por peça, com coleta e entrega grátis e padrão profissional. Escolha o ideal para sua rotina.",
+    title: "Pacotes de lavanderia por peça",
+    description:
+        "Pacotes Lavexpress com quantidade definida de peças, válidos por 90 dias: lavar e secar ou lavar, secar e passar. Jardim Camburi, Vitória.",
 };
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -35,7 +36,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -220,7 +221,7 @@ function PackageCard({
                     </Button>
 
                     <p className="mt-3 text-center text-xs text-slate-500">
-                        Confirmação rápida no WhatsApp • Atendimento claro • Prazos previsíveis
+                        Confirmação rápida no WhatsApp • Atendimento claro • Prazo confirmado antes de fechar
                     </p>
                 </div>
             </div>
@@ -263,7 +264,7 @@ export default function PacotesPage() {
 
                                 <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs font-extrabold text-emerald-700 shadow-sm">
                                     <Truck className="h-4 w-4" />
-                                    Coleta e entrega grátis
+                                    {LAVEXPRESS.coletaEntrega.selo}
                                 </div>
                             </div>
 
@@ -360,9 +361,9 @@ export default function PacotesPage() {
                                 <div className="flex items-start gap-3">
                                     <Truck className="h-5 w-5 text-emerald-600 mt-0.5" />
                                     <div>
-                                        <div className="font-extrabold text-slate-900">Coleta e entrega grátis</div>
+                                        <div className="font-extrabold text-slate-900">{LAVEXPRESS.coletaEntrega.titulo}</div>
                                         <div className="text-sm text-slate-600">
-                                            Buscamos e levamos na sua porta. Sem taxa adicional nos pacotes.
+                                            {LAVEXPRESS.coletaEntrega.condicaoFrase}
                                         </div>
                                     </div>
                                 </div>
@@ -374,7 +375,7 @@ export default function PacotesPage() {
                                     <div>
                                         <div className="font-extrabold text-slate-900">Mais previsibilidade</div>
                                         <div className="text-sm text-slate-600">
-                                            Você sabe quando coleta e quando recebe. Rotina organizada.
+                                            Pacote com quantidade de peças definida e validade clara.
                                         </div>
                                     </div>
                                 </div>

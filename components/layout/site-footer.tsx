@@ -31,8 +31,8 @@ export function SiteFooter() {
                             </div>
                         </Link>
                         <p className="mt-6 text-sm text-slate-600 leading-relaxed max-w-xs">
-                            Desde 2016. Lavanderia profissional com coleta e entrega. Cuidado real com suas roupas,
-                            previsibilidade e preço justo.
+                            Lavanderia em Jardim Camburi, Vitória/ES. Coleta e entrega mediante consulta de
+                            disponibilidade e condições.
                         </p>
                         <div className="mt-6 flex gap-4">
                             <a

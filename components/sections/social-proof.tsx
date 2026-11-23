@@ -173,7 +173,7 @@ export function SocialProof() {
                             </div>
                             <div>
                                 <div className="font-bold">Lavexpress Lavanderia</div>
-                                <div className="text-sm text-slate-400">Atendemos Vitória, Serra e Vila Velha</div>
+                                <div className="text-sm text-slate-400">Loja em Jardim Camburi, Vitória · coleta e entrega sob consulta</div>
                             </div>
                         </div>
                         <Button className="mt-4 w-full bg-emerald-600 text-white hover:bg-emerald-700 md:mt-0 md:w-auto" asChild>

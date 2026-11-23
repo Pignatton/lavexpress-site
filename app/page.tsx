@@ -15,9 +15,8 @@ import { Faq } from "@/components/sections/faq";
 import { SiteFooter } from "@/components/layout/site-footer";
 
 export const metadata: Metadata = {
-  title: "Lavexpress | Lavanderia Delivery em Vitória e Vila Velha",
-  description:
-    "Lavanderia com coleta e entrega grátis (consulte condições). Atendemos Jardim Camburi, Praia do Canto, Praia da Costa e toda Grande Vitória. Lave edredons, roupas do dia a dia e mais.",
+  title: "Lavanderia em Jardim Camburi, Vitória/ES | Lavexpress",
+  description: "Lavanderia em Jardim Camburi, Vitória (ES): lavamos, secamos e passamos. Pacotes por peça, passadoria, tênis, cortinas e edredons. Orçamento no WhatsApp.",
 };
 
 export default function HomePage() {

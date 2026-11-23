@@ -26,9 +26,9 @@ export const metadata: Metadata = {
         "Lavagem e secagem completa de edredons e cobertores com padrão profissional: mais volume, maciez e sensação de limpeza. Coleta e entrega em Vitória/ES.",
 };
 
-const STARTING_PRICE = 40; // ✅ a partir de R$ 40,00
+const STARTING_PRICE = 45; // a partir de R$ 45,00 (edredom solteiro, preço praticado em 2026)
 
-function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.reviews }: { rating?: number; count?: number }) {
+function Stars({ rating = LAVEXPRESS.google.rating }: { rating?: number }) {
     return (
         <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-extrabold text-slate-700 shadow-sm">
             <div className="flex items-center gap-1 text-yellow-500">
@@ -37,7 +37,7 @@ function Stars({ rating = LAVEXPRESS.google.rating, count = LAVEXPRESS.google.re
                 ))}
             </div>
             <span>
-                {String(rating).replace(".", ",")} no Google ({count})
+                {String(rating).replace(".", ",")} no Google
             </span>
         </div>
     );
@@ -119,7 +119,7 @@ export default function EdredonsPage() {
 
                                 <p className="text-base md:text-lg lg:text-xl text-slate-600 mb-6 md:mb-8 leading-relaxed text-pretty">
                                     Lavagem e secagem <strong>com padrão profissional</strong> para peças volumosas.
-                                    A Lavexpress busca, higieniza e entrega pronto para você guardar ou usar.
+                                    A Lavexpress lava, seca e deixa pronto para você guardar ou usar.
                                 </p>
 
                                 {/* VALUE STRIP (oferta clara) */}
@@ -155,7 +155,7 @@ export default function EdredonsPage() {
                                         <div>
                                             <div className="font-extrabold text-slate-900">Secagem completa + volume de volta</div>
                                             <div className="text-sm text-slate-600">
-                                                Secagem controlada para evitar cheiro de umidade e devolver o &quot;fofinho&quot; do edredom.
+                                                Secagem completa, para o edredom voltar pronto para usar.
                                             </div>
                                         </div>
                                     </div>
@@ -217,7 +217,7 @@ export default function EdredonsPage() {
                                 <div className="relative rounded-[2rem] overflow-hidden border border-white/60 shadow-2xl bg-white/80 backdrop-blur-sm">
                                     <Image
                                         src="/images/edredom_hero_clean_1767392053952.png"
-                                        alt="Edredom higienizado e volumoso"
+                                        alt="Edredom dobrado"
                                         width={800}
                                         height={600}
                                         className="w-full h-auto object-cover"
@@ -251,7 +251,7 @@ export default function EdredonsPage() {
                                 <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
                                     {[
                                         { title: "Lavagem", desc: "padrão profissional" },
-                                        { title: "Secagem", desc: "completa e controlada" },
+                                        { title: "Secagem", desc: "completa" },
                                         { title: "Finalização", desc: "pronto p/ guardar" },
                                     ].map((it) => (
                                         <Card key={it.title} className="p-4 rounded-2xl border-slate-100 bg-white shadow-sm">
@@ -303,7 +303,7 @@ export default function EdredonsPage() {
                                 </div>
                                 <h3 className="text-xl font-extrabold text-slate-900 mb-3">Mais maciez e volume</h3>
                                 <p className="text-slate-600 leading-relaxed">
-                                    Secagem controlada para devolver o &quot;fofinho&quot; e a sensação gostosa ao toque.
+                                    Secagem completa, para a peça voltar pronta para usar.
                                 </p>
                             </Card>
 
@@ -340,7 +340,7 @@ export default function EdredonsPage() {
                                     {[
                                         {
                                             title: "1) Coleta",
-                                            desc: "A gente busca na sua casa (ou você entrega na loja).",
+                                            desc: "Você entrega na loja. Coleta e entrega: consulte as condições.",
                                         },
                                         {
                                             title: "2) Identificação do tipo/tamanho",
@@ -397,11 +397,11 @@ export default function EdredonsPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <Card className="p-6 bg-white border-slate-100 shadow-sm rounded-2xl">
                                     <div className="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">
-                                        Prazo médio
+                                        Prazo
                                     </div>
-                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">2–3 dias</div>
+                                    <div className="text-3xl font-extrabold text-slate-900 mb-1">No orçamento</div>
                                     <div className="text-sm text-slate-500 font-medium">
-                                        Para garantir secagem completa.
+                                        O prazo é informado no orçamento, conforme o tipo de peça e a disponibilidade da operação.
                                     </div>
                                 </Card>
 
@@ -449,7 +449,7 @@ export default function EdredonsPage() {
                                 },
                                 {
                                     q: "Quanto tempo leva?",
-                                    a: "Em média 2 a 3 dias úteis para garantir secagem completa. Confirmamos o prazo no WhatsApp antes de fechar.",
+                                    a: "O prazo é informado no orçamento, conforme o tipo de peça e a disponibilidade da operação.",
                                 },
                                 {
                                     q: "Vocês buscam e entregam?",

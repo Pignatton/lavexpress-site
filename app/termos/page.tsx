@@ -11,7 +11,7 @@ import { LAVEXPRESS } from "@/lib/lavexpress";
  * fosse lida, o que é falso e some justamente com a informação que importa —
  * desde quando valem estes termos.
  */
-const ATUALIZADO_EM = "21 de novembro de 2026";
+const ATUALIZADO_EM = "23 de novembro de 2026";
 
 export const metadata = {
     title: "Termos de Uso e Privacidade | Lavexpress",
@@ -35,7 +35,7 @@ export default function TermosPage() {
                         <div className="prose prose-slate max-w-none text-slate-700">
                             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">1. Visão Geral</h2>
                             <p>
-                                Bem-vindo à Lavexpress. Ao utilizar nossos serviços de lavanderia delivery, você concorda com os termos descritos abaixo.
+                                Bem-vindo à Lavexpress. Ao utilizar nossos serviços de lavanderia, você concorda com os termos descritos abaixo.
                                 Nosso compromisso é oferecer um serviço de qualidade, com transparência e respeito aos seus dados.
                             </p>
 
@@ -43,11 +43,12 @@ export default function TermosPage() {
 
                             <h2 className="text-xl font-bold text-slate-900 mt-8 mb-4">2. Serviços Prestados</h2>
                             <p>
-                                A Lavexpress oferece serviços de lavagem, secagem e passadoria de roupas domésticas, edredons, tapetes e cortinas.
-                                O serviço inclui coleta e entrega (delivery) nas áreas de cobertura especificadas (Vitória, Vila Velha e Serra).
+                                A Lavexpress oferece serviços de lavagem, secagem e passadoria de roupas do dia a dia, além de lavagem de edredons, cortinas e tênis.
+                                O atendimento é feito na loja, em {LAVEXPRESS.addressLine}, {LAVEXPRESS.addressDistrict}, {LAVEXPRESS.addressCity}.
+                                Coleta e entrega podem ser combinadas mediante consulta prévia e dependem da região e da disponibilidade.
                             </p>
                             <ul className="list-disc pl-6 mt-4 space-y-2">
-                                <li><strong>Prazos:</strong> Os prazos de entrega variam de 24–48h a 5 dias úteis, dependendo do tipo de serviço e volume.</li>
+                                <li><strong>Prazos:</strong> O prazo de cada serviço é informado no atendimento, antes de o serviço ser contratado, e depende do tipo de peça e do volume.</li>
                                 <li><strong>Triagem:</strong> Todas as peças passam por triagem. Reservamo-nos o direito de recusar itens que apresentem riscos de danos durante o processo de lavagem.</li>
                             </ul>
 

@@ -20,16 +20,16 @@ export const TABELA_PRECOS = [
     { nome: "Capa Cadeira de Festa", valor: 10.00, prazo: 5 },
     { nome: "Casacos (a partir)", valor: 70.00, prazo: 4 },
     { nome: "Cortinas (a partir)", valor: 55.00, prazo: 7 },
-    { nome: "Edredom Casal", valor: 45.00, prazo: 2 },
-    { nome: "Edredom Queen", valor: 45.00, prazo: 2 },
-    { nome: "Edredom Solteiro", valor: 40.00, prazo: 2 },
+    { nome: "Edredom Casal", valor: 50.00, prazo: 2 },
+    { nome: "Edredom Queen", valor: 55.00, prazo: 2 },
+    { nome: "Edredom Solteiro", valor: 45.00, prazo: 2 },
     { nome: "Jaleco", valor: 25.00, prazo: 3 },
     { nome: "Jaqueta de Couro", valor: 75.00, prazo: 7 },
     { nome: "Jaquetas Simples", valor: 45.00, prazo: 2 },
     { nome: "Lençol (Lavar/Secar/Passar)", valor: 15.00, prazo: 1 },
-    { nome: "Tapete Sintético (m²)", valor: 65.00, prazo: 7 },
+    // Tapete: fora do catálogo até o serviço ser confirmado.
     { nome: "Tênis", valor: 50.00, prazo: 5 },
-    { nome: "Terno Completo", valor: 45.00, prazo: 3 },
+    { nome: "Terno Completo", valor: 48.00, prazo: 3 },
     { nome: "Toalha de Banho", valor: 10.00, prazo: 2 },
     { nome: "Vestido de Festa", valor: 90.00, prazo: 3 },
     { nome: "Vestido Simples (a partir)", valor: 65.00, prazo: 4 },
@@ -85,14 +85,14 @@ export const SERVICES_DETAILS: Record<string, {
         benefits: [
             { title: "Economia de Tempo", description: "Você não perde horas lavando roupa. Deixe isso com a gente.", icon: "Clock" },
             { title: "Custo Inteligente", description: "Mais barato que serviço avulso. Padrão profissional com economia.", icon: "Wallet" },
-            { title: "Conforto Absoluto", description: "Coleta e entrega na sua porta. Tudo feito sem sair de casa.", icon: "Truck" }
+            { title: "Atendimento no balcão", description: "Traga à loja em Jardim Camburi. Coleta e entrega: consulte as condições.", icon: "Truck" }
         ],
         included: [
-            "Coleta e entrega no seu endereço",
+            "Atendimento no balcão (coleta e entrega: consulte as condições)",
             "Lavagem profissional com produtos adequados",
-            "Secagem controlada para preservar as roupas",
-            "Dobra organizada e higienizada",
-            "Processo padronizado, seguro e confiável"
+            "Secagem",
+            "Dobra organizada",
+            "Processo padronizado"
         ],
         allowedItems: [
             "Camisetas",
@@ -114,8 +114,8 @@ export const SERVICES_DETAILS: Record<string, {
         process: [
             { step: 1, title: "Solicitação", description: "Peça seu cesto exclusivo Lavexpress." },
             { step: 2, title: "Preenchimento", description: "Coloque suas roupas (separe por cor se desejar lavagem separada)." },
-            { step: 3, title: "Coleta e Lavagem", description: "Buscamos e lavamos conforme seu cesto." },
-            { step: 4, title: "Entrega", description: "Receba tudo limpo, seco e dobrado." }
+            { step: 3, title: "Lavagem", description: "Lavamos conforme o seu cesto." },
+            { step: 4, title: "Retirada", description: "Você retira tudo limpo, seco e dobrado." }
         ],
         ctaText: "Pedir Meu Cesto"
     },
@@ -123,91 +123,88 @@ export const SERVICES_DETAILS: Record<string, {
         title: "Spa de Tênis e Calçados",
         subtitle: "Seus tênis favoritos, novos de novo.",
         heroImage: "/imagens/hero-sneakers.png",
-        description: "Tênis sujo estraga qualquer visual. Nossa limpeza técnica manual remove a sujeira impregnada que a lavagem caseira não tira, devolvendo a cor e o aspecto de novo aos seus calçados.",
+        description: "Tênis sujo estraga qualquer visual. Mande uma foto do par pelo WhatsApp: avaliamos o material e o estado e passamos o valor e o prazo antes de fechar.",
         benefits: [
-            { title: "Limpeza Detalhada", description: "Esfregamos cada centímetro à mão. Nada de jogar na máquina e estragar.", icon: "Sparkles" },
-            { title: "Secagem Segura", description: "Estufa controlada que evita descolamento de solado e mau cheiro.", icon: "ShieldCheck" },
-            { title: "Cadarços e Palmilhas", description: "Higienizados separadamente para garantir limpeza total.", icon: "Zap" }
+            { title: "Avaliação do par", description: "Olhamos o material e o estado antes de fechar.", icon: "Sparkles" },
+            { title: "Orçamento antes", description: "Valor e prazo confirmados antes de você autorizar.", icon: "ShieldCheck" },
+            { title: "Atendimento no balcão", description: "Traga o par à loja em Jardim Camburi.", icon: "Zap" }
         ],
         process: [
             { step: 1, title: "Avaliação", description: "Inspecionamos o material e o estado do calçado." },
-            { step: 2, title: "Descontaminação", description: "Remoção de sujeira pesada do solado e tecido." },
-            { step: 3, title: "Higienização", description: "Limpeza profunda com produtos específicos para cada material." },
-            { step: 4, title: "Acabamento", description: "Secagem, desodorização e embalagem." }
+            { step: 2, title: "Orçamento", description: "Confirmamos valor e prazo antes de fechar." },
+            { step: 3, title: "Lavagem", description: "Conforme o material do par." },
+            { step: 4, title: "Retirada", description: "Você retira o par na loja." }
         ],
         faq: [
-            { question: "Demora muito?", answer: "Pedimos 5 a 7 dias para garantir uma secagem perfeita e segura." },
-            { question: "Lavam camurça?", answer: "Sim! Temos expertise em camurça, couro e tecidos sintéticos." },
-            { question: "Tira o chulé?", answer: "Nosso processo de ozonização e bactericidas elimina 99% dos odores." }
+            { question: "Qual é o prazo?", answer: "O prazo é confirmado após a avaliação do material e do estado do par." },
+            { question: "Lavam qualquer material?", answer: "Depende do par. Mande uma foto pelo WhatsApp que a equipe avalia." }
         ],
-        ctaText: "Renovar Meus Tênis"
+        ctaText: "Pedir orçamento do meu tênis"
     },
     "lavagem-de-edredons": {
         title: "Edredons e Cobertores",
-        subtitle: "Durma melhor com roupa de cama higienizada de verdade.",
+        subtitle: "Peças volumosas que não cabem bem na máquina de casa.",
         heroImage: "/images/carousel_comforter.png",
-        description: "Seu edredom pode estar cheio de ácaros e poeira invisível. Nossa lavagem profunda remove alérgenos, manchas e devolve o volume e a maciez que a máquina doméstica não consegue dar.",
+        description: "Edredons e cobertores são pesados e difíceis de lavar e secar em casa. Traga ao balcão: confirmamos valor e prazo antes de fechar.",
         benefits: [
-            { title: "Saúde do Sono", description: "Elimina ácaros e fungos que causam alergias respiratórias.", icon: "ShieldCheck" },
-            { title: "Volume e Maciez", description: "Secagem em tambor industrial que 'afofa' as fibras do enchimento.", icon: "Sparkles" },
-            { title: "Sem Mofo", description: "Garantia de secagem 100% completa, impossível em varal doméstico.", icon: "Zap" }
+            { title: "Lavar e secar", description: "Peças volumosas lavadas e secas na loja.", icon: "Sparkles" },
+            { title: "Orçamento antes", description: "Valor e prazo confirmados antes de fechar.", icon: "ShieldCheck" },
+            { title: "Atendimento no balcão", description: "Traga à loja em Jardim Camburi.", icon: "Zap" }
         ],
         process: [
-            { step: 1, title: "Coleta", description: "Buscamos as peças volumosas na sua casa." },
-            { step: 2, title: "Lavagem Profunda", description: "Imersão e ação mecânica suave para limpar o enchimento." },
-            { step: 3, title: "Secagem Turbo", description: "Alta temperatura controlada para esterilizar e dar volume." },
-            { step: 4, title: "Entrega", description: "Entregue em embalagem protetora (ou a vácuo, se pedir)." }
+            { step: 1, title: "Avaliação", description: "Conferimos o tamanho e o tipo da peça." },
+            { step: 2, title: "Lavagem", description: "Conforme o que a etiqueta permite." },
+            { step: 3, title: "Secagem", description: "A peça é seca na loja." },
+            { step: 4, title: "Retirada", description: "Você retira na loja." }
         ],
         faq: [
-            { question: "Lavam edredom King/Queen?", answer: "Sim, nossas máquinas industriais comportam qualquer tamanho." },
-            { question: "Quanto tempo leva?", answer: "Geralmente 2 a 3 dias úteis para garantir secagem total." },
-            { question: "Vocês buscam?", answer: "Com certeza. Não ocupe seu carro com edredons gigantes." }
+            { question: "Qual é o prazo?", answer: "O prazo depende da peça e é confirmado antes de fechar." },
+            { question: "Vocês buscam?", answer: "Coleta e entrega: consulte as condições pelo WhatsApp." }
         ],
-        ctaText: "Higienizar Edredons"
+        ctaText: "Pedir orçamento"
     },
     "passadoria": {
         title: "Passadoria Express",
         subtitle: "Chega de perder horas no ferro de passar.",
         heroImage: "/images/carousel_ironing.png",
-        description: "Passar roupa é a tarefa doméstica mais odiada. Deixe isso com a gente. Entregamos suas camisas e roupas sociais impecáveis, alinhadas e prontas para vestir. Você ganha tempo e apresentação pessoal.",
+        description: "Passar roupa toma tempo. Deixe isso com a gente: você traz as peças e retira tudo passado, pronto para vestir.",
         benefits: [
-            { title: "Apresentação Impecável", description: "Roupas sem vincos, com colarinhos e punhos perfeitos.", icon: "Sparkles" },
+            { title: "Roupa pronta para usar", description: "Camisas e roupas de trabalho passadas com cuidado.", icon: "Sparkles" },
             { title: "Economia de Tempo", description: "Quantas horas você gasta passando? Nós devolvemos esse tempo para você.", icon: "Clock" },
-            { title: "Praticidade", description: "Receba tudo no cabide ou dobrado, direto para o armário.", icon: "Truck" }
+            { title: "Orçamento antes", description: "Valor e prazo confirmados antes de fechar.", icon: "Truck" }
         ],
         process: [
-            { step: 1, title: "Coleta", description: "Buscamos suas roupas limpas (secas)." },
-            { step: 2, title: "Passadoria", description: "Equipamentos industriais a vapor que protegem o tecido." },
-            { step: 3, title: "Conferência", description: "Inspeção de qualidade peça a peça." },
-            { step: 4, title: "Entrega", description: "Tudo pronto para usar, sem amassados." }
+            { step: 1, title: "Balcão", description: "Você traz as roupas limpas e secas à loja." },
+            { step: 2, title: "Orçamento", description: "Confirmamos valor e prazo antes de fechar." },
+            { step: 3, title: "Passadoria", description: "As peças são passadas conforme o tecido." },
+            { step: 4, title: "Retirada", description: "Você retira tudo pronto para usar." }
         ],
         faq: [
-            { question: "Preciso fornecer cabides?", answer: "Pode enviar os seus ou fornecemos os nossos (consulte condições)." },
-            { question: "Qual o prazo?", answer: "Rápido! Em 2 a 3 dias suas roupas estão de volta." },
-            { question: "Passam qualquer tecido?", answer: "Sim, temos temperatura certa para seda, linho, algodão e sintéticos." }
+            { question: "Como as peças voltam?", answer: "Combine no atendimento como prefere receber as peças." },
+            { question: "Qual o prazo?", answer: "O prazo depende do volume e é confirmado antes de fechar." },
+            { question: "Passam qualquer tecido?", answer: "Depende do tecido e da etiqueta. Na dúvida, mande uma foto pelo WhatsApp." }
         ],
         ctaText: "Quero Minhas Roupas Passadas"
     },
     "lavagem-de-cortinas": {
-        title: "Cortinas e Tapetes",
-        subtitle: "Sua casa livre de poeira e odores.",
+        title: "Cortinas",
+        subtitle: "Peças grandes que dão trabalho em casa.",
         heroImage: "/images/carousel_delicate.png",
-        description: "Cortinas e tapetes acumulam quilos de poeira por ano. Nossa limpeza especializada remove a sujeira profunda, elimina odores de mofo/animais e renova as cores do ambiente.",
+        description: "Cortinas acumulam poeira e são pesadas para lavar em casa. Informe o tipo e o tamanho aproximado e receba o orçamento.",
         benefits: [
-            { title: "Ar Puro", description: "Removemos a poeira acumulada que causa rinite e alergias.", icon: "ShieldCheck" },
-            { title: "Cores Vivas", description: "A sujeira esconde a cor real. A lavagem devolve a vida à decoração.", icon: "Sparkles" },
-            { title: "Sem Trabalho", description: "Esqueça o esforço de esfregar tapete ou tirar cortina pesada.", icon: "Truck" }
+            { title: "Orçamento antes", description: "Valor e prazo confirmados antes de fechar.", icon: "ShieldCheck" },
+            { title: "Peças grandes", description: "Cortinas pesadas para lavar e secar em casa.", icon: "Sparkles" },
+            { title: "Atendimento no balcão", description: "Traga à loja em Jardim Camburi.", icon: "Truck" }
         ],
         process: [
-            { step: 1, title: "Retirada", description: "Agendamos a retirada (consulte serviço de desmontagem)." },
-            { step: 2, title: "Bate-Poeira", description: "Remoção física da sujeira sólida antes da lavagem." },
-            { step: 3, title: "Lavagem Profunda", description: "Imersão e escovação específica para cada fibra." },
-            { step: 4, title: "Secagem e Entrega", description: "Secagem lenta e entrega agendada." }
+            { step: 1, title: "Orçamento", description: "Você informa tipo e tamanho; confirmamos valor e prazo." },
+            { step: 2, title: "Lavagem", description: "Conforme o tecido e a etiqueta." },
+            { step: 3, title: "Secagem", description: "A peça é seca na loja." },
+            { step: 4, title: "Retirada", description: "Você retira na loja." }
         ],
         faq: [
-            { question: "Vocês instalam a cortina?", answer: "Temos parceiros e equipe para desmontagem e instalação. Consulte." },
-            { question: "Tapete demora a secar?", answer: "Sim, tapetes grossos precisam de 7 a 10 dias para secar sem cheiro." },
-            { question: "Lavam tapete persa?", answer: "Sim, com processo delicado e produtos neutros." }
+            { question: "E a retirada e a instalação da cortina?", answer: "Fale com a gente no WhatsApp antes para combinar como a cortina chega e volta." },
+
         ],
         ctaText: "Orçar Lavagem de Casa"
     },
@@ -215,26 +212,25 @@ export const SERVICES_DETAILS: Record<string, {
         title: "Ternos e Roupas Sociais",
         subtitle: "Cuidado delicado para peças que exigem respeito.",
         heroImage: "/imagens/hero-suit.png",
-        // A Lavexpress NÃO faz lavagem a seco. O processo usado é Wet Cleaning,
-        // que é justamente a alternativa AQUOSA e controlada ao dry cleaning —
-        // chamá-lo de "limpeza a seco" prometia um serviço que a operação não
-        // executa, e a campanha do Google inclusive bloqueia essas buscas.
-        description: "Ternos, blazers e vestidos de festa não podem ver água comum. Nosso Wet Cleaning — processo técnico controlado, sem solvente de lavagem a seco — protege a estrutura, o forro e o caimento da peça, garantindo durabilidade e elegância.",
+        // A Lavexpress NÃO faz lavagem a seco. O nome do processo e os resultados
+        // (durabilidade, remoção de manchas) não estão confirmados: o texto
+        // descreve só o atendimento (avaliação e orçamento por peça).
+        description: "Ternos, blazers e vestidos de festa com valor por peça. Consulte a equipe sobre a sua peça antes de trazer.",
         benefits: [
-            { title: "Wet Cleaning", description: "Tecnologia moderna que limpa sem agredir as fibras delicadas.", icon: "Zap" },
-            { title: "Caimento Perfeito", description: "Passadoria técnica que mantém a estrutura da alfaiataria.", icon: "Sparkles" },
-            { title: "Durabilidade", description: "Evita o desgaste prematuro causado por lavagens incorretas.", icon: "ShieldCheck" }
+            { title: "Avaliação da peça", description: "A equipe olha tecido, etiqueta e manchas antes de fechar.", icon: "Zap" },
+            { title: "Valor por peça", description: "Fora dos pacotes, com valor informado antes.", icon: "Sparkles" },
+            { title: "Orçamento antes", description: "Valor e prazo confirmados antes de fechar.", icon: "ShieldCheck" }
         ],
         process: [
-            { step: 1, title: "Análise", description: "Identificação de manchas e tipo de tecido." },
-            { step: 2, title: "Pré-tratamento", description: "Remoção manual de manchas visíveis." },
-            { step: 3, title: "Limpeza Técnica", description: "Processo específico para alfaiataria." },
-            { step: 4, title: "Finalização", description: "Passadoria a vapor e embalagem em capa protetora." }
+            { step: 1, title: "Avaliação", description: "Olhamos o tecido, a etiqueta e as manchas." },
+            { step: 2, title: "Orçamento", description: "Valor e prazo confirmados antes de fechar." },
+            { step: 3, title: "Cuidado", description: "Conforme o que a etiqueta da peça permite." },
+            { step: 4, title: "Retirada", description: "Você retira a peça na loja." }
         ],
         faq: [
-            { question: "Remove manchas de vinho?", answer: "Temos altas taxas de sucesso, mas depende do tempo da mancha." },
-            { question: "Quanto tempo leva?", answer: "Peças delicadas levam de 3 a 5 dias úteis." },
-            { question: "Vocês buscam?", answer: "Sim, buscamos e entregamos no cabide." }
+            { question: "Tira mancha?", answer: "Depende do tecido e do tempo da mancha. Mande uma foto que a equipe avalia." },
+            { question: "Quanto tempo leva?", answer: "O prazo depende da peça e é confirmado antes de fechar." },
+            { question: "Vocês buscam?", answer: "Coleta e entrega: consulte as condições pelo WhatsApp." }
         ],
         ctaText: "Cuidar dos Meus Ternos"
     }
